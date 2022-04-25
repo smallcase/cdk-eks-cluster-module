@@ -333,20 +333,6 @@ export class EKSCluster extends Construct {
     clusterDnsSa.node.addDependency(this.cluster.openIdConnectProvider);
     clusterDnsSa.node.addDependency(this.cluster.awsAuth);
 
-    // const clusterAlbSa = new eks.ServiceAccount(
-    //   this,
-    //   `albserviceaccount-cluster-${props.clusterConfig.clusterName}`,
-    //   {
-    //     cluster: this.cluster,
-    //     name: 'aws-load-balancer-controller',
-    //     namespace: 'kube-system',
-    //   },
-    // );
-    // AwsLoadBalancerPolicy.addPolicy(
-    //   VersionsLists.AWS_LOAD_BALANCER_CONTROLLER_POLICY_V2,
-    //   clusterAlbSa,
-    // );
-
     this.fargetProfiles.forEach((item) => {
       let fargetProfile: FargetProfile = JSON.parse(JSON.stringify(item));
       const farget = this.cluster.addFargateProfile(fargetProfile.profileName, {
@@ -362,18 +348,7 @@ export class EKSCluster extends Construct {
         ),
       );
     });
-    // clusterAlbSa.node.addDependency(this.cluster.openIdConnectProvider);
-    // clusterAlbSa.node.addDependency(this.cluster.awsAuth);
-    // logging to move while creating eks cluster
-    // const customResource = setupClusterLogging(
-    //   scope,
-    //   props.region,
-    //   this.cluster,
-    // );
-    // customResource.node.addDependency(this.cluster);
     this.addManagedVpcCniAddon();
-    // this.hardenNodes(); // we need these permissions to be able to use security group for pods
-    // this.subnetTagging();
 
     const storageclassDefault = new eks.KubernetesManifest(this, 'gp2', {
       overwrite: true,
@@ -439,21 +414,6 @@ export class EKSCluster extends Construct {
         });
       });
     }
-    // if (props.clusterConfig.awsEbsCsiDriverProps && props.clusterConfig.awsEbsCsiDriverProps.deploy == true) {
-    //   new AwsEbsCsiDriver(this, `${props.clusterConfig.clusterName}-aws-efs-csi-driver`, {
-    //     cluster: this.cluster,
-    //     iamPolicy: props.clusterConfig.awsEbsCsiDriverProps ?? undefined,
-    //     helmProps: props.clusterConfig.awsEbsCsiDriverProps.helm,
-    //   });
-    // }
-
-    // if (props.clusterConfig.awsEfsCsiDriverProps && props.clusterConfig.awsEfsCsiDriverProps.deploy == true) {
-    //   new AwsEbsCsiDriver(this, `${props.clusterConfig.clusterName}-aws-efs-csi-driver`, {
-    //     cluster: this.cluster,
-    //     iamPolicy: props.clusterConfig.awsEfsCsiDriverProps ?? undefined,
-    //     helmProps: props.clusterConfig.awsEfsCsiDriverProps.helm,
-    //   });
-    // }
   }
 
   private addManagedVpcCniAddon() {
@@ -471,8 +431,8 @@ export class EKSCluster extends Construct {
     });
   }
 
-  public addServiceAccountWithIamRole(serviceAccountName: string, serviceAccountNamespace: string, policy: any,saNamespaceCreate?: boolean ) {
-    var create = saNamespaceCreate ?? false
+  public addServiceAccountWithIamRole(serviceAccountName: string, serviceAccountNamespace: string, policy: any, saNamespaceCreate?: boolean ) {
+    var create = saNamespaceCreate ?? false;
     if (create) {
       new eks.KubernetesManifest(this, `${serviceAccountName}-ns`, {
         overwrite: true,
@@ -487,15 +447,14 @@ export class EKSCluster extends Construct {
           },
         ],
       });
-    } 
-    
+    }
+
     const sa = new eks.ServiceAccount(this, serviceAccountName, {
       cluster: this.cluster,
       name: serviceAccountName,
       namespace: serviceAccountNamespace,
     });
 
-  
 
     policy.forEach((item: any) => {
       sa.addToPrincipalPolicy(iam.PolicyStatement.fromJson(item));
@@ -590,36 +549,4 @@ export class EKSCluster extends Construct {
     });
     return helmChartMap;
   }
-//   private hardenNodes() {
-//     const policy = new iam.Policy(this, 'NodeHardeningPolicy', {
-//       statements: [
-//         new iam.PolicyStatement({
-//           effect: iam.Effect.DENY,
-//           actions: [
-//             'ec2:AssignPrivateIpAddresses',
-//             'ec2:AttachNetworkInterface',
-//             'ec2:CreateNetworkInterface',
-//             'ec2:DeleteNetworkInterface',
-//             'ec2:DetachNetworkInterface',
-//             'ec2:ModifyNetworkInterfaceAttribute',
-//             'ec2:UnassignPrivateIpAddresses',
-//           ],
-//           resources: ['*'],
-//         }),
-//         new iam.PolicyStatement({
-//           effect: iam.Effect.DENY,
-//           actions: ['ec2:CreateTags'],
-//           resources: ['arn:aws:ec2:*:*:network-interface/*'],
-//         }),
-//       ],
-//     });
-//
-//     if (this.cluster.defaultNodegroup?.role) {
-//       policy.attachToRole(this.cluster.defaultNodegroup.role);
-//     }
-//
-//     this.additionalNodegroups.forEach((nodeGroup) =>
-//       policy.attachToRole(nodeGroup.role),
-//     );
-//   }
 }

@@ -2,31 +2,31 @@
 
 ## Constructs <a name="Constructs"></a>
 
-### CommonHelmCharts <a name="@scinfra/sc-infra-cdk-cluster-module.CommonHelmCharts"></a>
+### CommonHelmCharts <a name="@smallcase/cdk-eks-cluster-module.CommonHelmCharts"></a>
 
-#### Initializers <a name="@scinfra/sc-infra-cdk-cluster-module.CommonHelmCharts.Initializer"></a>
+#### Initializers <a name="@smallcase/cdk-eks-cluster-module.CommonHelmCharts.Initializer"></a>
 
 ```typescript
-import { CommonHelmCharts } from '@scinfra/sc-infra-cdk-cluster-module'
+import { CommonHelmCharts } from '@smallcase/cdk-eks-cluster-module'
 
 new CommonHelmCharts(scope: Construct, id: string, props: CommonHelmChartsProps)
 ```
 
-##### `scope`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.CommonHelmCharts.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.CommonHelmCharts.parameter.scope"></a>
 
 - *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
-##### `id`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.CommonHelmCharts.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.CommonHelmCharts.parameter.id"></a>
 
 - *Type:* `string`
 
 ---
 
-##### `props`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.CommonHelmCharts.parameter.props"></a>
+##### `props`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.CommonHelmCharts.parameter.props"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.CommonHelmChartsProps`](#@scinfra/sc-infra-cdk-cluster-module.CommonHelmChartsProps)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.CommonHelmChartsProps`](#@smallcase/cdk-eks-cluster-module.CommonHelmChartsProps)
 
 ---
 
@@ -34,64 +34,70 @@ new CommonHelmCharts(scope: Construct, id: string, props: CommonHelmChartsProps)
 
 
 
-### EKSCluster <a name="@scinfra/sc-infra-cdk-cluster-module.EKSCluster"></a>
+### EKSCluster <a name="@smallcase/cdk-eks-cluster-module.EKSCluster"></a>
 
-#### Initializers <a name="@scinfra/sc-infra-cdk-cluster-module.EKSCluster.Initializer"></a>
+#### Initializers <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.Initializer"></a>
 
 ```typescript
-import { EKSCluster } from '@scinfra/sc-infra-cdk-cluster-module'
+import { EKSCluster } from '@smallcase/cdk-eks-cluster-module'
 
 new EKSCluster(scope: Construct, id: string, props: EKSClusterProps)
 ```
 
-##### `scope`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSCluster.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.parameter.scope"></a>
 
 - *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
-##### `id`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSCluster.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.parameter.id"></a>
 
 - *Type:* `string`
 
 ---
 
-##### `props`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSCluster.parameter.props"></a>
+##### `props`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.parameter.props"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.EKSClusterProps`](#@scinfra/sc-infra-cdk-cluster-module.EKSClusterProps)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.EKSClusterProps`](#@smallcase/cdk-eks-cluster-module.EKSClusterProps)
 
 ---
 
 #### Methods <a name="Methods"></a>
 
-##### `addServiceAccountWithIamRole` <a name="@scinfra/sc-infra-cdk-cluster-module.EKSCluster.addServiceAccountWithIamRole"></a>
+##### `addServiceAccountWithIamRole` <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.addServiceAccountWithIamRole"></a>
 
 ```typescript
-public addServiceAccountWithIamRole(serviceAccountName: string, serviceAccountNamespace: string, policy: any)
+public addServiceAccountWithIamRole(serviceAccountName: string, serviceAccountNamespace: string, policy: any, saNamespaceCreate?: boolean)
 ```
 
-###### `serviceAccountName`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSCluster.parameter.serviceAccountName"></a>
+###### `serviceAccountName`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.parameter.serviceAccountName"></a>
 
 - *Type:* `string`
 
 ---
 
-###### `serviceAccountNamespace`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSCluster.parameter.serviceAccountNamespace"></a>
+###### `serviceAccountNamespace`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.parameter.serviceAccountNamespace"></a>
 
 - *Type:* `string`
 
 ---
 
-###### `policy`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSCluster.parameter.policy"></a>
+###### `policy`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.parameter.policy"></a>
 
 - *Type:* `any`
+
+---
+
+###### `saNamespaceCreate`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.parameter.saNamespaceCreate"></a>
+
+- *Type:* `boolean`
 
 ---
 
 
 #### Properties <a name="Properties"></a>
 
-##### `additionalFargetProfile`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSCluster.property.additionalFargetProfile"></a>
+##### `additionalFargetProfile`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.property.additionalFargetProfile"></a>
 
 ```typescript
 public readonly additionalFargetProfile: FargateProfile[];
@@ -101,7 +107,7 @@ public readonly additionalFargetProfile: FargateProfile[];
 
 ---
 
-##### `additionalNodegroups`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSCluster.property.additionalNodegroups"></a>
+##### `additionalNodegroups`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.property.additionalNodegroups"></a>
 
 ```typescript
 public readonly additionalNodegroups: Nodegroup[];
@@ -111,7 +117,7 @@ public readonly additionalNodegroups: Nodegroup[];
 
 ---
 
-##### `cluster`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSCluster.property.cluster"></a>
+##### `cluster`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.property.cluster"></a>
 
 ```typescript
 public readonly cluster: Cluster;
@@ -121,42 +127,42 @@ public readonly cluster: Cluster;
 
 ---
 
-##### `fargetProfiles`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSCluster.property.fargetProfiles"></a>
+##### `fargetProfiles`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.property.fargetProfiles"></a>
 
 ```typescript
 public readonly fargetProfiles: FargetProfile[];
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.FargetProfile`](#@scinfra/sc-infra-cdk-cluster-module.FargetProfile)[]
+- *Type:* [`@smallcase/cdk-eks-cluster-module.FargetProfile`](#@smallcase/cdk-eks-cluster-module.FargetProfile)[]
 
 ---
 
 
-### VpcEniAddon <a name="@scinfra/sc-infra-cdk-cluster-module.VpcEniAddon"></a>
+### VpcEniAddon <a name="@smallcase/cdk-eks-cluster-module.VpcEniAddon"></a>
 
-#### Initializers <a name="@scinfra/sc-infra-cdk-cluster-module.VpcEniAddon.Initializer"></a>
+#### Initializers <a name="@smallcase/cdk-eks-cluster-module.VpcEniAddon.Initializer"></a>
 
 ```typescript
-import { VpcEniAddon } from '@scinfra/sc-infra-cdk-cluster-module'
+import { VpcEniAddon } from '@smallcase/cdk-eks-cluster-module'
 
 new VpcEniAddon(scope: Construct, id: string, props: VpcCniAddonProps)
 ```
 
-##### `scope`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.VpcEniAddon.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.VpcEniAddon.parameter.scope"></a>
 
 - *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
-##### `id`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.VpcEniAddon.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.VpcEniAddon.parameter.id"></a>
 
 - *Type:* `string`
 
 ---
 
-##### `props`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.VpcEniAddon.parameter.props"></a>
+##### `props`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.VpcEniAddon.parameter.props"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonProps`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonProps)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonProps`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonProps)
 
 ---
 
@@ -166,37 +172,37 @@ new VpcEniAddon(scope: Construct, id: string, props: VpcCniAddonProps)
 
 ## Structs <a name="Structs"></a>
 
-### AddonProps <a name="@scinfra/sc-infra-cdk-cluster-module.AddonProps"></a>
+### AddonProps <a name="@smallcase/cdk-eks-cluster-module.AddonProps"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { AddonProps } from '@scinfra/sc-infra-cdk-cluster-module'
+import { AddonProps } from '@smallcase/cdk-eks-cluster-module'
 
 const addonProps: AddonProps = { ... }
 ```
 
-##### `vpnCniAddonVersion`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.AddonProps.property.vpnCniAddonVersion"></a>
+##### `vpnCniAddonVersion`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.AddonProps.property.vpnCniAddonVersion"></a>
 
 ```typescript
 public readonly vpnCniAddonVersion: VpcCniAddonVersion;
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 ---
 
-### ArgoCD <a name="@scinfra/sc-infra-cdk-cluster-module.ArgoCD"></a>
+### ArgoCD <a name="@smallcase/cdk-eks-cluster-module.ArgoCD"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { ArgoCD } from '@scinfra/sc-infra-cdk-cluster-module'
+import { ArgoCD } from '@smallcase/cdk-eks-cluster-module'
 
 const argoCD: ArgoCD = { ... }
 ```
 
-##### `assumeRoleArn`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ArgoCD.property.assumeRoleArn"></a>
+##### `assumeRoleArn`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.ArgoCD.property.assumeRoleArn"></a>
 
 ```typescript
 public readonly assumeRoleArn: string;
@@ -206,7 +212,7 @@ public readonly assumeRoleArn: string;
 
 ---
 
-##### `clusterRoleName`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ArgoCD.property.clusterRoleName"></a>
+##### `clusterRoleName`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.ArgoCD.property.clusterRoleName"></a>
 
 ```typescript
 public readonly clusterRoleName: string;
@@ -216,17 +222,17 @@ public readonly clusterRoleName: string;
 
 ---
 
-### ClusterConfig <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig"></a>
+### ClusterConfig <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { ClusterConfig } from '@scinfra/sc-infra-cdk-cluster-module'
+import { ClusterConfig } from '@smallcase/cdk-eks-cluster-module'
 
 const clusterConfig: ClusterConfig = { ... }
 ```
 
-##### `clusterName`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.clusterName"></a>
+##### `clusterName`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.clusterName"></a>
 
 ```typescript
 public readonly clusterName: string;
@@ -236,7 +242,7 @@ public readonly clusterName: string;
 
 ---
 
-##### `clusterVersion`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.clusterVersion"></a>
+##### `clusterVersion`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.clusterVersion"></a>
 
 ```typescript
 public readonly clusterVersion: KubernetesVersion;
@@ -246,7 +252,7 @@ public readonly clusterVersion: KubernetesVersion;
 
 ---
 
-##### `defaultCapacity`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.defaultCapacity"></a>
+##### `defaultCapacity`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.defaultCapacity"></a>
 
 ```typescript
 public readonly defaultCapacity: number;
@@ -256,37 +262,37 @@ public readonly defaultCapacity: number;
 
 ---
 
-##### `nodeGroups`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.nodeGroups"></a>
+##### `nodeGroups`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.nodeGroups"></a>
 
 ```typescript
 public readonly nodeGroups: NodeGroupConfig[];
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig`](#@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig)[]
+- *Type:* [`@smallcase/cdk-eks-cluster-module.NodeGroupConfig`](#@smallcase/cdk-eks-cluster-module.NodeGroupConfig)[]
 
 ---
 
-##### `subnets`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.subnets"></a>
+##### `subnets`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.subnets"></a>
 
 ```typescript
 public readonly subnets: InternalMap;
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.InternalMap`](#@scinfra/sc-infra-cdk-cluster-module.InternalMap)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.InternalMap`](#@smallcase/cdk-eks-cluster-module.InternalMap)
 
 ---
 
-##### `tags`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.tags"></a>
+##### `tags`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.tags"></a>
 
 ```typescript
 public readonly tags: InternalMap;
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.InternalMap`](#@scinfra/sc-infra-cdk-cluster-module.InternalMap)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.InternalMap`](#@smallcase/cdk-eks-cluster-module.InternalMap)
 
 ---
 
-##### `teamMembers`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.teamMembers"></a>
+##### `teamMembers`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.teamMembers"></a>
 
 ```typescript
 public readonly teamMembers: string[];
@@ -296,7 +302,7 @@ public readonly teamMembers: string[];
 
 ---
 
-##### `addAutoscalerIam`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.addAutoscalerIam"></a>
+##### `addAutoscalerIam`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.addAutoscalerIam"></a>
 
 ```typescript
 public readonly addAutoscalerIam: boolean;
@@ -306,7 +312,7 @@ public readonly addAutoscalerIam: boolean;
 
 ---
 
-##### `albControllerVersion`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.albControllerVersion"></a>
+##### `albControllerVersion`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.albControllerVersion"></a>
 
 ```typescript
 public readonly albControllerVersion: AlbControllerVersion;
@@ -316,37 +322,37 @@ public readonly albControllerVersion: AlbControllerVersion;
 
 ---
 
-##### `argoCD`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.argoCD"></a>
+##### `argoCD`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.argoCD"></a>
 
 ```typescript
 public readonly argoCD: ArgoCD;
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.ArgoCD`](#@scinfra/sc-infra-cdk-cluster-module.ArgoCD)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.ArgoCD`](#@smallcase/cdk-eks-cluster-module.ArgoCD)
 
 ---
 
-##### `commonComponents`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.commonComponents"></a>
+##### `commonComponents`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.commonComponents"></a>
 
 ```typescript
 public readonly commonComponents: {[ key: string ]: ICommonComponentsProps};
 ```
 
-- *Type:* {[ key: string ]: [`@scinfra/sc-infra-cdk-cluster-module.ICommonComponentsProps`](#@scinfra/sc-infra-cdk-cluster-module.ICommonComponentsProps)}
+- *Type:* {[ key: string ]: [`@smallcase/cdk-eks-cluster-module.ICommonComponentsProps`](#@smallcase/cdk-eks-cluster-module.ICommonComponentsProps)}
 
 ---
 
-##### `fargetProfiles`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.fargetProfiles"></a>
+##### `fargetProfiles`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.fargetProfiles"></a>
 
 ```typescript
 public readonly fargetProfiles: FargetProfile[];
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.FargetProfile`](#@scinfra/sc-infra-cdk-cluster-module.FargetProfile)[]
+- *Type:* [`@smallcase/cdk-eks-cluster-module.FargetProfile`](#@smallcase/cdk-eks-cluster-module.FargetProfile)[]
 
 ---
 
-##### `publicAllowAccess`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.publicAllowAccess"></a>
+##### `publicAllowAccess`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.publicAllowAccess"></a>
 
 ```typescript
 public readonly publicAllowAccess: string[];
@@ -356,7 +362,7 @@ public readonly publicAllowAccess: string[];
 
 ---
 
-##### `teamExistingRolePermission`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ClusterConfig.property.teamExistingRolePermission"></a>
+##### `teamExistingRolePermission`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.teamExistingRolePermission"></a>
 
 ```typescript
 public readonly teamExistingRolePermission: {[ key: string ]: string};
@@ -366,17 +372,17 @@ public readonly teamExistingRolePermission: {[ key: string ]: string};
 
 ---
 
-### CommonHelmChartsProps <a name="@scinfra/sc-infra-cdk-cluster-module.CommonHelmChartsProps"></a>
+### CommonHelmChartsProps <a name="@smallcase/cdk-eks-cluster-module.CommonHelmChartsProps"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { CommonHelmChartsProps } from '@scinfra/sc-infra-cdk-cluster-module'
+import { CommonHelmChartsProps } from '@smallcase/cdk-eks-cluster-module'
 
 const commonHelmChartsProps: CommonHelmChartsProps = { ... }
 ```
 
-##### `cluster`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.CommonHelmChartsProps.property.cluster"></a>
+##### `cluster`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.CommonHelmChartsProps.property.cluster"></a>
 
 ```typescript
 public readonly cluster: ICluster;
@@ -386,17 +392,17 @@ public readonly cluster: ICluster;
 
 ---
 
-##### `helmProps`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.CommonHelmChartsProps.property.helmProps"></a>
+##### `helmProps`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.CommonHelmChartsProps.property.helmProps"></a>
 
 ```typescript
 public readonly helmProps: StandardHelmProps;
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.StandardHelmProps`](#@scinfra/sc-infra-cdk-cluster-module.StandardHelmProps)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.StandardHelmProps`](#@smallcase/cdk-eks-cluster-module.StandardHelmProps)
 
 ---
 
-##### `iamPolicyPath`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.CommonHelmChartsProps.property.iamPolicyPath"></a>
+##### `iamPolicyPath`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.CommonHelmChartsProps.property.iamPolicyPath"></a>
 
 ```typescript
 public readonly iamPolicyPath: string[];
@@ -406,7 +412,7 @@ public readonly iamPolicyPath: string[];
 
 ---
 
-##### `serviceAccounts`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.CommonHelmChartsProps.property.serviceAccounts"></a>
+##### `serviceAccounts`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.CommonHelmChartsProps.property.serviceAccounts"></a>
 
 ```typescript
 public readonly serviceAccounts: string[];
@@ -416,17 +422,17 @@ public readonly serviceAccounts: string[];
 
 ---
 
-### EKSClusterProps <a name="@scinfra/sc-infra-cdk-cluster-module.EKSClusterProps"></a>
+### EKSClusterProps <a name="@smallcase/cdk-eks-cluster-module.EKSClusterProps"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { EKSClusterProps } from '@scinfra/sc-infra-cdk-cluster-module'
+import { EKSClusterProps } from '@smallcase/cdk-eks-cluster-module'
 
 const eKSClusterProps: EKSClusterProps = { ... }
 ```
 
-##### `availabilityZones`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSClusterProps.property.availabilityZones"></a>
+##### `availabilityZones`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.availabilityZones"></a>
 
 ```typescript
 public readonly availabilityZones: string[];
@@ -436,17 +442,17 @@ public readonly availabilityZones: string[];
 
 ---
 
-##### `clusterConfig`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSClusterProps.property.clusterConfig"></a>
+##### `clusterConfig`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.clusterConfig"></a>
 
 ```typescript
 public readonly clusterConfig: ClusterConfig;
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.ClusterConfig`](#@scinfra/sc-infra-cdk-cluster-module.ClusterConfig)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.ClusterConfig`](#@smallcase/cdk-eks-cluster-module.ClusterConfig)
 
 ---
 
-##### `kmsKey`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSClusterProps.property.kmsKey"></a>
+##### `kmsKey`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.kmsKey"></a>
 
 ```typescript
 public readonly kmsKey: Key;
@@ -456,7 +462,7 @@ public readonly kmsKey: Key;
 
 ---
 
-##### `region`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSClusterProps.property.region"></a>
+##### `region`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.region"></a>
 
 ```typescript
 public readonly region: string;
@@ -466,7 +472,7 @@ public readonly region: string;
 
 ---
 
-##### `workerSecurityGroup`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSClusterProps.property.workerSecurityGroup"></a>
+##### `workerSecurityGroup`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.workerSecurityGroup"></a>
 
 ```typescript
 public readonly workerSecurityGroup: SecurityGroup;
@@ -476,17 +482,17 @@ public readonly workerSecurityGroup: SecurityGroup;
 
 ---
 
-##### `addonProps`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSClusterProps.property.addonProps"></a>
+##### `addonProps`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.addonProps"></a>
 
 ```typescript
 public readonly addonProps: AddonProps;
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.AddonProps`](#@scinfra/sc-infra-cdk-cluster-module.AddonProps)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.AddonProps`](#@smallcase/cdk-eks-cluster-module.AddonProps)
 
 ---
 
-##### `clusterVPC`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.EKSClusterProps.property.clusterVPC"></a>
+##### `clusterVPC`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.clusterVPC"></a>
 
 ```typescript
 public readonly clusterVPC: IVpc;
@@ -496,27 +502,27 @@ public readonly clusterVPC: IVpc;
 
 ---
 
-### FargetProfile <a name="@scinfra/sc-infra-cdk-cluster-module.FargetProfile"></a>
+### FargetProfile <a name="@smallcase/cdk-eks-cluster-module.FargetProfile"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { FargetProfile } from '@scinfra/sc-infra-cdk-cluster-module'
+import { FargetProfile } from '@smallcase/cdk-eks-cluster-module'
 
 const fargetProfile: FargetProfile = { ... }
 ```
 
-##### `labels`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.FargetProfile.property.labels"></a>
+##### `labels`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.FargetProfile.property.labels"></a>
 
 ```typescript
 public readonly labels: InternalMap;
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.InternalMap`](#@scinfra/sc-infra-cdk-cluster-module.InternalMap)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.InternalMap`](#@smallcase/cdk-eks-cluster-module.InternalMap)
 
 ---
 
-##### `namespaces`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.FargetProfile.property.namespaces"></a>
+##### `namespaces`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.FargetProfile.property.namespaces"></a>
 
 ```typescript
 public readonly namespaces: string[];
@@ -526,7 +532,7 @@ public readonly namespaces: string[];
 
 ---
 
-##### `profileName`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.FargetProfile.property.profileName"></a>
+##### `profileName`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.FargetProfile.property.profileName"></a>
 
 ```typescript
 public readonly profileName: string;
@@ -536,27 +542,27 @@ public readonly profileName: string;
 
 ---
 
-### InternalMap <a name="@scinfra/sc-infra-cdk-cluster-module.InternalMap"></a>
+### InternalMap <a name="@smallcase/cdk-eks-cluster-module.InternalMap"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { InternalMap } from '@scinfra/sc-infra-cdk-cluster-module'
+import { InternalMap } from '@smallcase/cdk-eks-cluster-module'
 
 const internalMap: InternalMap = { ... }
 ```
 
-### NodeGroupConfig <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig"></a>
+### NodeGroupConfig <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { NodeGroupConfig } from '@scinfra/sc-infra-cdk-cluster-module'
+import { NodeGroupConfig } from '@smallcase/cdk-eks-cluster-module'
 
 const nodeGroupConfig: NodeGroupConfig = { ... }
 ```
 
-##### `instanceTypes`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.instanceTypes"></a>
+##### `instanceTypes`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.instanceTypes"></a>
 
 ```typescript
 public readonly instanceTypes: InstanceType[];
@@ -566,17 +572,17 @@ public readonly instanceTypes: InstanceType[];
 
 ---
 
-##### `labels`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.labels"></a>
+##### `labels`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.labels"></a>
 
 ```typescript
 public readonly labels: InternalMap;
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.InternalMap`](#@scinfra/sc-infra-cdk-cluster-module.InternalMap)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.InternalMap`](#@smallcase/cdk-eks-cluster-module.InternalMap)
 
 ---
 
-##### `maxSize`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.maxSize"></a>
+##### `maxSize`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.maxSize"></a>
 
 ```typescript
 public readonly maxSize: number;
@@ -586,7 +592,7 @@ public readonly maxSize: number;
 
 ---
 
-##### `minSize`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.minSize"></a>
+##### `minSize`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.minSize"></a>
 
 ```typescript
 public readonly minSize: number;
@@ -596,7 +602,7 @@ public readonly minSize: number;
 
 ---
 
-##### `name`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.name"></a>
+##### `name`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.name"></a>
 
 ```typescript
 public readonly name: string;
@@ -606,7 +612,7 @@ public readonly name: string;
 
 ---
 
-##### `subnetGroupName`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.subnetGroupName"></a>
+##### `subnetGroupName`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.subnetGroupName"></a>
 
 ```typescript
 public readonly subnetGroupName: string;
@@ -616,17 +622,17 @@ public readonly subnetGroupName: string;
 
 ---
 
-##### `taints`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.taints"></a>
+##### `taints`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.taints"></a>
 
 ```typescript
 public readonly taints: InternalMap;
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.InternalMap`](#@scinfra/sc-infra-cdk-cluster-module.InternalMap)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.InternalMap`](#@smallcase/cdk-eks-cluster-module.InternalMap)
 
 ---
 
-##### `capacityType`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.capacityType"></a>
+##### `capacityType`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.capacityType"></a>
 
 ```typescript
 public readonly capacityType: CapacityType;
@@ -636,7 +642,7 @@ public readonly capacityType: CapacityType;
 
 ---
 
-##### `desiredSize`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.desiredSize"></a>
+##### `desiredSize`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.desiredSize"></a>
 
 ```typescript
 public readonly desiredSize: number;
@@ -646,7 +652,7 @@ public readonly desiredSize: number;
 
 ---
 
-##### `diskSize`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.diskSize"></a>
+##### `diskSize`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.diskSize"></a>
 
 ```typescript
 public readonly diskSize: number;
@@ -656,7 +662,7 @@ public readonly diskSize: number;
 
 ---
 
-##### `launchTemplateSpec`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.launchTemplateSpec"></a>
+##### `launchTemplateSpec`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.launchTemplateSpec"></a>
 
 ```typescript
 public readonly launchTemplateSpec: LaunchTemplateSpec;
@@ -666,7 +672,7 @@ public readonly launchTemplateSpec: LaunchTemplateSpec;
 
 ---
 
-##### `nodeAMIVersion`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.nodeAMIVersion"></a>
+##### `nodeAMIVersion`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.nodeAMIVersion"></a>
 
 ```typescript
 public readonly nodeAMIVersion: string;
@@ -676,7 +682,7 @@ public readonly nodeAMIVersion: string;
 
 ---
 
-##### `sshKeyName`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.sshKeyName"></a>
+##### `sshKeyName`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.sshKeyName"></a>
 
 ```typescript
 public readonly sshKeyName: string;
@@ -686,7 +692,7 @@ public readonly sshKeyName: string;
 
 ---
 
-##### `subnetAz`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.subnetAz"></a>
+##### `subnetAz`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.subnetAz"></a>
 
 ```typescript
 public readonly subnetAz: string[];
@@ -696,27 +702,27 @@ public readonly subnetAz: string[];
 
 ---
 
-##### `tags`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.NodeGroupConfig.property.tags"></a>
+##### `tags`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.tags"></a>
 
 ```typescript
 public readonly tags: InternalMap;
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.InternalMap`](#@scinfra/sc-infra-cdk-cluster-module.InternalMap)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.InternalMap`](#@smallcase/cdk-eks-cluster-module.InternalMap)
 
 ---
 
-### StandardHelmProps <a name="@scinfra/sc-infra-cdk-cluster-module.StandardHelmProps"></a>
+### StandardHelmProps <a name="@smallcase/cdk-eks-cluster-module.StandardHelmProps"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { StandardHelmProps } from '@scinfra/sc-infra-cdk-cluster-module'
+import { StandardHelmProps } from '@smallcase/cdk-eks-cluster-module'
 
 const standardHelmProps: StandardHelmProps = { ... }
 ```
 
-##### `chartName`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.StandardHelmProps.property.chartName"></a>
+##### `chartName`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.StandardHelmProps.property.chartName"></a>
 
 ```typescript
 public readonly chartName: string;
@@ -726,7 +732,7 @@ public readonly chartName: string;
 
 ---
 
-##### `chartReleaseName`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.StandardHelmProps.property.chartReleaseName"></a>
+##### `chartReleaseName`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.StandardHelmProps.property.chartReleaseName"></a>
 
 ```typescript
 public readonly chartReleaseName: string;
@@ -736,7 +742,7 @@ public readonly chartReleaseName: string;
 
 ---
 
-##### `chartVersion`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.StandardHelmProps.property.chartVersion"></a>
+##### `chartVersion`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.StandardHelmProps.property.chartVersion"></a>
 
 ```typescript
 public readonly chartVersion: string;
@@ -746,7 +752,7 @@ public readonly chartVersion: string;
 
 ---
 
-##### `helmRepository`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.StandardHelmProps.property.helmRepository"></a>
+##### `helmRepository`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.StandardHelmProps.property.helmRepository"></a>
 
 ```typescript
 public readonly helmRepository: string;
@@ -756,7 +762,7 @@ public readonly helmRepository: string;
 
 ---
 
-##### `helmValues`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.StandardHelmProps.property.helmValues"></a>
+##### `helmValues`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.StandardHelmProps.property.helmValues"></a>
 
 ```typescript
 public readonly helmValues: {[ key: string ]: any};
@@ -766,7 +772,7 @@ public readonly helmValues: {[ key: string ]: any};
 
 ---
 
-##### `localHelmChart`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.StandardHelmProps.property.localHelmChart"></a>
+##### `localHelmChart`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.StandardHelmProps.property.localHelmChart"></a>
 
 ```typescript
 public readonly localHelmChart: string;
@@ -776,7 +782,7 @@ public readonly localHelmChart: string;
 
 ---
 
-##### `namespace`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.StandardHelmProps.property.namespace"></a>
+##### `namespace`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.StandardHelmProps.property.namespace"></a>
 
 ```typescript
 public readonly namespace: string;
@@ -786,17 +792,17 @@ public readonly namespace: string;
 
 ---
 
-### VpcCniAddonProps <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonProps"></a>
+### VpcCniAddonProps <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonProps"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { VpcCniAddonProps } from '@scinfra/sc-infra-cdk-cluster-module'
+import { VpcCniAddonProps } from '@smallcase/cdk-eks-cluster-module'
 
 const vpcCniAddonProps: VpcCniAddonProps = { ... }
 ```
 
-##### `cluster`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonProps.property.cluster"></a>
+##### `cluster`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonProps.property.cluster"></a>
 
 ```typescript
 public readonly cluster: Cluster;
@@ -806,17 +812,17 @@ public readonly cluster: Cluster;
 
 ---
 
-##### `addonVersion`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonProps.property.addonVersion"></a>
+##### `addonVersion`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonProps.property.addonVersion"></a>
 
 ```typescript
 public readonly addonVersion: VpcCniAddonVersion;
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 ---
 
-##### `namespace`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonProps.property.namespace"></a>
+##### `namespace`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonProps.property.namespace"></a>
 
 ```typescript
 public readonly namespace: string;
@@ -826,7 +832,7 @@ public readonly namespace: string;
 
 ---
 
-##### `resolveConflicts`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonProps.property.resolveConflicts"></a>
+##### `resolveConflicts`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonProps.property.resolveConflicts"></a>
 
 ```typescript
 public readonly resolveConflicts: boolean;
@@ -838,17 +844,17 @@ public readonly resolveConflicts: boolean;
 
 ## Classes <a name="Classes"></a>
 
-### VpcCniAddonVersion <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion"></a>
+### VpcCniAddonVersion <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion"></a>
 
-#### Initializers <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.Initializer"></a>
+#### Initializers <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.Initializer"></a>
 
 ```typescript
-import { VpcCniAddonVersion } from '@scinfra/sc-infra-cdk-cluster-module'
+import { VpcCniAddonVersion } from '@smallcase/cdk-eks-cluster-module'
 
 new VpcCniAddonVersion(version: string)
 ```
 
-##### `version`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.parameter.version"></a>
+##### `version`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.parameter.version"></a>
 
 - *Type:* `string`
 
@@ -857,15 +863,15 @@ new VpcCniAddonVersion(version: string)
 
 #### Static Functions <a name="Static Functions"></a>
 
-##### `of` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.of"></a>
+##### `of` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.of"></a>
 
 ```typescript
-import { VpcCniAddonVersion } from '@scinfra/sc-infra-cdk-cluster-module'
+import { VpcCniAddonVersion } from '@smallcase/cdk-eks-cluster-module'
 
 VpcCniAddonVersion.of(version: string)
 ```
 
-###### `version`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.parameter.version"></a>
+###### `version`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.parameter.version"></a>
 
 - *Type:* `string`
 
@@ -875,7 +881,7 @@ custom add-on version.
 
 #### Properties <a name="Properties"></a>
 
-##### `version`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.version"></a>
+##### `version`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.version"></a>
 
 ```typescript
 public readonly version: string;
@@ -887,105 +893,105 @@ public readonly version: string;
 
 #### Constants <a name="Constants"></a>
 
-##### `V1_10_1` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.V1_10_1"></a>
+##### `V1_10_1` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_10_1"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.10.1.
 
 ---
 
-##### `V1_10_2` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.V1_10_2"></a>
+##### `V1_10_2` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_10_2"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.10.2.
 
 ---
 
-##### `V1_10_3` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.V1_10_3"></a>
+##### `V1_10_3` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_10_3"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.10.3.
 
 ---
 
-##### `V1_11_0` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.V1_11_0"></a>
+##### `V1_11_0` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_11_0"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.11.0.
 
 ---
 
-##### `V1_6_3` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.V1_6_3"></a>
+##### `V1_6_3` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_6_3"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.6.3.
 
 ---
 
-##### `V1_7_10` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.V1_7_10"></a>
+##### `V1_7_10` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_7_10"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.7.10.
 
 ---
 
-##### `V1_7_5` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.V1_7_5"></a>
+##### `V1_7_5` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_7_5"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.7.5.
 
 ---
 
-##### `V1_7_6` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.V1_7_6"></a>
+##### `V1_7_6` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_7_6"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.7.6.
 
 ---
 
-##### `V1_7_9` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.V1_7_9"></a>
+##### `V1_7_9` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_7_9"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.7.9.
 
 ---
 
-##### `V1_8_0` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.V1_8_0"></a>
+##### `V1_8_0` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_8_0"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.8.0.
 
 ---
 
-##### `V1_9_0` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.V1_9_0"></a>
+##### `V1_9_0` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_9_0"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.9.0.
 
 ---
 
-##### `V1_9_1` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.V1_9_1"></a>
+##### `V1_9_1` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_9_1"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.9.1.
 
 ---
 
-##### `V1_9_3` <a name="@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion.property.V1_9_3"></a>
+##### `V1_9_3` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_9_3"></a>
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion`](#@scinfra/sc-infra-cdk-cluster-module.VpcCniAddonVersion)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.9.3.
 
@@ -993,24 +999,24 @@ vpc-cni version 1.9.3.
 
 ## Protocols <a name="Protocols"></a>
 
-### ICommonComponentsProps <a name="@scinfra/sc-infra-cdk-cluster-module.ICommonComponentsProps"></a>
+### ICommonComponentsProps <a name="@smallcase/cdk-eks-cluster-module.ICommonComponentsProps"></a>
 
-- *Implemented By:* [`@scinfra/sc-infra-cdk-cluster-module.ICommonComponentsProps`](#@scinfra/sc-infra-cdk-cluster-module.ICommonComponentsProps)
+- *Implemented By:* [`@smallcase/cdk-eks-cluster-module.ICommonComponentsProps`](#@smallcase/cdk-eks-cluster-module.ICommonComponentsProps)
 
 
 #### Properties <a name="Properties"></a>
 
-##### `helm`<sup>Required</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ICommonComponentsProps.property.helm"></a>
+##### `helm`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.ICommonComponentsProps.property.helm"></a>
 
 ```typescript
 public readonly helm: StandardHelmProps;
 ```
 
-- *Type:* [`@scinfra/sc-infra-cdk-cluster-module.StandardHelmProps`](#@scinfra/sc-infra-cdk-cluster-module.StandardHelmProps)
+- *Type:* [`@smallcase/cdk-eks-cluster-module.StandardHelmProps`](#@smallcase/cdk-eks-cluster-module.StandardHelmProps)
 
 ---
 
-##### `iamPolicyPath`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ICommonComponentsProps.property.iamPolicyPath"></a>
+##### `iamPolicyPath`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ICommonComponentsProps.property.iamPolicyPath"></a>
 
 ```typescript
 public readonly iamPolicyPath: string[];
@@ -1020,7 +1026,7 @@ public readonly iamPolicyPath: string[];
 
 ---
 
-##### `serviceAccounts`<sup>Optional</sup> <a name="@scinfra/sc-infra-cdk-cluster-module.ICommonComponentsProps.property.serviceAccounts"></a>
+##### `serviceAccounts`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ICommonComponentsProps.property.serviceAccounts"></a>
 
 ```typescript
 public readonly serviceAccounts: string[];
