@@ -1,17 +1,16 @@
 # cdk-eks-cluster-module
-cdk-eks-cluster-module  is a [CDK](<(github.com/aws-cdk/cdk)>) that helps you configure complete EKS clusters that are fully bootstrapped with the operational software that is needed to deploy and operate workloads. You can describe the configuration for the desired state of your EKS cluster, such as the control plane, worker nodes, and Kubernetes add-ons, as an IaC 
+cdk-eks-cluster-module  is a [CDK](<(github.com/aws-cdk/cdk)>) that helps you configure complete EKS clusters that are fully bootstrapped with the operational software that is needed to deploy and operate workloads. You can describe the configuration for the desired state of your EKS cluster, such as the control plane, worker nodes, and Kubernetes add-ons, as code.
 
 
 ## :sparkles: Features
 
 - :white_check_mark: AWS EKS Cluster Addons
-- :white_check_mark: Support for Multiple NodeGroup with label and taits
-- :white_check_mark: Support for Multiple fargate profile with label and namespace
+- :white_check_mark: Support for Multiple NodeGroups with labels and taints
+- :white_check_mark: Support for Multiple fargate profiles with labels and namespace
 - :white_check_mark: AWS EKS Identity Provider Configuration
 - :white_check_mark: Support for custom AMI, custom launch template, and custom user data including custom user data template
-- :white_check_mark: Ingress management with the [AWS Load Balancer Controller](https://github.com/kubernetes-sigs/aws-load-balancer-controller)
 - :white_check_mark: commonComponents interface allow to install custom repo/local helm chart
-- :white_check_mark: install aws-ebs-csi-driver,aws-efs-csi-driver,node-problem-detector helm chart and created storageclass(gp2/gp3) with encryption
+- :white_check_mark: Install aws-ebs-csi-driver,aws-efs-csi-driver,node-problem-detector helm charts to help manage storage, and nodes.
 
 ## :clapper: Quick Start
 
@@ -116,7 +115,7 @@ let ekscluster = new EKSCluster(this, 'EKS-CLUSTER', {
       clusterConfig: {
         clusterName: 'EKS-CLUSTER',
         clusterVersion: eks.KubernetesVersion.V1_22,
-        // it will create cluster autoscaler service account with iam role
+        // this will create cluster autoscaler service account with iam role
         addAutoscalerIam: true,
         albControllerVersion: eks.AlbControllerVersion.V2_2_4,
         defaultCapacity: 3,
@@ -150,7 +149,7 @@ let ekscluster = new EKSCluster(this, 'EKS-CLUSTER', {
         commonComponents: {
           'aws-efs-csi-driver': {
             iamPolicyPath: ['../../assets/policy/aws-efs-csi-driver-policy.json'],
-            // above mention iam policy will be use this service account
+            // above mention iam policy will be used for this service account
             serviceAccounts: ['efs-csi-controller-sa', 'efs-csi-node-sa'],
             helm: {
               chartName: 'aws-efs-csi-driver',
