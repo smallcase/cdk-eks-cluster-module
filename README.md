@@ -150,6 +150,7 @@ let ekscluster = new EKSCluster(this, 'EKS-CLUSTER', {
         commonComponents: {
           'aws-efs-csi-driver': {
             iamPolicyPath: ['../../assets/policy/aws-efs-csi-driver-policy.json'],
+            // above mention iam policy will be use this service account
             serviceAccounts: ['efs-csi-controller-sa', 'efs-csi-node-sa'],
             helm: {
               chartName: 'aws-efs-csi-driver',
