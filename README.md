@@ -15,7 +15,7 @@ cdk-eks-cluster-module  is a [CDK](<(github.com/aws-cdk/cdk)>) that helps you co
 
 ## :clapper: Quick Start
 
-The quick start shows you how to create an **AWS-VPC** using this module.
+The quick start shows you how to create an **AWS-EKS** using this module.
 
 ### Prerequisites
 
