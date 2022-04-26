@@ -80,7 +80,7 @@ key.addToResourcePolicy(new iam.PolicyStatement({
 
   const securityGroup = new ec2.SecurityGroup(
       this,
-      'SC-SANDBOX-EKS-WORKER-SG',
+      'EKS-WORKER-SG',
       {
         vpc: vpc,
         description: 'Kubernetes Worker SecurityGroup',
