@@ -41,6 +41,15 @@ const project = new AwsCdkConstructLibrary({
     '@opencdk8s/cdk8s-external-dns-route53@0.1.2',
   ],
   npmAccess: NpmAccess.PUBLIC,
+  publishToPypi: {
+    distName: 'cdk-eks-cluster-module',
+    module: 'cdk_eks_cluster_module',
+  },
+  publishToGo: {
+    gitUserName: 'sc-infra-bot',
+    gitUserEmail: 'infra@smallcase.com',
+    moduleName: 'github.com/smallcase/cdk-eks-cluster-module-go',
+  },
   releaseToNpm: true,
   releaseEveryCommit: true,
   licensed: true, /* Indicates if a license should be added. */
