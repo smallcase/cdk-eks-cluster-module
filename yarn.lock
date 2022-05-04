@@ -682,15 +682,15 @@
   resolved "https://registry.npmjs.org/@oozcitak/util/-/util-8.3.8.tgz#10f65fe1891fd8cde4957360835e78fd1936bfdd"
   integrity sha512-T8TbSnGsxo6TDBJx/Sgv/BlVJL3tshxZP7Aq5R1mSnM5OcHY2dQaxLMu2+E8u3gN0MLOzdjurqN4ZRVuzQycOQ==
 
-"@opencdk8s/cdk8s-cluster-autoscaler-aws@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@opencdk8s/cdk8s-cluster-autoscaler-aws/-/cdk8s-cluster-autoscaler-aws-0.1.2.tgz#2cae9275dcfa31df180f015004644bdb8db7429d"
-  integrity sha512-uVtDaxyAwK63ZotCnnau6UaFoEFrF60GanJNWKg/bC05s6SbbXNpdpvR8JnVGvw7Csv3BONSumOehoifJMwclw==
+"@opencdk8s/cdk8s-cluster-autoscaler-aws@0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@opencdk8s/cdk8s-cluster-autoscaler-aws/-/cdk8s-cluster-autoscaler-aws-0.1.4.tgz#4c5d41309636842438907ac6f1d373dd7e410ec0"
+  integrity sha512-sB2lbucA05MTyG4eWl62Arj/AT/Hifk/7IH9KzlbKaicQGa0kjb69BMee2DEaSQO0m7czcFAo5FzTHelKebJpg==
 
-"@opencdk8s/cdk8s-external-dns-route53@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@opencdk8s/cdk8s-external-dns-route53/-/cdk8s-external-dns-route53-0.1.2.tgz#80e6d59869184b93abf4475a601e588f77f1b96a"
-  integrity sha512-u+4bvX5x4cG8S5KxeLonX0xSLEb0KYPEimVEtTqRzImI+yXHBo7pQMqroxFPooIXx3MBltUzEPLYTsAKNropTQ==
+"@opencdk8s/cdk8s-external-dns-route53@0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@opencdk8s/cdk8s-external-dns-route53/-/cdk8s-external-dns-route53-0.1.4.tgz#54cd25f99e50588790298db010e654496023b51e"
+  integrity sha512-rWI/a04Q8olBLvska73re6dhN02oERlA+VKE2DHARumNUBemtqJFy83PdW6FEO6RZAfexiO+FG3i5o+qi4Bp4A==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
@@ -1158,10 +1158,10 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.npmjs.org/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz#92f95616501069d07d10edb2fc37d3e1c65123b7"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
-aws-cdk-lib@2.20.0:
-  version "2.20.0"
-  resolved "https://registry.yarnpkg.com/aws-cdk-lib/-/aws-cdk-lib-2.20.0.tgz#bb22702cc3748d8ed7eb42646f473ff740311bfe"
-  integrity sha512-jACK/1UJxtWWl6QH+I1V8Oc8F1EEL6aFQYk24DIrzNyB1Aj9LIs9/NyDu5zN00QFKrR6aDE7WAv1VG3sa6wWdg==
+aws-cdk-lib@2.22.0:
+  version "2.22.0"
+  resolved "https://registry.yarnpkg.com/aws-cdk-lib/-/aws-cdk-lib-2.22.0.tgz#21b13764eff8c44cfe8ab03509a173ee8b661475"
+  integrity sha512-Orz+c746XGm1QBJKb3Wh6qH2rpmHdYMS5A4Wk91niYzrY4Q2kck/XLeQtEwOzscbW2Hqwc6vXTEpkldAI2pzGw==
   dependencies:
     "@balena/dockerignore" "^1.0.2"
     case "1.6.3"
@@ -1170,7 +1170,7 @@ aws-cdk-lib@2.20.0:
     jsonschema "^1.4.0"
     minimatch "^3.1.2"
     punycode "^2.1.1"
-    semver "^7.3.5"
+    semver "^7.3.6"
     yaml "1.10.2"
 
 babel-jest@^27.5.1:
@@ -5272,6 +5272,13 @@ semver@^6.0.0, semver@^6.2.0, semver@^6.3.0:
   version "6.3.0"
   resolved "https://registry.npmjs.org/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
+
+semver@^7.3.6:
+  version "7.3.7"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.7.tgz#12c5b649afdbf9049707796e22a4028814ce523f"
+  integrity sha512-QlYTucUYOews+WeEujDoEGziz4K6c47V/Bd+LjSSYcA94p+DmINdf7ncaUinThfvZyu13lN9OY1XDxt8C0Tw0g==
+  dependencies:
+    lru-cache "^6.0.0"
 
 set-blocking@^2.0.0:
   version "2.0.0"

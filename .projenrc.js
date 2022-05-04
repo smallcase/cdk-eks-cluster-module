@@ -1,7 +1,7 @@
 const { AwsCdkConstructLibrary, ProjectType } = require('projen/lib/awscdk');
 const { NpmAccess } = require('projen/lib/javascript');
 
-const CDK_VERSION = '2.20.0';
+const CDK_VERSION = '2.22.0';
 const project = new AwsCdkConstructLibrary({
   author: '@InfraTeam',
   authorAddress: 'bharat.parmar@smallcase.com',
@@ -20,8 +20,8 @@ const project = new AwsCdkConstructLibrary({
   devDeps: [
     `aws-cdk-lib@${CDK_VERSION}`,
     // '@opencdk8s/cdk8s-aws-lb-controller@0.2.5',
-    '@opencdk8s/cdk8s-cluster-autoscaler-aws@0.1.2',
-    '@opencdk8s/cdk8s-external-dns-route53@0.1.2',
+    '@opencdk8s/cdk8s-cluster-autoscaler-aws@0.1.3',
+    '@opencdk8s/cdk8s-external-dns-route53@0.1.3',
     'cdk8s@2.1.23',
   ],
   tsconfig: {
@@ -37,9 +37,18 @@ const project = new AwsCdkConstructLibrary({
     `aws-cdk-lib@${CDK_VERSION}`,
     'cdk8s@2.2.74',
     // '@opencdk8s/cdk8s-aws-lb-controller@0.2.5',
-    '@opencdk8s/cdk8s-cluster-autoscaler-aws@0.1.2',
-    '@opencdk8s/cdk8s-external-dns-route53@0.1.2',
+    '@opencdk8s/cdk8s-cluster-autoscaler-aws@0.1.4',
+    '@opencdk8s/cdk8s-external-dns-route53@0.1.4',
   ],
+  python: {
+    distName: 'cdk-eks-cluster-module',
+    module: 'cdk_eks_cluster_module',
+  },
+  publishToGo: {
+    gitUserName: 'sc-infra-bot',
+    gitUserEmail: 'infra@smallcase.com',
+    moduleName: 'github.com/smallcase/cdk-eks-cluster-module-go',
+  },
   npmAccess: NpmAccess.PUBLIC,
   releaseToNpm: true,
   releaseEveryCommit: true,
