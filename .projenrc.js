@@ -20,8 +20,8 @@ const project = new AwsCdkConstructLibrary({
   devDeps: [
     `aws-cdk-lib@${CDK_VERSION}`,
     // '@opencdk8s/cdk8s-aws-lb-controller@0.2.5',
-    '@opencdk8s/cdk8s-cluster-autoscaler-aws@0.1.3',
-    '@opencdk8s/cdk8s-external-dns-route53@0.1.3',
+    '@opencdk8s/cdk8s-cluster-autoscaler-aws@0.1.4',
+    '@opencdk8s/cdk8s-external-dns-route53@0.1.4',
     'cdk8s@2.1.23',
   ],
   tsconfig: {
