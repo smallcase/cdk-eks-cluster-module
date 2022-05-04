@@ -40,7 +40,7 @@ const project = new AwsCdkConstructLibrary({
     '@opencdk8s/cdk8s-cluster-autoscaler-aws@0.1.4',
     '@opencdk8s/cdk8s-external-dns-route53@0.1.4',
   ],
-  python: {
+  publishToPypi: {
     distName: 'cdk-eks-cluster-module',
     module: 'cdk_eks_cluster_module',
   },
