@@ -20,6 +20,7 @@ export interface StandardHelmProps {
   readonly helmRepository?: string;
   readonly localHelmChart?: string;
   readonly namespace?: string;
+  readonly createNamespace?: boolean;
   // readonly imageRepository?: string;
   // readonly imageTag?: string;
   // readonly tolerations?: eks.TaintSpec[];
@@ -47,12 +48,12 @@ export class CommonHelmCharts extends Construct {
         });
         if (props.iamPolicyPath != undefined && props.iamPolicyPath?.length > 1 && props.serviceAccounts?.length == props.iamPolicyPath.length ) {
           console.log(`inside greater than 1 ${props.iamPolicyPath[index]}`);
-          let policy = JSON.parse(fs.readFileSync(path.join(__dirname, props.iamPolicyPath[index]), 'utf8'));
+          let policy = JSON.parse(fs.readFileSync(path.join(props.iamPolicyPath[index]), 'utf8'));
           for (const statement of policy.Statement) {
             serviceAccount.addToPrincipalPolicy(iam.PolicyStatement.fromJson(statement));
           }
         } else if (props.iamPolicyPath != undefined && props.iamPolicyPath?.length == 1 ) {
-          let policy = JSON.parse(fs.readFileSync(path.join(__dirname, props.iamPolicyPath[props.iamPolicyPath?.length-1]), 'utf8'));
+          let policy = JSON.parse(fs.readFileSync(path.join(props.iamPolicyPath[props.iamPolicyPath?.length-1]), 'utf8'));
           for (const statement of policy.Statement) {
             serviceAccount.addToPrincipalPolicy(iam.PolicyStatement.fromJson(statement));
           }
@@ -94,15 +95,16 @@ export class CommonHelmCharts extends Construct {
         'You cannot reference this property',
       );
     }
+    const chartReleaseName = props.helmProps.chartReleaseName ?? props.helmProps.chartName;
     const chart = props.helmProps.localHelmChart ? new HelmChart(this, `${props.helmProps.chartName}-helmchart`, {
       cluster: props.cluster,
       namespace: namespace,
-      chartAsset: new Asset(this, `${props.helmProps.chartName!}-assets`, {
-        path: path.join(__dirname, props.helmProps.localHelmChart),
+      chartAsset: new Asset(this, `${chartReleaseName}-assets`, {
+        path: path.join(props.helmProps.localHelmChart),
       }),
       release: props.helmProps.chartReleaseName ?? props.helmProps.chartName,
       values: props.helmProps.helmValues,
-    }) : new HelmChart(this, `${props.helmProps.chartName}-helmchart`, {
+    }) : new HelmChart(this, `${chartReleaseName}-helmchart`, {
       cluster: props.cluster,
       namespace: namespace,
       repository: props.helmProps.helmRepository,
@@ -110,6 +112,7 @@ export class CommonHelmCharts extends Construct {
       release: props.helmProps.chartReleaseName ?? props.helmProps.chartName,
       version: props.helmProps.chartVersion,
       values: props.helmProps.helmValues,
+      createNamespace: props.helmProps.createNamespace,
     });
     console.log(chart);
     if (serviceAccounts) {

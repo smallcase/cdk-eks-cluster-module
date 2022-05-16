@@ -512,16 +512,6 @@ import { FargetProfile } from '@smallcase/cdk-eks-cluster-module'
 const fargetProfile: FargetProfile = { ... }
 ```
 
-##### `labels`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.FargetProfile.property.labels"></a>
-
-```typescript
-public readonly labels: InternalMap;
-```
-
-- *Type:* [`@smallcase/cdk-eks-cluster-module.InternalMap`](#@smallcase/cdk-eks-cluster-module.InternalMap)
-
----
-
 ##### `namespaces`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.FargetProfile.property.namespaces"></a>
 
 ```typescript
@@ -539,6 +529,16 @@ public readonly profileName: string;
 ```
 
 - *Type:* `string`
+
+---
+
+##### `labels`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.FargetProfile.property.labels"></a>
+
+```typescript
+public readonly labels: InternalMap;
+```
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.InternalMap`](#@smallcase/cdk-eks-cluster-module.InternalMap)
 
 ---
 
@@ -749,6 +749,16 @@ public readonly chartVersion: string;
 ```
 
 - *Type:* `string`
+
+---
+
+##### `createNamespace`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.StandardHelmProps.property.createNamespace"></a>
+
+```typescript
+public readonly createNamespace: boolean;
+```
+
+- *Type:* `boolean`
 
 ---
 

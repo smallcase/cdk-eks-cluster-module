@@ -688,16 +688,6 @@
   resolved "https://registry.yarnpkg.com/@oozcitak/util/-/util-8.3.8.tgz#10f65fe1891fd8cde4957360835e78fd1936bfdd"
   integrity sha512-T8TbSnGsxo6TDBJx/Sgv/BlVJL3tshxZP7Aq5R1mSnM5OcHY2dQaxLMu2+E8u3gN0MLOzdjurqN4ZRVuzQycOQ==
 
-"@opencdk8s/cdk8s-cluster-autoscaler-aws@0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@opencdk8s/cdk8s-cluster-autoscaler-aws/-/cdk8s-cluster-autoscaler-aws-0.1.4.tgz#4c5d41309636842438907ac6f1d373dd7e410ec0"
-  integrity sha512-sB2lbucA05MTyG4eWl62Arj/AT/Hifk/7IH9KzlbKaicQGa0kjb69BMee2DEaSQO0m7czcFAo5FzTHelKebJpg==
-
-"@opencdk8s/cdk8s-external-dns-route53@0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@opencdk8s/cdk8s-external-dns-route53/-/cdk8s-external-dns-route53-0.1.4.tgz#54cd25f99e50588790298db010e654496023b51e"
-  integrity sha512-rWI/a04Q8olBLvska73re6dhN02oERlA+VKE2DHARumNUBemtqJFy83PdW6FEO6RZAfexiO+FG3i5o+qi4Bp4A==
-
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
