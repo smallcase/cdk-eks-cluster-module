@@ -1,16 +1,6 @@
 {
   "dependencies": [
     {
-      "name": "@opencdk8s/cdk8s-cluster-autoscaler-aws",
-      "version": "0.1.4",
-      "type": "build"
-    },
-    {
-      "name": "@opencdk8s/cdk8s-external-dns-route53",
-      "version": "0.1.4",
-      "type": "build"
-    },
-    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -113,16 +103,6 @@
     {
       "name": "typescript",
       "type": "build"
-    },
-    {
-      "name": "@opencdk8s/cdk8s-cluster-autoscaler-aws",
-      "version": "0.1.4",
-      "type": "peer"
-    },
-    {
-      "name": "@opencdk8s/cdk8s-external-dns-route53",
-      "version": "0.1.4",
-      "type": "peer"
     },
     {
       "name": "aws-cdk-lib",

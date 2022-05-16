@@ -1,5 +1,3 @@
-import { AwsClusterAutoScalerPolicyHelper } from '@opencdk8s/cdk8s-cluster-autoscaler-aws';
-import { AwsExternalDnsPolicyHelper } from '@opencdk8s/cdk8s-external-dns-route53';
 import { CfnOutput, Tags } from 'aws-cdk-lib';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as eks from 'aws-cdk-lib/aws-eks';
@@ -24,7 +22,7 @@ import { CommonHelmCharts, StandardHelmProps } from './common-helm-charts';
 export interface FargetProfile {
   readonly profileName: string;
   readonly namespaces: string[];
-  readonly labels: InternalMap;
+  readonly labels?: InternalMap;
 }
 
 export interface NodeGroupConfig {
@@ -102,7 +100,7 @@ export class EKSCluster extends Construct {
     this.props = {
       ...props,
     };
-    const commonCompoents: Map<string, ICommonComponentsProps> = this.basicCommonComponents(props.kmsKey.keyArn);
+    const commonCompoents: Map<string, ICommonComponentsProps> = this.basicCommonComponents(props.kmsKey.keyArn, props.clusterConfig.clusterName);
     // console.log(this.availabilityZones);
     const clusterAdmin = new iam.Role(this, 'AdminRole', {
       assumedBy: new iam.AccountRootPrincipal(),
@@ -306,33 +304,6 @@ export class EKSCluster extends Construct {
         description: 'clusterName which is required to onboard argo to cluster',
       });
     }
-
-    if (props.clusterConfig.addAutoscalerIam) {
-      const clusterAutoScalerSa = new eks.ServiceAccount(
-        this,
-        `autoscaler-cluster-${props.clusterConfig.clusterName}`,
-        {
-          cluster: this.cluster,
-          name: 'cluster-autoscaler',
-          namespace: 'kube-system',
-        },
-      );
-      AwsClusterAutoScalerPolicyHelper.addPolicy(clusterAutoScalerSa);
-    }
-
-    const clusterDnsSa = new eks.ServiceAccount(
-      this,
-      `dnsserviceaccount-cluster-${props.clusterConfig.clusterName}`,
-      {
-        cluster: this.cluster,
-        name: 'external-dns',
-        namespace: 'kube-system',
-      },
-    );
-    AwsExternalDnsPolicyHelper.addPolicy(clusterDnsSa);
-    clusterDnsSa.node.addDependency(this.cluster.openIdConnectProvider);
-    clusterDnsSa.node.addDependency(this.cluster.awsAuth);
-
     this.fargetProfiles.forEach((item) => {
       let fargetProfile: FargetProfile = JSON.parse(JSON.stringify(item));
       const farget = this.cluster.addFargateProfile(fargetProfile.profileName, {
@@ -379,7 +350,7 @@ export class EKSCluster extends Construct {
       let additionCommonCompoents: Map<string, ICommonComponentsProps> = ObjToStrMap(props.clusterConfig.commonComponents);
       additionCommonCompoents.forEach((common, key) => {
         if (commonCompoents.has(key) != true ) {
-          new CommonHelmCharts(this, `${common.helm.chartName}-common`, {
+          new CommonHelmCharts(this, `${common.helm.chartReleaseName ?? common.helm.chartName}-common`, {
             cluster: this.cluster,
             helmProps: common.helm,
             iamPolicyPath: common.iamPolicyPath,
@@ -396,7 +367,7 @@ export class EKSCluster extends Construct {
             serviceAccounts: additionCommonCompoents.get(key)?.serviceAccounts ?? common.serviceAccounts,
           });
         } else {
-          new CommonHelmCharts(this, `${common.helm.chartName}-common`, {
+          new CommonHelmCharts(this, `${common.helm.chartReleaseName ?? common.helm.chartName}-common`, {
             cluster: this.cluster,
             helmProps: common.helm,
             iamPolicyPath: common.iamPolicyPath,
@@ -406,7 +377,7 @@ export class EKSCluster extends Construct {
       });
     } else {
       commonCompoents.forEach((common)=> {
-        new CommonHelmCharts(this, `${common.helm.chartName}-common`, {
+        new CommonHelmCharts(this, `${common.helm.chartReleaseName ?? common.helm.chartName}-common`, {
           cluster: this.cluster,
           helmProps: common.helm,
           iamPolicyPath: common.iamPolicyPath,
@@ -462,10 +433,10 @@ export class EKSCluster extends Construct {
 
   }
 
-  private basicCommonComponents(kmsKeyArn: string ): Map<string, ICommonComponentsProps> {
+  private basicCommonComponents(kmsKeyArn: string, clusterName: string): Map<string, ICommonComponentsProps> {
     let helmChartMap: Map<string, ICommonComponentsProps> = ObjToStrMap({
       'aws-ebs-csi-driver': {
-        iamPolicyPath: ['../../assets/policy/aws-ebs-csi-driver-policy.json'],
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-ebs-csi-driver-policy.json`],
         serviceAccounts: ['aws-ebs-csi-driver'],
         helm: {
           chartName: 'aws-ebs-csi-driver',
@@ -524,7 +495,7 @@ export class EKSCluster extends Construct {
         },
       },
       'aws-efs-csi-driver': {
-        iamPolicyPath: ['../../assets/policy/aws-efs-csi-driver-policy.json'],
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-efs-csi-driver-policy.json`],
         serviceAccounts: ['efs-csi-controller-sa', 'efs-csi-node-sa'],
         helm: {
           chartName: 'aws-efs-csi-driver',
@@ -537,11 +508,77 @@ export class EKSCluster extends Construct {
         helm: {
           chartName: 'node-problem-detector',
           chartVersion: '2.0.9',
-          localHelmChart: '../../assets/helmCharts/node-problem-detector',
+          localHelmChart: `${__dirname}/../../assets/helmCharts/node-problem-detector`,
           namespace: 'kube-system',
           helmValues: {
             serviceAccount: {
               create: true,
+            },
+          },
+        },
+      },
+      'private-external-dns': {
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-external-dns-policy.json`],
+        serviceAccounts: ['private-external-dns'],
+        helm: {
+          chartName: 'external-dns',
+          chartReleaseName: 'private-external-dns',
+          chartVersion: '1.9.0',
+          helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
+          namespace: 'internal-system',
+          createNamespace: true,
+          helmValues: {
+            extraArgs: [
+              '--aws-zone-type=private',
+              '--annotation-filter=external-dns.alpha.kubernetes.io/dns-type in (private)',
+            ],
+            serviceAccount: {
+              create: false,
+              name: 'private-external-dns',
+            },
+          },
+        },
+      },
+      'public-external-dns': {
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-external-dns-policy.json`],
+        serviceAccounts: ['public-external-dns'],
+        helm: {
+          chartName: 'external-dns',
+          chartReleaseName: 'public-external-dns',
+          chartVersion: '1.9.0',
+          helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
+          namespace: 'internal-system',
+          createNamespace: true,
+          helmValues: {
+            extraArgs: [
+              '--aws-zone-type=public',
+              '--annotation-filter=external-dns.alpha.kubernetes.io/dns-type in (public)',
+            ],
+            serviceAccount: {
+              create: false,
+              name: 'public-external-dns',
+            },
+          },
+        },
+      },
+      'cluster-autoscaler': {
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-cluster-autoscaler-policy.json`],
+        serviceAccounts: ['cluster-autoscaler'],
+        helm: {
+          chartName: 'cluster-autoscaler',
+          chartVersion: '9.18.0',
+          helmRepository: 'https://kubernetes.github.io/autoscaler',
+          namespace: 'internal-system',
+          createNamespace: true,
+          helmValues: {
+            autoDiscovery: {
+              clusterName: clusterName,
+            },
+            rbac: {
+              serviceAccount: {
+                create: false,
+                name: 'cluster-autoscaler',
+              },
             },
           },
         },

@@ -32,13 +32,13 @@ export function GetKubernetesLabels(labels: Map<string, string>): NodeLabels {
 
 export function GetFargetProfilesNamespace(
   namespaces: string[],
-  labels: InternalMap,
+  labels?: InternalMap,
 ): Selector[] {
   let fargetSelectors: Selector[] = [];
   Object.keys(namespaces).forEach((ns) => {
     let fargetSelector: Selector = {
       namespace: ns,
-      labels: GetKubernetesLabels(ObjToStrMap(labels)),
+      labels: labels ? GetKubernetesLabels(ObjToStrMap(labels)) : undefined,
     };
     fargetSelectors.push(fargetSelector);
   });
