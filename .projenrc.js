@@ -46,6 +46,7 @@ const project = new AwsCdkConstructLibrary({
   npmAccess: NpmAccess.PUBLIC,
   releaseToNpm: true,
   releaseEveryCommit: true,
+  depsUpgrade: false,
   licensed: true, /* Indicates if a license should be added. */
   dependabot: false, /* Include dependabot configuration. */
   mergify: false, /* Adds mergify configuration. */
