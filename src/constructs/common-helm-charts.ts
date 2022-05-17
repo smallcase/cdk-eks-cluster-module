@@ -62,34 +62,6 @@ export class CommonHelmCharts extends Construct {
       });
     }
 
-    // if (props.iamPolicyPath != undefined) {
-    //   if(props.serviceAccounts != undefined) {
-    //     props.serviceAccounts.forEach((sa,index) => {
-    //       let serviceAccount = new eks.ServiceAccount(this,sa,{
-    //         namespace: namespace,
-    //         name: sa,
-    //         cluster: props.cluster
-    //       });
-    //       const policy = JSON.parse(fs.readFileSync(path.join(__dirname, props.iamPolicyPath[index]), 'utf8'));
-    //       for (const statement of policy.Statement) {
-    //         serviceAccount.addToPrincipalPolicy(iam.PolicyStatement.fromJson(statement));
-    //       }
-    //     })
-    //   } else {
-
-    //   }
-    //   serviceAccounts = new eks.ServiceAccount(this, `${props.helmProps.chartName}-sa`, { namespace, name: `${props.helmProps.chartName}`, cluster: props.cluster });
-    //   const policy = JSON.parse(fs.readFileSync(path.join(__dirname, props.iamPolicyPath), 'utf8'));
-    //   for (const statement of policy.Statement) {
-    //     serviceAccounts.addToPrincipalPolicy(iam.PolicyStatement.fromJson(statement));
-    //   }
-    // }
-
-    // console.log(`serviceAccount Name is ${serviceAccounts?.serviceAccountName}`);
-    // policy.Statement.forEach((statement) => {
-    //   serviceAccount.addToPrincipalPolicy(iam.PolicyStatement.fromJson(statement));
-    // });
-
     if (props.helmProps.helmRepository == undefined && props.helmProps.localHelmChart == undefined ) {
       throw new Error(
         'You cannot reference this property',
