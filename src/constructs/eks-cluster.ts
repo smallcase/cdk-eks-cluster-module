@@ -526,8 +526,7 @@ export class EKSCluster extends Construct {
           chartReleaseName: 'private-external-dns',
           chartVersion: '1.9.0',
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
-          namespace: 'internal-system',
-          createNamespace: true,
+          namespace: 'kube-system',
           helmValues: {
             extraArgs: [
               '--aws-zone-type=private',
@@ -548,8 +547,7 @@ export class EKSCluster extends Construct {
           chartReleaseName: 'public-external-dns',
           chartVersion: '1.9.0',
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
-          namespace: 'internal-system',
-          createNamespace: true,
+          namespace: 'kube-system',
           helmValues: {
             extraArgs: [
               '--aws-zone-type=public',
@@ -569,8 +567,7 @@ export class EKSCluster extends Construct {
           chartName: 'cluster-autoscaler',
           chartVersion: '9.18.0',
           helmRepository: 'https://kubernetes.github.io/autoscaler',
-          namespace: 'internal-system',
-          createNamespace: true,
+          namespace: 'kube-system',
           helmValues: {
             autoDiscovery: {
               clusterName: clusterName,
