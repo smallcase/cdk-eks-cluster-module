@@ -503,6 +503,20 @@ export class EKSCluster extends Construct {
           chartVersion: '2.2.0',
           helmRepository: 'https://kubernetes-sigs.github.io/aws-efs-csi-driver/',
           namespace: 'kube-system',
+          helmValues: {
+            controller: {
+              serviceAccount: {
+                create: false,
+                name: 'efs-csi-controller-sa',
+              },
+            },
+            node: {
+              serviceAccount: {
+                create: false,
+                name: 'efs-csi-node-sa',
+              },
+            },
+          },
         },
       },
       'node-problem-detector': {
