@@ -67,7 +67,7 @@ new EKSCluster(scope: Construct, id: string, props: EKSClusterProps)
 ##### `addServiceAccountWithIamRole` <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.addServiceAccountWithIamRole"></a>
 
 ```typescript
-public addServiceAccountWithIamRole(serviceAccountName: string, serviceAccountNamespace: string, policy: any, saNamespaceCreate?: boolean)
+public addServiceAccountWithIamRole(serviceAccountName: string, serviceAccountNamespace: string, policy: any)
 ```
 
 ###### `serviceAccountName`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.parameter.serviceAccountName"></a>
@@ -85,12 +85,6 @@ public addServiceAccountWithIamRole(serviceAccountName: string, serviceAccountNa
 ###### `policy`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.parameter.policy"></a>
 
 - *Type:* `any`
-
----
-
-###### `saNamespaceCreate`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.parameter.saNamespaceCreate"></a>
-
-- *Type:* `boolean`
 
 ---
 
@@ -352,6 +346,16 @@ public readonly fargetProfiles: FargetProfile[];
 
 ---
 
+##### `namespaces`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.namespaces"></a>
+
+```typescript
+public readonly namespaces: {[ key: string ]: NamespaceSpec};
+```
+
+- *Type:* {[ key: string ]: [`@smallcase/cdk-eks-cluster-module.NamespaceSpec`](#@smallcase/cdk-eks-cluster-module.NamespaceSpec)}
+
+---
+
 ##### `publicAllowAccess`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.publicAllowAccess"></a>
 
 ```typescript
@@ -551,6 +555,36 @@ import { InternalMap } from '@smallcase/cdk-eks-cluster-module'
 
 const internalMap: InternalMap = { ... }
 ```
+
+### NamespaceSpec <a name="@smallcase/cdk-eks-cluster-module.NamespaceSpec"></a>
+
+#### Initializer <a name="[object Object].Initializer"></a>
+
+```typescript
+import { NamespaceSpec } from '@smallcase/cdk-eks-cluster-module'
+
+const namespaceSpec: NamespaceSpec = { ... }
+```
+
+##### `annotations`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.NamespaceSpec.property.annotations"></a>
+
+```typescript
+public readonly annotations: InternalMap;
+```
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.InternalMap`](#@smallcase/cdk-eks-cluster-module.InternalMap)
+
+---
+
+##### `labels`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.NamespaceSpec.property.labels"></a>
+
+```typescript
+public readonly labels: InternalMap;
+```
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.InternalMap`](#@smallcase/cdk-eks-cluster-module.InternalMap)
+
+---
 
 ### NodeGroupConfig <a name="@smallcase/cdk-eks-cluster-module.NodeGroupConfig"></a>
 

@@ -25,6 +25,10 @@ export interface FargetProfile {
   readonly labels?: InternalMap;
 }
 
+export interface NamespaceSpec {
+  readonly annotations?: InternalMap;
+  readonly labels?: InternalMap;
+}
 export interface NodeGroupConfig {
   readonly name: string;
   readonly instanceTypes: ec2.InstanceType[];
@@ -55,6 +59,7 @@ export interface ClusterConfig {
   readonly defaultCapacity: number;
   readonly subnets: InternalMap;
   readonly publicAllowAccess?: string[];
+  readonly namespaces?: Record<string, NamespaceSpec>;
   readonly teamMembers: string[];
   readonly albControllerVersion?: eks.AlbControllerVersion;
   readonly teamExistingRolePermission?: Record<string, string>;
@@ -152,7 +157,27 @@ export class EKSCluster extends Construct {
             },
           ],
     });
-    this.cluster;
+    if (props.clusterConfig.namespaces != undefined) {
+      let namespaces: Map<string, NamespaceSpec> = ObjToStrMap(props.clusterConfig.namespaces);
+      namespaces.forEach((namespaceSpec, name)=> {
+        new eks.KubernetesManifest(this, `${name}-namespaces`, {
+          overwrite: true,
+          cluster: this.cluster,
+          manifest: [
+            {
+              kind: 'Namespace',
+              apiVersion: 'v1',
+              metadata: {
+                name: name,
+                labels: namespaceSpec.labels ?? {},
+                annotations: namespaceSpec.annotations ?? {},
+              },
+
+            },
+          ],
+        });
+      });
+    }
     // Attach IAM Policy to cluster role (required for VPC SG)
     // https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
     const clusterRole = iam.Role.fromRoleArn(this, 'clusterRole', this.cluster.role.roleArn);
@@ -402,24 +427,7 @@ export class EKSCluster extends Construct {
     });
   }
 
-  public addServiceAccountWithIamRole(serviceAccountName: string, serviceAccountNamespace: string, policy: any, saNamespaceCreate?: boolean ) {
-    var create = saNamespaceCreate ?? false;
-    if (create) {
-      new eks.KubernetesManifest(this, `${serviceAccountName}-ns`, {
-        overwrite: true,
-        cluster: this.cluster,
-        manifest: [
-          {
-            kind: 'Namespace',
-            apiVersion: 'v1',
-            metadata: {
-              name: serviceAccountNamespace,
-            },
-          },
-        ],
-      });
-    }
-
+  public addServiceAccountWithIamRole(serviceAccountName: string, serviceAccountNamespace: string, policy: any) {
     const sa = new eks.ServiceAccount(this, serviceAccountName, {
       cluster: this.cluster,
       name: serviceAccountName,
@@ -539,7 +547,7 @@ export class EKSCluster extends Construct {
           chartReleaseName: 'private-external-dns',
           chartVersion: '1.9.0',
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
-          namespace: 'kube-system',
+          namespace: 'internal-system',
           helmValues: {
             extraArgs: [
               '--aws-zone-type=private',
@@ -560,7 +568,7 @@ export class EKSCluster extends Construct {
           chartReleaseName: 'public-external-dns',
           chartVersion: '1.9.0',
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
-          namespace: 'kube-system',
+          namespace: 'internal-system',
           helmValues: {
             extraArgs: [
               '--aws-zone-type=public',
@@ -580,7 +588,7 @@ export class EKSCluster extends Construct {
           chartName: 'cluster-autoscaler',
           chartVersion: '9.18.0',
           helmRepository: 'https://kubernetes.github.io/autoscaler',
-          namespace: 'kube-system',
+          namespace: 'internal-system',
           helmValues: {
             autoDiscovery: {
               clusterName: clusterName,
