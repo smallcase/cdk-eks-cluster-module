@@ -1,4 +1,3 @@
-import * as path from 'path';
 import { CfnOutput, Tags } from 'aws-cdk-lib';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as eks from 'aws-cdk-lib/aws-eks';
@@ -437,7 +436,7 @@ export class EKSCluster extends Construct {
   private basicCommonComponents(kmsKeyArn: string, clusterName: string): Map<string, ICommonComponentsProps> {
     let helmChartMap: Map<string, ICommonComponentsProps> = ObjToStrMap({
       'aws-ebs-csi-driver': {
-        iamPolicyPath: path.join(__dirname, '/../../assets/policy/aws-ebs-csi-driver-policy.json'),
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-ebs-csi-driver-policy.json`],
         serviceAccounts: ['aws-ebs-csi-driver'],
         helm: {
           chartName: 'aws-ebs-csi-driver',
@@ -496,7 +495,7 @@ export class EKSCluster extends Construct {
         },
       },
       'aws-efs-csi-driver': {
-        iamPolicyPath: path.join(__dirname, '/../../assets/policy/aws-efs-csi-driver-policy.json'),
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-efs-csi-driver-policy.json`],
         serviceAccounts: ['efs-csi-controller-sa', 'efs-csi-node-sa'],
         helm: {
           chartName: 'aws-efs-csi-driver',
@@ -523,7 +522,7 @@ export class EKSCluster extends Construct {
         helm: {
           chartName: 'node-problem-detector',
           chartVersion: '2.0.9',
-          localHelmChart: path.join(__dirname, '/../../assets/helmCharts/node-problem-detector'),
+          localHelmChart: `${__dirname}/../../assets/helmCharts/node-problem-detector`,
           namespace: 'kube-system',
           helmValues: {
             serviceAccount: {
@@ -533,7 +532,7 @@ export class EKSCluster extends Construct {
         },
       },
       'private-external-dns': {
-        iamPolicyPath: path.join(__dirname, '/../../assets/policy/aws-external-dns-policy.json'),
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-external-dns-policy.json`],
         serviceAccounts: ['private-external-dns'],
         helm: {
           chartName: 'external-dns',
@@ -554,7 +553,7 @@ export class EKSCluster extends Construct {
         },
       },
       'public-external-dns': {
-        iamPolicyPath: path.join(__dirname, '/../../assets/policy/aws-external-dns-policy.json'),
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-external-dns-policy.json`],
         serviceAccounts: ['public-external-dns'],
         helm: {
           chartName: 'external-dns',
@@ -575,7 +574,7 @@ export class EKSCluster extends Construct {
         },
       },
       'cluster-autoscaler': {
-        iamPolicyPath: path.join(__dirname, '/../../assets/policy/aws-cluster-autoscaler-policy.json'),
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-cluster-autoscaler-policy.json`],
         serviceAccounts: ['cluster-autoscaler'],
         helm: {
           chartName: 'cluster-autoscaler',
