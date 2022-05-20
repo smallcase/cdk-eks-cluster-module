@@ -1,4 +1,3 @@
-import * as path from 'path';
 import { CfnOutput, Tags } from 'aws-cdk-lib';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as eks from 'aws-cdk-lib/aws-eks';
@@ -26,6 +25,10 @@ export interface FargetProfile {
   readonly labels?: InternalMap;
 }
 
+export interface NamespaceSpec {
+  readonly annotations?: InternalMap;
+  readonly labels?: InternalMap;
+}
 export interface NodeGroupConfig {
   readonly name: string;
   readonly instanceTypes: ec2.InstanceType[];
@@ -56,6 +59,7 @@ export interface ClusterConfig {
   readonly defaultCapacity: number;
   readonly subnets: InternalMap;
   readonly publicAllowAccess?: string[];
+  readonly namespaces?: Record<string, NamespaceSpec>;
   readonly teamMembers: string[];
   readonly albControllerVersion?: eks.AlbControllerVersion;
   readonly teamExistingRolePermission?: Record<string, string>;
@@ -153,7 +157,27 @@ export class EKSCluster extends Construct {
             },
           ],
     });
-    this.cluster;
+    if (props.clusterConfig.namespaces != undefined) {
+      let namespaces: Map<string, NamespaceSpec> = ObjToStrMap(props.clusterConfig.namespaces);
+      namespaces.forEach((namespaceSpec, name)=> {
+        new eks.KubernetesManifest(this, `${name}-namespaces`, {
+          overwrite: true,
+          cluster: this.cluster,
+          manifest: [
+            {
+              kind: 'Namespace',
+              apiVersion: 'v1',
+              metadata: {
+                name: name,
+                labels: namespaceSpec.labels ?? {},
+                annotations: namespaceSpec.annotations ?? {},
+              },
+
+            },
+          ],
+        });
+      });
+    }
     // Attach IAM Policy to cluster role (required for VPC SG)
     // https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
     const clusterRole = iam.Role.fromRoleArn(this, 'clusterRole', this.cluster.role.roleArn);
@@ -403,24 +427,7 @@ export class EKSCluster extends Construct {
     });
   }
 
-  public addServiceAccountWithIamRole(serviceAccountName: string, serviceAccountNamespace: string, policy: any, saNamespaceCreate?: boolean ) {
-    var create = saNamespaceCreate ?? false;
-    if (create) {
-      new eks.KubernetesManifest(this, `${serviceAccountName}-ns`, {
-        overwrite: true,
-        cluster: this.cluster,
-        manifest: [
-          {
-            kind: 'Namespace',
-            apiVersion: 'v1',
-            metadata: {
-              name: serviceAccountNamespace,
-            },
-          },
-        ],
-      });
-    }
-
+  public addServiceAccountWithIamRole(serviceAccountName: string, serviceAccountNamespace: string, policy: any) {
     const sa = new eks.ServiceAccount(this, serviceAccountName, {
       cluster: this.cluster,
       name: serviceAccountName,
@@ -437,7 +444,7 @@ export class EKSCluster extends Construct {
   private basicCommonComponents(kmsKeyArn: string, clusterName: string): Map<string, ICommonComponentsProps> {
     let helmChartMap: Map<string, ICommonComponentsProps> = ObjToStrMap({
       'aws-ebs-csi-driver': {
-        iamPolicyPath: path.join(__dirname, '/../../assets/policy/aws-ebs-csi-driver-policy.json'),
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-ebs-csi-driver-policy.json`],
         serviceAccounts: ['aws-ebs-csi-driver'],
         helm: {
           chartName: 'aws-ebs-csi-driver',
@@ -496,20 +503,34 @@ export class EKSCluster extends Construct {
         },
       },
       'aws-efs-csi-driver': {
-        iamPolicyPath: path.join(__dirname, '/../../assets/policy/aws-efs-csi-driver-policy.json'),
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-efs-csi-driver-policy.json`],
         serviceAccounts: ['efs-csi-controller-sa', 'efs-csi-node-sa'],
         helm: {
           chartName: 'aws-efs-csi-driver',
           chartVersion: '2.2.0',
           helmRepository: 'https://kubernetes-sigs.github.io/aws-efs-csi-driver/',
           namespace: 'kube-system',
+          helmValues: {
+            controller: {
+              serviceAccount: {
+                create: false,
+                name: 'efs-csi-controller-sa',
+              },
+            },
+            node: {
+              serviceAccount: {
+                create: false,
+                name: 'efs-csi-node-sa',
+              },
+            },
+          },
         },
       },
       'node-problem-detector': {
         helm: {
           chartName: 'node-problem-detector',
           chartVersion: '2.0.9',
-          localHelmChart: path.join(__dirname, '/../../assets/helmCharts/node-problem-detector'),
+          localHelmChart: `${__dirname}/../../assets/helmCharts/node-problem-detector`,
           namespace: 'kube-system',
           helmValues: {
             serviceAccount: {
@@ -519,14 +540,14 @@ export class EKSCluster extends Construct {
         },
       },
       'private-external-dns': {
-        iamPolicyPath: path.join(__dirname, '/../../assets/policy/aws-external-dns-policy.json'),
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-external-dns-policy.json`],
         serviceAccounts: ['private-external-dns'],
         helm: {
           chartName: 'external-dns',
           chartReleaseName: 'private-external-dns',
           chartVersion: '1.9.0',
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
-          namespace: 'kube-system',
+          namespace: 'internal-system',
           helmValues: {
             extraArgs: [
               '--aws-zone-type=private',
@@ -540,14 +561,14 @@ export class EKSCluster extends Construct {
         },
       },
       'public-external-dns': {
-        iamPolicyPath: path.join(__dirname, '/../../assets/policy/aws-external-dns-policy.json'),
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-external-dns-policy.json`],
         serviceAccounts: ['public-external-dns'],
         helm: {
           chartName: 'external-dns',
           chartReleaseName: 'public-external-dns',
           chartVersion: '1.9.0',
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
-          namespace: 'kube-system',
+          namespace: 'internal-system',
           helmValues: {
             extraArgs: [
               '--aws-zone-type=public',
@@ -561,13 +582,13 @@ export class EKSCluster extends Construct {
         },
       },
       'cluster-autoscaler': {
-        iamPolicyPath: path.join(__dirname, '/../../assets/policy/aws-cluster-autoscaler-policy.json'),
+        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-cluster-autoscaler-policy.json`],
         serviceAccounts: ['cluster-autoscaler'],
         helm: {
           chartName: 'cluster-autoscaler',
           chartVersion: '9.18.0',
           helmRepository: 'https://kubernetes.github.io/autoscaler',
-          namespace: 'kube-system',
+          namespace: 'internal-system',
           helmValues: {
             autoDiscovery: {
               clusterName: clusterName,
