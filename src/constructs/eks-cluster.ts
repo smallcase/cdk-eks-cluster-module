@@ -552,6 +552,7 @@ export class EKSCluster extends Construct {
             extraArgs: [
               '--aws-zone-type=private',
               '--annotation-filter=external-dns.alpha.kubernetes.io/dns-type in (private)',
+              `--txt-owner-id=${clusterName}`,
             ],
             serviceAccount: {
               create: false,
@@ -573,6 +574,7 @@ export class EKSCluster extends Construct {
             extraArgs: [
               '--aws-zone-type=public',
               '--annotation-filter=external-dns.alpha.kubernetes.io/dns-type in (public)',
+              `--txt-owner-id=${clusterName}`,
             ],
             serviceAccount: {
               create: false,
