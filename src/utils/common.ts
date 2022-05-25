@@ -30,27 +30,27 @@ export function GetKubernetesLabels(labels: Map<string, string>): NodeLabels {
   return label;
 }
 
-export function GetFargetProfilesNamespace(
+export function GetFargateProfilesNamespace(
   namespaces: string[],
   labels?: InternalMap,
 ): Selector[] {
-  let fargetSelectors: Selector[] = [];
+  let fargateSelectors: Selector[] = [];
   Object.keys(namespaces).forEach((ns) => {
-    let fargetSelector: Selector = {
+    let fargateSelector: Selector = {
       namespace: ns,
       labels: labels ? GetKubernetesLabels(ObjToStrMap(labels)) : undefined,
     };
-    fargetSelectors.push(fargetSelector);
+    fargateSelectors.push(fargateSelector);
   });
   // namespaces.forEach((ns) => {
   //   console.log(`namespace ${ns}`);
-  //   let fargetSelector: Selector = {
+  //   let fargateSelector: Selector = {
   //     namespace: ns,
   //     labels: GetKubernetesLabels(labels),
   //   };
-  //   fargetSelectors.push(fargetSelector);
+  //   fargateSelectors.push(fargateSelector);
   // });
-  return fargetSelectors;
+  return fargateSelectors;
 }
 
 export function setupClusterLogging(

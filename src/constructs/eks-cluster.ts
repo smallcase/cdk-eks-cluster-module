@@ -13,13 +13,13 @@ import {
   VpcEniAddon,
 } from '../constructs/eks-managed-addon';
 import {
-  GetFargetProfilesNamespace,
+  GetFargateProfilesNamespace,
   GetKubernetesLabels,
   ObjToStrMap,
 } from '../utils/common';
 import { CommonHelmCharts, StandardHelmProps } from './common-helm-charts';
 
-export interface FargetProfile {
+export interface FargateProfile {
   readonly profileName: string;
   readonly namespaces: string[];
   readonly labels?: InternalMap;
@@ -65,7 +65,7 @@ export interface ClusterConfig {
   readonly teamExistingRolePermission?: Record<string, string>;
   readonly tags: InternalMap;
   readonly nodeGroups: NodeGroupConfig[];
-  readonly fargetProfiles?: FargetProfile[];
+  readonly fargateProfiles?: FargateProfile[];
   readonly argoCD?: ArgoCD;
   readonly commonComponents?: Record<string, ICommonComponentsProps>;
 }
@@ -98,8 +98,8 @@ export class EKSCluster extends Construct {
   public readonly cluster: eks.Cluster;
   private props: EKSClusterProps;
   readonly additionalNodegroups: eks.Nodegroup[] = [];
-  readonly additionalFargetProfile: eks.FargateProfile[] = [];
-  readonly fargetProfiles: FargetProfile[] = [];
+  readonly additionalFargateProfile: eks.FargateProfile[] = [];
+  readonly fargateProfiles: FargateProfile[] = [];
   constructor(scope: Construct, id: string, props: EKSClusterProps) {
     super(scope, id);
     this.props = {
@@ -266,9 +266,9 @@ export class EKSCluster extends Construct {
       }
     }
 
-    // farget Profile
-    props.clusterConfig.fargetProfiles?.forEach((farget) => {
-      this.fargetProfiles.push(farget);
+    // fargate Profile
+    props.clusterConfig.fargateProfiles?.forEach((fargate) => {
+      this.fargateProfiles.push(fargate);
     });
     //tagging eks cluster
     let taggs: Map<string, string> = ObjToStrMap(
@@ -329,16 +329,16 @@ export class EKSCluster extends Construct {
         description: 'clusterName which is required to onboard argo to cluster',
       });
     }
-    this.fargetProfiles.forEach((item) => {
-      let fargetProfile: FargetProfile = JSON.parse(JSON.stringify(item));
-      const farget = this.cluster.addFargateProfile(fargetProfile.profileName, {
-        fargateProfileName: fargetProfile.profileName,
-        selectors: GetFargetProfilesNamespace(
-          fargetProfile.namespaces,
-          fargetProfile.labels,
+    this.fargateProfiles.forEach((item) => {
+      let fargateProfile: FargateProfile = JSON.parse(JSON.stringify(item));
+      const fargate = this.cluster.addFargateProfile(fargateProfile.profileName, {
+        fargateProfileName: fargateProfile.profileName,
+        selectors: GetFargateProfilesNamespace(
+          fargateProfile.namespaces,
+          fargateProfile.labels,
         ),
       });
-      farget.podExecutionRole.addManagedPolicy(
+      fargate.podExecutionRole.addManagedPolicy(
         iam.ManagedPolicy.fromAwsManagedPolicyName(
           'AmazonEKSVPCResourceController',
         ),
