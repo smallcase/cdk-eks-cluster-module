@@ -91,10 +91,10 @@ public addServiceAccountWithIamRole(serviceAccountName: string, serviceAccountNa
 
 #### Properties <a name="Properties"></a>
 
-##### `additionalFargetProfile`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.property.additionalFargetProfile"></a>
+##### `additionalFargateProfile`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.property.additionalFargateProfile"></a>
 
 ```typescript
-public readonly additionalFargetProfile: FargateProfile[];
+public readonly additionalFargateProfile: FargateProfile[];
 ```
 
 - *Type:* [`aws-cdk-lib.aws_eks.FargateProfile`](#aws-cdk-lib.aws_eks.FargateProfile)[]
@@ -121,13 +121,13 @@ public readonly cluster: Cluster;
 
 ---
 
-##### `fargetProfiles`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.property.fargetProfiles"></a>
+##### `fargateProfiles`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.property.fargateProfiles"></a>
 
 ```typescript
-public readonly fargetProfiles: FargetProfile[];
+public readonly fargateProfiles: FargateProfile[];
 ```
 
-- *Type:* [`@smallcase/cdk-eks-cluster-module.FargetProfile`](#@smallcase/cdk-eks-cluster-module.FargetProfile)[]
+- *Type:* [`@smallcase/cdk-eks-cluster-module.FargateProfile`](#@smallcase/cdk-eks-cluster-module.FargateProfile)[]
 
 ---
 
@@ -336,13 +336,13 @@ public readonly commonComponents: {[ key: string ]: ICommonComponentsProps};
 
 ---
 
-##### `fargetProfiles`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.fargetProfiles"></a>
+##### `fargateProfiles`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.fargateProfiles"></a>
 
 ```typescript
-public readonly fargetProfiles: FargetProfile[];
+public readonly fargateProfiles: FargateProfile[];
 ```
 
-- *Type:* [`@smallcase/cdk-eks-cluster-module.FargetProfile`](#@smallcase/cdk-eks-cluster-module.FargetProfile)[]
+- *Type:* [`@smallcase/cdk-eks-cluster-module.FargateProfile`](#@smallcase/cdk-eks-cluster-module.FargateProfile)[]
 
 ---
 
@@ -506,17 +506,17 @@ public readonly clusterVPC: IVpc;
 
 ---
 
-### FargetProfile <a name="@smallcase/cdk-eks-cluster-module.FargetProfile"></a>
+### FargateProfile <a name="@smallcase/cdk-eks-cluster-module.FargateProfile"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { FargetProfile } from '@smallcase/cdk-eks-cluster-module'
+import { FargateProfile } from '@smallcase/cdk-eks-cluster-module'
 
-const fargetProfile: FargetProfile = { ... }
+const fargateProfile: FargateProfile = { ... }
 ```
 
-##### `namespaces`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.FargetProfile.property.namespaces"></a>
+##### `namespaces`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.FargateProfile.property.namespaces"></a>
 
 ```typescript
 public readonly namespaces: string[];
@@ -526,7 +526,7 @@ public readonly namespaces: string[];
 
 ---
 
-##### `profileName`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.FargetProfile.property.profileName"></a>
+##### `profileName`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.FargateProfile.property.profileName"></a>
 
 ```typescript
 public readonly profileName: string;
@@ -536,7 +536,7 @@ public readonly profileName: string;
 
 ---
 
-##### `labels`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.FargetProfile.property.labels"></a>
+##### `labels`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.FargateProfile.property.labels"></a>
 
 ```typescript
 public readonly labels: InternalMap;
