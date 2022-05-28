@@ -35,7 +35,7 @@ export function GetFargateProfilesNamespace(
   labels?: InternalMap,
 ): Selector[] {
   let fargateSelectors: Selector[] = [];
-  Object.keys(namespaces).forEach((ns) => {
+  namespaces.forEach((ns) => {
     let fargateSelector: Selector = {
       namespace: ns,
       labels: labels ? GetKubernetesLabels(ObjToStrMap(labels)) : undefined,
