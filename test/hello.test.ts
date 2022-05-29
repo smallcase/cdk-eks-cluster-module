@@ -78,6 +78,14 @@ describe('Test', () => {
         addAutoscalerIam: true,
         albControllerVersion: eks.AlbControllerVersion.V2_2_4,
         defaultCapacity: 3,
+        fargateProfiles: [
+          {
+            namespaces: [
+              'workflows',
+            ],
+            profileName: 'workflows',
+          },
+        ],
         subnets: {
           privateSubnetGroupName: 'Private',
         },
