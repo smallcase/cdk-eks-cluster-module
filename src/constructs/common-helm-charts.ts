@@ -10,6 +10,8 @@ export interface CommonHelmChartsProps {
   readonly iamPolicyPath?: string[];
   readonly serviceAccounts?: string[];
   readonly helmProps: StandardHelmProps;
+  readonly logCharts?: boolean;
+  readonly dependentNamespaces?: eks.KubernetesManifest[];
 }
 
 
@@ -37,7 +39,7 @@ export class CommonHelmCharts extends Construct {
     super(scope, id);
     const namespace = props.helmProps.namespace || 'kube-system';
     let serviceAccounts: eks.ServiceAccount[] | undefined;
-    console.log(`print props ${props.iamPolicyPath}`);
+
 
     if (props.serviceAccounts != undefined) {
       props.serviceAccounts.forEach((sa, index)=> {
@@ -86,7 +88,17 @@ export class CommonHelmCharts extends Construct {
       values: props.helmProps.helmValues,
       createNamespace: props.helmProps.createNamespace,
     });
-    console.log(chart);
+
+
+    props.dependentNamespaces?.forEach(ns => {
+      chart.node.addDependency(ns);
+    });
+
+    if (props.logCharts) {
+      console.log(`print props ${props.iamPolicyPath}`);
+      console.log(chart);
+    }
+
     if (serviceAccounts) {
       chart.node.addDependency(serviceAccounts);
     }
