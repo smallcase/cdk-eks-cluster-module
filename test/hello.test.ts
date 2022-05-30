@@ -72,8 +72,20 @@ describe('Test', () => {
       },
       clusterConfig: {
         tags: {},
+        debugLogs: true,
         clusterName: 'EKS-CLUSTER',
         clusterVersion: eks.KubernetesVersion.V1_20,
+        namespaces: {
+          'internal-system': {
+            annotations: {
+              owner: 'infra-team',
+            },
+            labels: {
+              'team': 'infra',
+              'used-by': 'infra',
+            },
+          },
+        },
         // this will create cluster autoscaler service account with iam role
         addAutoscalerIam: true,
         albControllerVersion: eks.AlbControllerVersion.V2_2_4,
