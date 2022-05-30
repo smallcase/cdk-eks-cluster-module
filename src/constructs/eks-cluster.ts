@@ -159,7 +159,7 @@ export class EKSCluster extends Construct {
     });
 
 
-    var createdNamespaces: eks.KubernetesManifest[];
+    var createdNamespaces: eks.KubernetesManifest[] = [];
 
     if (props.clusterConfig.namespaces != undefined) {
       let namespaces: Map<string, NamespaceSpec> = ObjToStrMap(props.clusterConfig.namespaces);
