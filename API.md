@@ -336,6 +336,16 @@ public readonly commonComponents: {[ key: string ]: ICommonComponentsProps};
 
 ---
 
+##### `debugLogs`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.debugLogs"></a>
+
+```typescript
+public readonly debugLogs: boolean;
+```
+
+- *Type:* `boolean`
+
+---
+
 ##### `fargateProfiles`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.fargateProfiles"></a>
 
 ```typescript
@@ -406,6 +416,16 @@ public readonly helmProps: StandardHelmProps;
 
 ---
 
+##### `dependentNamespaces`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.CommonHelmChartsProps.property.dependentNamespaces"></a>
+
+```typescript
+public readonly dependentNamespaces: KubernetesManifest[];
+```
+
+- *Type:* [`aws-cdk-lib.aws_eks.KubernetesManifest`](#aws-cdk-lib.aws_eks.KubernetesManifest)[]
+
+---
+
 ##### `iamPolicyPath`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.CommonHelmChartsProps.property.iamPolicyPath"></a>
 
 ```typescript
@@ -413,6 +433,16 @@ public readonly iamPolicyPath: string[];
 ```
 
 - *Type:* `string`[]
+
+---
+
+##### `logCharts`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.CommonHelmChartsProps.property.logCharts"></a>
+
+```typescript
+public readonly logCharts: boolean;
+```
+
+- *Type:* `boolean`
 
 ---
 

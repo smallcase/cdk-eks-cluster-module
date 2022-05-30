@@ -46,7 +46,6 @@ export interface NodeGroupConfig {
   readonly nodeAMIVersion?: string;
   readonly launchTemplateSpec?: eks.LaunchTemplateSpec;
   readonly capacityType?: eks.CapacityType;
-
 }
 
 export interface InternalMap {
@@ -68,6 +67,7 @@ export interface ClusterConfig {
   readonly fargateProfiles?: FargateProfile[];
   readonly argoCD?: ArgoCD;
   readonly commonComponents?: Record<string, ICommonComponentsProps>;
+  readonly debugLogs?: boolean;
 }
 
 export interface ICommonComponentsProps {
@@ -157,10 +157,14 @@ export class EKSCluster extends Construct {
             },
           ],
     });
+
+
+    var createdNamespaces: eks.KubernetesManifest[];
+
     if (props.clusterConfig.namespaces != undefined) {
       let namespaces: Map<string, NamespaceSpec> = ObjToStrMap(props.clusterConfig.namespaces);
       namespaces.forEach((namespaceSpec, name)=> {
-        new eks.KubernetesManifest(this, `${name}-namespaces`, {
+        var ns = new eks.KubernetesManifest(this, `${name}-namespaces`, {
           overwrite: true,
           cluster: this.cluster,
           manifest: [
@@ -176,7 +180,9 @@ export class EKSCluster extends Construct {
             },
           ],
         });
+        createdNamespaces.push(ns);
       });
+
     }
     // Attach IAM Policy to cluster role (required for VPC SG)
     // https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
@@ -380,6 +386,8 @@ export class EKSCluster extends Construct {
             helmProps: common.helm,
             iamPolicyPath: common.iamPolicyPath,
             serviceAccounts: common.serviceAccounts,
+            dependentNamespaces: createdNamespaces,
+            logCharts: props.clusterConfig.debugLogs,
           });
         }
       });
@@ -388,8 +396,10 @@ export class EKSCluster extends Construct {
           new CommonHelmCharts(this, `${additionCommonCompoents.get(key)?.helm.chartName ?? common.helm.chartName}-common`, {
             cluster: this.cluster,
             helmProps: additionCommonCompoents.get(key)?.helm ?? common.helm,
+            dependentNamespaces: createdNamespaces,
             iamPolicyPath: additionCommonCompoents.get(key)?.iamPolicyPath ?? common.iamPolicyPath,
             serviceAccounts: additionCommonCompoents.get(key)?.serviceAccounts ?? common.serviceAccounts,
+            logCharts: props.clusterConfig.debugLogs,
           });
         } else {
           new CommonHelmCharts(this, `${common.helm.chartReleaseName ?? common.helm.chartName}-common`, {
@@ -397,6 +407,8 @@ export class EKSCluster extends Construct {
             helmProps: common.helm,
             iamPolicyPath: common.iamPolicyPath,
             serviceAccounts: common.serviceAccounts,
+            dependentNamespaces: createdNamespaces,
+            logCharts: props.clusterConfig.debugLogs,
           });
         }
       });
@@ -407,6 +419,8 @@ export class EKSCluster extends Construct {
           helmProps: common.helm,
           iamPolicyPath: common.iamPolicyPath,
           serviceAccounts: common.serviceAccounts,
+          dependentNamespaces: createdNamespaces,
+          logCharts: props.clusterConfig.debugLogs,
         });
       });
     }
