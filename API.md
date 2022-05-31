@@ -346,6 +346,16 @@ public readonly debugLogs: boolean;
 
 ---
 
+##### `defaultCommonComponents`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.defaultCommonComponents"></a>
+
+```typescript
+public readonly defaultCommonComponents: DefaultCommonComponents;
+```
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.DefaultCommonComponents`](#@smallcase/cdk-eks-cluster-module.DefaultCommonComponents)
+
+---
+
 ##### `fargateProfiles`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.fargateProfiles"></a>
 
 ```typescript
@@ -453,6 +463,76 @@ public readonly serviceAccounts: string[];
 ```
 
 - *Type:* `string`[]
+
+---
+
+### DefaultCommonComponents <a name="@smallcase/cdk-eks-cluster-module.DefaultCommonComponents"></a>
+
+#### Initializer <a name="[object Object].Initializer"></a>
+
+```typescript
+import { DefaultCommonComponents } from '@smallcase/cdk-eks-cluster-module'
+
+const defaultCommonComponents: DefaultCommonComponents = { ... }
+```
+
+##### `awsEbsCsiDriver`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.DefaultCommonComponents.property.awsEbsCsiDriver"></a>
+
+```typescript
+public readonly awsEbsCsiDriver: DefaultCommonComponentsProps;
+```
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps`](#@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps)
+
+---
+
+##### `awsEfsCsiDriver`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.DefaultCommonComponents.property.awsEfsCsiDriver"></a>
+
+```typescript
+public readonly awsEfsCsiDriver: DefaultCommonComponentsProps;
+```
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps`](#@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps)
+
+---
+
+##### `clusterAutoscaler`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.DefaultCommonComponents.property.clusterAutoscaler"></a>
+
+```typescript
+public readonly clusterAutoscaler: DefaultCommonComponentsProps;
+```
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps`](#@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps)
+
+---
+
+##### `externalDns`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.DefaultCommonComponents.property.externalDns"></a>
+
+```typescript
+public readonly externalDns: DefaultCommonComponentsProps;
+```
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps`](#@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps)
+
+---
+
+### DefaultCommonComponentsProps <a name="@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps"></a>
+
+#### Initializer <a name="[object Object].Initializer"></a>
+
+```typescript
+import { DefaultCommonComponentsProps } from '@smallcase/cdk-eks-cluster-module'
+
+const defaultCommonComponentsProps: DefaultCommonComponentsProps = { ... }
+```
+
+##### `namespace`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps.property.namespace"></a>
+
+```typescript
+public readonly namespace: string;
+```
+
+- *Type:* `string`
 
 ---
 
