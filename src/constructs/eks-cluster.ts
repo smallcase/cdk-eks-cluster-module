@@ -4,10 +4,6 @@ import * as eks from 'aws-cdk-lib/aws-eks';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as kms from 'aws-cdk-lib/aws-kms';
 import { Construct } from 'constructs';
-// import {
-//   AwsLoadBalancerPolicy,
-//   VersionsLists,
-// } from '@opencdk8s/cdk8s-aws-lb-controller';
 import {
   VpcCniAddonVersion,
   VpcEniAddon,
@@ -67,7 +63,19 @@ export interface ClusterConfig {
   readonly fargateProfiles?: FargateProfile[];
   readonly argoCD?: ArgoCD;
   readonly commonComponents?: Record<string, ICommonComponentsProps>;
+  readonly defaultCommonComponents?: DefaultCommonComponents;
   readonly debugLogs?: boolean;
+}
+
+export interface DefaultCommonComponents {
+  readonly externalDns?: DefaultCommonComponentsProps;
+  readonly clusterAutoscaler?: DefaultCommonComponentsProps;
+  readonly awsEfsCsiDriver?: DefaultCommonComponentsProps;
+  readonly awsEbsCsiDriver?: DefaultCommonComponentsProps;
+}
+
+export interface DefaultCommonComponentsProps {
+  readonly namespace?: string;
 }
 
 export interface ICommonComponentsProps {
@@ -105,7 +113,11 @@ export class EKSCluster extends Construct {
     this.props = {
       ...props,
     };
-    const commonCompoents: Map<string, ICommonComponentsProps> = this.basicCommonComponents(props.kmsKey.keyArn, props.clusterConfig.clusterName);
+    const commonCompoents: Map<string, ICommonComponentsProps> = this.basicCommonComponents(
+      props.kmsKey.keyArn,
+      props.clusterConfig.clusterName,
+      props.clusterConfig.defaultCommonComponents,
+    );
     // console.log(this.availabilityZones);
     const clusterAdmin = new iam.Role(this, 'AdminRole', {
       assumedBy: new iam.AccountRootPrincipal(),
@@ -455,7 +467,7 @@ export class EKSCluster extends Construct {
 
   }
 
-  private basicCommonComponents(kmsKeyArn: string, clusterName: string): Map<string, ICommonComponentsProps> {
+  private basicCommonComponents(kmsKeyArn: string, clusterName: string, props?: DefaultCommonComponents): Map<string, ICommonComponentsProps> {
     let helmChartMap: Map<string, ICommonComponentsProps> = ObjToStrMap({
       'aws-ebs-csi-driver': {
         iamPolicyPath: [`${__dirname}/../../assets/policy/aws-ebs-csi-driver-policy.json`],
@@ -464,7 +476,7 @@ export class EKSCluster extends Construct {
           chartName: 'aws-ebs-csi-driver',
           chartVersion: '2.6.2',
           helmRepository: 'https://kubernetes-sigs.github.io/aws-ebs-csi-driver/',
-          namespace: 'kube-system',
+          namespace: props?.awsEbsCsiDriver?.namespace ?? 'kube-system',
           helmValues: {
             node: {
               tolerateAllTaints: true,
@@ -523,7 +535,7 @@ export class EKSCluster extends Construct {
           chartName: 'aws-efs-csi-driver',
           chartVersion: '2.2.0',
           helmRepository: 'https://kubernetes-sigs.github.io/aws-efs-csi-driver/',
-          namespace: 'kube-system',
+          namespace: props?.awsEfsCsiDriver?.namespace ?? 'kube-system',
           helmValues: {
             controller: {
               serviceAccount: {
@@ -561,7 +573,7 @@ export class EKSCluster extends Construct {
           chartReleaseName: 'private-external-dns',
           chartVersion: '1.9.0',
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
-          namespace: 'internal-system',
+          namespace: props?.externalDns?.namespace ?? 'internal-system',
           helmValues: {
             extraArgs: [
               '--aws-zone-type=private',
@@ -583,7 +595,7 @@ export class EKSCluster extends Construct {
           chartReleaseName: 'public-external-dns',
           chartVersion: '1.9.0',
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
-          namespace: 'internal-system',
+          namespace: props?.externalDns?.namespace ?? 'internal-system',
           helmValues: {
             extraArgs: [
               '--aws-zone-type=public',
@@ -604,7 +616,7 @@ export class EKSCluster extends Construct {
           chartName: 'cluster-autoscaler',
           chartVersion: '9.18.0',
           helmRepository: 'https://kubernetes.github.io/autoscaler',
-          namespace: 'internal-system',
+          namespace: props?.clusterAutoscaler?.namespace ?? 'internal-system',
           helmValues: {
             autoDiscovery: {
               clusterName: clusterName,

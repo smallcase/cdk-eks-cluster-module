@@ -96,6 +96,7 @@ export class CommonHelmCharts extends Construct {
 
     if (props.logCharts) {
       console.log(`print props ${props.iamPolicyPath}`);
+      console.log(`chart: ${chartReleaseName}\nchartNs: ${props.helmProps.namespace}`);
       console.log(chart);
       console.log(chart.node.dependencies);
     }

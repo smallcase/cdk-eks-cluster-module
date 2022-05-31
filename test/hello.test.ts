@@ -75,6 +75,14 @@ describe('Test', () => {
         debugLogs: true,
         clusterName: 'EKS-CLUSTER',
         clusterVersion: eks.KubernetesVersion.V1_20,
+        defaultCommonComponents: {
+          clusterAutoscaler: {
+            namespace: 'kube-system',
+          },
+          externalDns: {
+            namespace: 'kube-system',
+          },
+        },
         namespaces: {
           'internal-system': {
             annotations: {
