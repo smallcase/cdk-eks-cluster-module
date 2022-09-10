@@ -656,6 +656,26 @@ public readonly labels: InternalMap;
 
 ---
 
+##### `podExecutionRole`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.FargateProfile.property.podExecutionRole"></a>
+
+```typescript
+public readonly podExecutionRole: Role;
+```
+
+- *Type:* [`aws-cdk-lib.aws_iam.Role`](#aws-cdk-lib.aws_iam.Role)
+
+---
+
+##### `subnetSelection`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.FargateProfile.property.subnetSelection"></a>
+
+```typescript
+public readonly subnetSelection: SubnetSelection;
+```
+
+- *Type:* [`aws-cdk-lib.aws_ec2.SubnetSelection`](#aws-cdk-lib.aws_ec2.SubnetSelection)
+
+---
+
 ### InternalMap <a name="@smallcase/cdk-eks-cluster-module.InternalMap"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>

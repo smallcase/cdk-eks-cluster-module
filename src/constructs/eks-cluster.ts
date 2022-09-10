@@ -19,6 +19,8 @@ export interface FargateProfile {
   readonly profileName: string;
   readonly namespaces: string[];
   readonly labels?: InternalMap;
+  readonly subnetSelection?: ec2.SubnetSelection;
+  readonly podExecutionRole?: iam.Role;
 }
 
 export interface NamespaceSpec {
@@ -175,7 +177,7 @@ export class EKSCluster extends Construct {
 
     if (props.clusterConfig.namespaces != undefined) {
       let namespaces: Map<string, NamespaceSpec> = ObjToStrMap(props.clusterConfig.namespaces);
-      namespaces.forEach((namespaceSpec, name)=> {
+      namespaces.forEach((namespaceSpec, name) => {
         var ns = new eks.KubernetesManifest(this, `${name}-namespaces`, {
           overwrite: true,
           cluster: this.cluster,
@@ -305,7 +307,7 @@ export class EKSCluster extends Construct {
     });
     //existing Role Permission
     let awsAuthExistingRolePermission: Map<string, string> = ObjToStrMap(props.clusterConfig.teamExistingRolePermission);
-    awsAuthExistingRolePermission.forEach((eksPermission, role)=> {
+    awsAuthExistingRolePermission.forEach((eksPermission, role) => {
       this.cluster.awsAuth.addRoleMapping(iam.Role.fromRoleArn(this, role, role), {
         groups: [eksPermission],
       });
@@ -355,6 +357,8 @@ export class EKSCluster extends Construct {
           fargateProfile.namespaces,
           fargateProfile.labels,
         ),
+        subnetSelection: fargateProfile.subnetSelection,
+        podExecutionRole: fargateProfile.podExecutionRole,
       });
       fargate.podExecutionRole.addManagedPolicy(
         iam.ManagedPolicy.fromAwsManagedPolicyName(
@@ -389,10 +393,10 @@ export class EKSCluster extends Construct {
     });
     storageclassDefault.node.addDependency(this.cluster);
 
-    if (props.clusterConfig.commonComponents != undefined ) {
+    if (props.clusterConfig.commonComponents != undefined) {
       let additionCommonCompoents: Map<string, ICommonComponentsProps> = ObjToStrMap(props.clusterConfig.commonComponents);
       additionCommonCompoents.forEach((common, key) => {
-        if (commonCompoents.has(key) != true ) {
+        if (commonCompoents.has(key) != true) {
           new CommonHelmCharts(this, `${common.helm.chartReleaseName ?? common.helm.chartName}-common`, {
             cluster: this.cluster,
             helmProps: common.helm,
@@ -403,7 +407,7 @@ export class EKSCluster extends Construct {
           });
         }
       });
-      commonCompoents.forEach((common, key)=> {
+      commonCompoents.forEach((common, key) => {
         if (additionCommonCompoents.has(key)) {
           new CommonHelmCharts(this, `${additionCommonCompoents.get(key)?.helm.chartName ?? common.helm.chartName}-common`, {
             cluster: this.cluster,
@@ -425,7 +429,7 @@ export class EKSCluster extends Construct {
         }
       });
     } else {
-      commonCompoents.forEach((common)=> {
+      commonCompoents.forEach((common) => {
         new CommonHelmCharts(this, `${common.helm.chartReleaseName ?? common.helm.chartName}-common`, {
           cluster: this.cluster,
           helmProps: common.helm,
