@@ -358,7 +358,7 @@ export class EKSCluster extends Construct {
           fargateProfile.labels,
         ),
         subnetSelection: fargateProfile.subnetSelection,
-        podExecutionRole: fargateProfile.podExecutionRole
+        podExecutionRole: fargateProfile.podExecutionRole,
       });
       fargate.podExecutionRole.addManagedPolicy(
         iam.ManagedPolicy.fromAwsManagedPolicyName(
