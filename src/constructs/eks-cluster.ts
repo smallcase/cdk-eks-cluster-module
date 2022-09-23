@@ -579,7 +579,7 @@ export class EKSCluster extends Construct {
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
           namespace: props?.externalDns?.namespace ?? 'internal-system',
           helmValues: {
-            interval: '1m',
+            interval: '5m',
             triggerLoopOnEvent: true,
             extraArgs: [
               '--aws-zone-type=private',
@@ -606,6 +606,8 @@ export class EKSCluster extends Construct {
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
           namespace: props?.externalDns?.namespace ?? 'internal-system',
           helmValues: {
+            interval: '5m',
+            triggerLoopOnEvent: true,
             extraArgs: [
               '--annotation-filter=external-dns.alpha.kubernetes.io/dns-type in (public)',
               `--txt-owner-id=${clusterName}`,
