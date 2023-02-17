@@ -2,6 +2,7 @@
   "dependencies": [
     {
       "name": "@types/jest",
+      "version": "^27",
       "type": "build"
     },
     {
@@ -21,12 +22,7 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "2.34.0",
-      "type": "build"
-    },
-    {
-      "name": "cdk8s",
-      "version": "2.2.74",
+      "version": "2.62.1",
       "type": "build"
     },
     {
@@ -78,7 +74,8 @@
       "type": "build"
     },
     {
-      "name": "json-schema",
+      "name": "npm-check-updates",
+      "version": "^16",
       "type": "build"
     },
     {
@@ -100,13 +97,18 @@
       "type": "build"
     },
     {
-      "name": "aws-cdk-lib",
-      "version": "2.34.0",
-      "type": "peer"
+      "name": "@types/babel__traverse",
+      "version": "7.18.2",
+      "type": "override"
     },
     {
-      "name": "cdk8s",
-      "version": "2.2.74",
+      "name": "@types/prettier",
+      "version": "2.6.0",
+      "type": "override"
+    },
+    {
+      "name": "aws-cdk-lib",
+      "version": "2.62.1",
       "type": "peer"
     },
     {
