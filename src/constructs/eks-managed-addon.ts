@@ -4,6 +4,7 @@ import * as iam from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
 export interface VpcCniAddonProps extends EksManagedAddonProps {
   readonly addonVersion?: VpcCniAddonVersion;
+  readonly configurationValues?: string;
 }
 
 interface EksManagedAddonProps {
@@ -18,7 +19,7 @@ abstract class AddonVersion {
   static of(version: string) {
     throw new Error('Implement static method of(version: string)');
   }
-  constructor(public readonly version: string) {}
+  constructor(public readonly version: string) { }
 }
 
 export class VpcCniAddonVersion extends AddonVersion {
@@ -87,6 +88,31 @@ export class VpcCniAddonVersion extends AddonVersion {
    */
   public static readonly V1_11_0 = VpcCniAddonVersion.of('v1.11.0-eksbuild.1');
 
+  /**
+   * vpc-cni version 1.11.2
+   */
+  public static readonly V1_11_2 = VpcCniAddonVersion.of('v1.11.2-eksbuild.3');
+
+
+  /**
+  * vpc-cni version 1.11.3
+  */
+  public static readonly V1_11_3 = VpcCniAddonVersion.of('v1.11.3-eksbuild.3');
+
+  /**
+  * vpc-cni version 1.11.4
+  */
+  public static readonly V1_11_4 = VpcCniAddonVersion.of('v1.11.4-eksbuild.3');
+
+  /**
+  * vpc-cni version 1.12.0
+  */
+  public static readonly V1_12_0 = VpcCniAddonVersion.of('v1.12.0-eksbuild.3');
+
+  /**
+ * vpc-cni version 1.12.1
+ */
+  public static readonly V1_12_1 = VpcCniAddonVersion.of('v1.12.1-eksbuild.1');
 
   /**
    * Custom add-on version
@@ -101,6 +127,7 @@ interface EksManagedAddonAbstractProps {
   readonly cluster: eks.Cluster;
   readonly addonName: string;
   readonly addonVersion?: AddonVersion;
+  readonly configurationValues?: string;
   readonly resolveConflicts?: boolean;
   readonly serviceAccountName?: string;
   readonly awsManagedPolicyName?: string;
@@ -119,6 +146,7 @@ abstract class EksManagedAddonAbstract extends eks.CfnAddon {
       clusterName: cluster.clusterName,
       addonName: props.addonName,
       addonVersion: props.addonVersion?.version,
+      configurationValues: props.configurationValues,
       resolveConflicts: props.resolveConflicts ? 'OVERWRITE' : 'NONE',
     });
     if (props.serviceAccountName) {

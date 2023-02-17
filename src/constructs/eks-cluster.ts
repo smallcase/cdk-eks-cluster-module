@@ -3,7 +3,9 @@ import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as eks from 'aws-cdk-lib/aws-eks';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as kms from 'aws-cdk-lib/aws-kms';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
+import { CommonHelmCharts, StandardHelmProps } from './common-helm-charts';
 import {
   VpcCniAddonVersion,
   VpcEniAddon,
@@ -13,7 +15,6 @@ import {
   GetKubernetesLabels,
   ObjToStrMap,
 } from '../utils/common';
-import { CommonHelmCharts, StandardHelmProps } from './common-helm-charts';
 
 export interface FargateProfile {
   readonly profileName: string;
@@ -54,6 +55,7 @@ export interface ClusterConfig {
   readonly clusterVersion: eks.KubernetesVersion;
   readonly addAutoscalerIam?: boolean;
   readonly defaultCapacity: number;
+  readonly kubectlLayer?: lambda.ILayerVersion;
   readonly subnets: InternalMap;
   readonly publicAllowAccess?: string[];
   readonly namespaces?: Record<string, NamespaceSpec>;
@@ -102,6 +104,7 @@ export interface EKSClusterProps {
 
 export interface AddonProps {
   readonly vpnCniAddonVersion?: VpcCniAddonVersion;
+  readonly configurationValues?: string;
 }
 
 export class EKSCluster extends Construct {
@@ -146,6 +149,7 @@ export class EKSCluster extends Construct {
       vpc: props.clusterVPC,
       securityGroup: props.workerSecurityGroup,
       secretsEncryptionKey: props.kmsKey,
+      kubectlLayer: props.clusterConfig.kubectlLayer,
       endpointAccess:
         subnets.get('publicSubnetGroupName') != undefined
           ? eks.EndpointAccess.PUBLIC_AND_PRIVATE.onlyFrom(
@@ -443,12 +447,12 @@ export class EKSCluster extends Construct {
   }
 
   private addManagedVpcCniAddon() {
-    const addonVersion = this.props.addonProps?.vpnCniAddonVersion
-      ? { addonVersion: this.props.addonProps.vpnCniAddonVersion }
+    const addonVersionConfig = this.props.addonProps?.vpnCniAddonVersion && this.props.addonProps?.configurationValues
+      ? { addonVersion: this.props.addonProps.vpnCniAddonVersion, configurationValues: this.props.addonProps?.configurationValues }
       : {};
     const vpcCniAddon = new VpcEniAddon(this, 'VpcCniAddon', {
       cluster: this.cluster,
-      ...addonVersion,
+      ...addonVersionConfig,
       resolveConflicts: true,
     });
     this.cluster.defaultNodegroup?.node.addDependency(vpcCniAddon);
@@ -478,7 +482,7 @@ export class EKSCluster extends Construct {
         serviceAccounts: ['aws-ebs-csi-driver'],
         helm: {
           chartName: 'aws-ebs-csi-driver',
-          chartVersion: '2.6.2',
+          chartVersion: '2.16.0',
           helmRepository: 'https://kubernetes-sigs.github.io/aws-ebs-csi-driver/',
           namespace: props?.awsEbsCsiDriver?.namespace ?? 'kube-system',
           helmValues: {
@@ -537,7 +541,7 @@ export class EKSCluster extends Construct {
         serviceAccounts: ['efs-csi-controller-sa', 'efs-csi-node-sa'],
         helm: {
           chartName: 'aws-efs-csi-driver',
-          chartVersion: '2.2.0',
+          chartVersion: '2.3.6',
           helmRepository: 'https://kubernetes-sigs.github.io/aws-efs-csi-driver/',
           namespace: props?.awsEfsCsiDriver?.namespace ?? 'kube-system',
           helmValues: {
@@ -575,7 +579,7 @@ export class EKSCluster extends Construct {
         helm: {
           chartName: 'external-dns',
           chartReleaseName: 'private-external-dns',
-          chartVersion: '1.9.0',
+          chartVersion: '1.12.0',
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
           namespace: props?.externalDns?.namespace ?? 'internal-system',
           helmValues: {
@@ -602,7 +606,7 @@ export class EKSCluster extends Construct {
         helm: {
           chartName: 'external-dns',
           chartReleaseName: 'public-external-dns',
-          chartVersion: '1.9.0',
+          chartVersion: '1.12.0',
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
           namespace: props?.externalDns?.namespace ?? 'internal-system',
           helmValues: {
@@ -627,7 +631,7 @@ export class EKSCluster extends Construct {
         serviceAccounts: ['cluster-autoscaler'],
         helm: {
           chartName: 'cluster-autoscaler',
-          chartVersion: '9.18.0',
+          chartVersion: '9.21.1',
           helmRepository: 'https://kubernetes.github.io/autoscaler',
           namespace: props?.clusterAutoscaler?.namespace ?? 'internal-system',
           helmValues: {

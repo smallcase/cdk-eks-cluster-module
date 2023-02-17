@@ -35,6 +35,10 @@ settings:
     # - /custom-config/docker-monitor-filelog.json
   custom_plugin_monitors: []
 
+  # Any extra arguments to append to node-problem-detector command
+  # - "--port 20526"
+  extraArgs: []
+
   # settings.prometheus_address -- Prometheus exporter address
   prometheus_address: 0.0.0.0
   # settings.prometheus_port -- Prometheus exporter port
@@ -52,7 +56,9 @@ logDir:
 
 image:
   repository: k8s.gcr.io/node-problem-detector/node-problem-detector
-  tag: v0.8.10
+  tag: v0.8.12
+  # image.digest -- the image digest. If given it takes precedence over a given tag.
+  digest: ""
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -70,7 +76,7 @@ rbac:
 hostNetwork: false
 hostPID: false
 
-priorityClassName: ""
+priorityClassName: system-node-critical
 
 securityContext:
   privileged: true
@@ -97,10 +103,20 @@ affinity: {}
 nodeSelector: {}
 
 metrics:
+  # metrics.enabled -- Expose metrics in Prometheus format with default configuration.
   enabled: false
+  # metrics.annotations -- Override all default annotations when `metrics.enabled=true` with specified values.
+  annotations: {}
   serviceMonitor:
     enabled: false
     additionalLabels: {}
+  prometheusRule:
+    enabled: false
+    defaultRules:
+      create: true
+      disabled: []
+    additionalLabels: {}
+    additionalRules: []
 
 env:
 #  - name: FOO

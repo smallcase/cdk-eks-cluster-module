@@ -1,14 +1,14 @@
-const { AwsCdkConstructLibrary, ProjectType } = require('projen/lib/awscdk');
+const { AwsCdkConstructLibrary } = require('projen/lib/awscdk');
 const { NpmAccess } = require('projen/lib/javascript');
 
-const CDK_VERSION = '2.34.0';
+const CDK_VERSION = '2.62.1';
 const project = new AwsCdkConstructLibrary({
   author: '@InfraTeam',
   authorAddress: 'bharat.parmar@smallcase.com',
   cdkVersion: `${CDK_VERSION}`,
   cdkVersionPinning: true,
   constructsVersion: '10.0.5',
-  constructsVersionPinning: true,
+  constructsVersionPinning: false,
   releaseWorkflow: true,
   defaultReleaseBranch: 'main',
   release: true,
@@ -17,10 +17,6 @@ const project = new AwsCdkConstructLibrary({
   repositoryUrl: 'https://github.com/smallcase/cdk-eks-cluster-module.git',
   // cdkDependencies: [
   // ],
-  devDeps: [
-    `aws-cdk-lib@${CDK_VERSION}`,
-    'cdk8s@2.1.23',
-  ],
   tsconfig: {
     compilerOptions: {
       strictPropertyInitialization: false,
@@ -30,9 +26,11 @@ const project = new AwsCdkConstructLibrary({
   context: {
     '@aws-cdk/core:newStyleStackSynthesis': true,
   },
+  devDeps: [
+    `aws-cdk-lib@${CDK_VERSION}`,
+  ],
   peerDeps: [
     `aws-cdk-lib@${CDK_VERSION}`,
-    'cdk8s@2.2.74',
   ],
   python: {
     distName: 'cdk-eks-cluster-module',
@@ -46,7 +44,6 @@ const project = new AwsCdkConstructLibrary({
   npmAccess: NpmAccess.PUBLIC,
   releaseToNpm: true,
   releaseEveryCommit: true,
-  depsUpgrade: false,
   licensed: true, /* Indicates if a license should be added. */
   dependabot: false, /* Include dependabot configuration. */
   mergify: false, /* Adds mergify configuration. */

@@ -176,6 +176,16 @@ import { AddonProps } from '@smallcase/cdk-eks-cluster-module'
 const addonProps: AddonProps = { ... }
 ```
 
+##### `configurationValues`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.AddonProps.property.configurationValues"></a>
+
+```typescript
+public readonly configurationValues: string;
+```
+
+- *Type:* `string`
+
+---
+
 ##### `vpnCniAddonVersion`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.AddonProps.property.vpnCniAddonVersion"></a>
 
 ```typescript
@@ -363,6 +373,16 @@ public readonly fargateProfiles: FargateProfile[];
 ```
 
 - *Type:* [`@smallcase/cdk-eks-cluster-module.FargateProfile`](#@smallcase/cdk-eks-cluster-module.FargateProfile)[]
+
+---
+
+##### `kubectlLayer`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.kubectlLayer"></a>
+
+```typescript
+public readonly kubectlLayer: ILayerVersion;
+```
+
+- *Type:* [`aws-cdk-lib.aws_lambda.ILayerVersion`](#aws-cdk-lib.aws_lambda.ILayerVersion)
 
 ---
 
@@ -996,6 +1016,16 @@ public readonly addonVersion: VpcCniAddonVersion;
 
 ---
 
+##### `configurationValues`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonProps.property.configurationValues"></a>
+
+```typescript
+public readonly configurationValues: string;
+```
+
+- *Type:* `string`
+
+---
+
 ##### `namespace`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonProps.property.namespace"></a>
 
 ```typescript
@@ -1096,6 +1126,46 @@ vpc-cni version 1.10.3.
 - *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
 
 vpc-cni version 1.11.0.
+
+---
+
+##### `V1_11_2` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_11_2"></a>
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
+
+vpc-cni version 1.11.2.
+
+---
+
+##### `V1_11_3` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_11_3"></a>
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
+
+vpc-cni version 1.11.3.
+
+---
+
+##### `V1_11_4` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_11_4"></a>
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
+
+vpc-cni version 1.11.4.
+
+---
+
+##### `V1_12_0` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_12_0"></a>
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
+
+vpc-cni version 1.12.0.
+
+---
+
+##### `V1_12_1` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_12_1"></a>
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
+
+vpc-cni version 1.12.1.
 
 ---
 
