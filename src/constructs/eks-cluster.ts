@@ -362,6 +362,7 @@ export class EKSCluster extends Construct {
           fargateProfile.labels,
         ),
         subnetSelection: fargateProfile.subnetSelection,
+        vpc: fargateProfile.subnetSelection ? props.clusterVPC : undefined,
         podExecutionRole: fargateProfile.podExecutionRole,
       });
       fargate.podExecutionRole.addManagedPolicy(
