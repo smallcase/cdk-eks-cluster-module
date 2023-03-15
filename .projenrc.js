@@ -1,7 +1,7 @@
 const { AwsCdkConstructLibrary } = require('projen/lib/awscdk');
 const { NpmAccess } = require('projen/lib/javascript');
 
-const CDK_VERSION = '2.62.1';
+const CDK_VERSION = '2.69.0';
 const project = new AwsCdkConstructLibrary({
   author: '@InfraTeam',
   authorAddress: 'bharat.parmar@smallcase.com',
