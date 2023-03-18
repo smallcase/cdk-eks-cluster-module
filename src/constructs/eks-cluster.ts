@@ -69,6 +69,7 @@ export interface ClusterConfig {
   readonly commonComponents?: Record<string, ICommonComponentsProps>;
   readonly defaultCommonComponents?: DefaultCommonComponents;
   readonly debugLogs?: boolean;
+  readonly deprecateClusterAutoScaler?: boolean;
 }
 
 export interface DefaultCommonComponents {
@@ -123,6 +124,9 @@ export class EKSCluster extends Construct {
       props.clusterConfig.clusterName,
       props.clusterConfig.defaultCommonComponents,
     );
+    if (props.clusterConfig.deprecateClusterAutoScaler != undefined && props.clusterConfig.deprecateClusterAutoScaler == true) {
+      commonCompoents.delete('cluster-autoscaler');
+    }
     // console.log(this.availabilityZones);
     const clusterAdmin = new iam.Role(this, 'AdminRole', {
       assumedBy: new iam.AccountRootPrincipal(),

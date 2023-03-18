@@ -366,6 +366,16 @@ public readonly defaultCommonComponents: DefaultCommonComponents;
 
 ---
 
+##### `deprecateClusterAutoScaler`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.deprecateClusterAutoScaler"></a>
+
+```typescript
+public readonly deprecateClusterAutoScaler: boolean;
+```
+
+- *Type:* `boolean`
+
+---
+
 ##### `fargateProfiles`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.fargateProfiles"></a>
 
 ```typescript
