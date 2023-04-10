@@ -34,6 +34,38 @@ new CommonHelmCharts(scope: Construct, id: string, props: CommonHelmChartsProps)
 
 
 
+### CoreDnsAddon <a name="@smallcase/cdk-eks-cluster-module.CoreDnsAddon"></a>
+
+#### Initializers <a name="@smallcase/cdk-eks-cluster-module.CoreDnsAddon.Initializer"></a>
+
+```typescript
+import { CoreDnsAddon } from '@smallcase/cdk-eks-cluster-module'
+
+new CoreDnsAddon(scope: Construct, id: string, props: CoreAddonProps)
+```
+
+##### `scope`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.CoreDnsAddon.parameter.scope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `id`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.CoreDnsAddon.parameter.id"></a>
+
+- *Type:* `string`
+
+---
+
+##### `props`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.CoreDnsAddon.parameter.props"></a>
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.CoreAddonProps`](#@smallcase/cdk-eks-cluster-module.CoreAddonProps)
+
+---
+
+
+
+
+
 ### EKSCluster <a name="@smallcase/cdk-eks-cluster-module.EKSCluster"></a>
 
 #### Initializers <a name="@smallcase/cdk-eks-cluster-module.EKSCluster.Initializer"></a>
@@ -130,6 +162,38 @@ public readonly fargateProfiles: FargateProfile[];
 - *Type:* [`@smallcase/cdk-eks-cluster-module.FargateProfile`](#@smallcase/cdk-eks-cluster-module.FargateProfile)[]
 
 ---
+
+
+### KubeProxyAddon <a name="@smallcase/cdk-eks-cluster-module.KubeProxyAddon"></a>
+
+#### Initializers <a name="@smallcase/cdk-eks-cluster-module.KubeProxyAddon.Initializer"></a>
+
+```typescript
+import { KubeProxyAddon } from '@smallcase/cdk-eks-cluster-module'
+
+new KubeProxyAddon(scope: Construct, id: string, props: CoreAddonProps)
+```
+
+##### `scope`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.KubeProxyAddon.parameter.scope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `id`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.KubeProxyAddon.parameter.id"></a>
+
+- *Type:* `string`
+
+---
+
+##### `props`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.KubeProxyAddon.parameter.props"></a>
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.CoreAddonProps`](#@smallcase/cdk-eks-cluster-module.CoreAddonProps)
+
+---
+
+
+
 
 
 ### VpcEniAddon <a name="@smallcase/cdk-eks-cluster-module.VpcEniAddon"></a>
@@ -496,6 +560,96 @@ public readonly serviceAccounts: string[];
 
 ---
 
+### CoreAddonProps <a name="@smallcase/cdk-eks-cluster-module.CoreAddonProps"></a>
+
+#### Initializer <a name="[object Object].Initializer"></a>
+
+```typescript
+import { CoreAddonProps } from '@smallcase/cdk-eks-cluster-module'
+
+const coreAddonProps: CoreAddonProps = { ... }
+```
+
+##### `cluster`<sup>Required</sup> <a name="@smallcase/cdk-eks-cluster-module.CoreAddonProps.property.cluster"></a>
+
+```typescript
+public readonly cluster: Cluster;
+```
+
+- *Type:* [`aws-cdk-lib.aws_eks.Cluster`](#aws-cdk-lib.aws_eks.Cluster)
+
+---
+
+##### `addonVersion`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.CoreAddonProps.property.addonVersion"></a>
+
+```typescript
+public readonly addonVersion: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `configurationValues`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.CoreAddonProps.property.configurationValues"></a>
+
+```typescript
+public readonly configurationValues: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `namespace`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.CoreAddonProps.property.namespace"></a>
+
+```typescript
+public readonly namespace: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `resolveConflicts`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.CoreAddonProps.property.resolveConflicts"></a>
+
+```typescript
+public readonly resolveConflicts: boolean;
+```
+
+- *Type:* `boolean`
+
+---
+
+### CoreAddonValuesProps <a name="@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps"></a>
+
+#### Initializer <a name="[object Object].Initializer"></a>
+
+```typescript
+import { CoreAddonValuesProps } from '@smallcase/cdk-eks-cluster-module'
+
+const coreAddonValuesProps: CoreAddonValuesProps = { ... }
+```
+
+##### `addonVersion`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps.property.addonVersion"></a>
+
+```typescript
+public readonly addonVersion: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `configurationValues`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps.property.configurationValues"></a>
+
+```typescript
+public readonly configurationValues: string;
+```
+
+- *Type:* `string`
+
+---
+
 ### DefaultCommonComponents <a name="@smallcase/cdk-eks-cluster-module.DefaultCommonComponents"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
@@ -643,6 +797,26 @@ public readonly clusterVPC: IVpc;
 ```
 
 - *Type:* [`aws-cdk-lib.aws_ec2.IVpc`](#aws-cdk-lib.aws_ec2.IVpc)
+
+---
+
+##### `coreDnsAddonProps`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.coreDnsAddonProps"></a>
+
+```typescript
+public readonly coreDnsAddonProps: CoreAddonValuesProps;
+```
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps`](#@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps)
+
+---
+
+##### `kubeProxyAddonProps`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.kubeProxyAddonProps"></a>
+
+```typescript
+public readonly kubeProxyAddonProps: CoreAddonValuesProps;
+```
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps`](#@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps)
 
 ---
 

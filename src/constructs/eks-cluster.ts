@@ -6,10 +6,12 @@ import * as kms from 'aws-cdk-lib/aws-kms';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 import { CommonHelmCharts, StandardHelmProps } from './common-helm-charts';
+import { CoreDnsAddon, KubeProxyAddon } from './core-addon';
 import {
   VpcCniAddonVersion,
   VpcEniAddon,
 } from '../constructs/eks-managed-addon';
+
 import {
   GetFargateProfilesNamespace,
   GetKubernetesLabels,
@@ -100,11 +102,18 @@ export interface EKSClusterProps {
   readonly workerSecurityGroup: ec2.SecurityGroup;
   readonly clusterConfig: ClusterConfig;
   readonly addonProps?: AddonProps;
+  readonly coreDnsAddonProps?: CoreAddonValuesProps;
+  readonly kubeProxyAddonProps?: CoreAddonValuesProps;
   readonly region: string;
 }
 
 export interface AddonProps {
   readonly vpnCniAddonVersion?: VpcCniAddonVersion;
+  readonly configurationValues?: string;
+}
+
+export interface CoreAddonValuesProps {
+  readonly addonVersion?: string;
   readonly configurationValues?: string;
 }
 
@@ -376,6 +385,28 @@ export class EKSCluster extends Construct {
       );
     });
     this.addManagedVpcCniAddon();
+    if (props.coreDnsAddonProps) {
+      const coreAddonConfig = this.props.coreDnsAddonProps?.addonVersion && this.props.coreDnsAddonProps?.configurationValues
+        ? { addonVersion: this.props.coreDnsAddonProps?.addonVersion, configurationValues: this.props.coreDnsAddonProps?.configurationValues }
+        : { addonVersion: this.props.coreDnsAddonProps?.addonVersion };
+      new CoreDnsAddon(this, 'CoreDnsAddon', {
+        cluster: this.cluster,
+        ...coreAddonConfig,
+        resolveConflicts: true,
+      });
+    }
+
+    if (props.kubeProxyAddonProps) {
+      const kubeDnsAddonConfig = this.props.kubeProxyAddonProps?.addonVersion && this.props.kubeProxyAddonProps?.configurationValues
+        ? { addonVersion: this.props.kubeProxyAddonProps?.addonVersion, configurationValues: this.props.kubeProxyAddonProps?.configurationValues }
+        : { addonVersion: this.props.kubeProxyAddonProps?.addonVersion };
+
+      new KubeProxyAddon(this, 'KubeProxyAddon', {
+        cluster: this.cluster,
+        ...kubeDnsAddonConfig,
+        resolveConflicts: true,
+      });
+    }
 
     const storageclassDefault = new eks.KubernetesManifest(this, 'gp2', {
       overwrite: true,
@@ -450,7 +481,6 @@ export class EKSCluster extends Construct {
       });
     }
   }
-
   private addManagedVpcCniAddon() {
     const addonVersionConfig = this.props.addonProps?.vpnCniAddonVersion && this.props.addonProps?.configurationValues
       ? { addonVersion: this.props.addonProps.vpnCniAddonVersion, configurationValues: this.props.addonProps?.configurationValues }
