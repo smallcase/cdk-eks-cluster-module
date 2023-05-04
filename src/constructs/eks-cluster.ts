@@ -215,10 +215,8 @@ export class EKSCluster extends Construct {
       });
 
     }
-    // Attach IAM Policy to cluster role (required for VPC SG)
-    // https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
-    const clusterRole = iam.Role.fromRoleArn(this, 'clusterRole', this.cluster.role.roleArn);
-    clusterRole.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonEKSVPCResourceController'));
+
+    this.cluster.role.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonEKSVPCResourceController'));
 
     // add nodeGroups
     for (const nodeGroup of props.clusterConfig.nodeGroups) {
