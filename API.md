@@ -440,6 +440,16 @@ public readonly deprecateClusterAutoScaler: boolean;
 
 ---
 
+##### `deprecateExternalDNS`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.deprecateExternalDNS"></a>
+
+```typescript
+public readonly deprecateExternalDNS: boolean;
+```
+
+- *Type:* `boolean`
+
+---
+
 ##### `fargateProfiles`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.fargateProfiles"></a>
 
 ```typescript
