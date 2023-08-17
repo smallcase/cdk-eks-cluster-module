@@ -72,6 +72,7 @@ export interface ClusterConfig {
   readonly defaultCommonComponents?: DefaultCommonComponents;
   readonly debugLogs?: boolean;
   readonly deprecateClusterAutoScaler?: boolean;
+  readonly skipExternalDNS?: boolean;
 }
 
 export interface DefaultCommonComponents {
@@ -135,6 +136,10 @@ export class EKSCluster extends Construct {
     );
     if (props.clusterConfig.deprecateClusterAutoScaler != undefined && props.clusterConfig.deprecateClusterAutoScaler == true) {
       commonCompoents.delete('cluster-autoscaler');
+    }
+    if (props.clusterConfig.skipExternalDNS != undefined && props.clusterConfig.skipExternalDNS == true) {
+      commonCompoents.delete('private-external-dns');
+      commonCompoents.delete('public-external-dns');
     }
     // console.log(this.availabilityZones);
     const clusterAdmin = new iam.Role(this, 'AdminRole', {

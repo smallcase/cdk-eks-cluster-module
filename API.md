@@ -480,6 +480,16 @@ public readonly publicAllowAccess: string[];
 
 ---
 
+##### `skipExternalDNS`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.skipExternalDNS"></a>
+
+```typescript
+public readonly skipExternalDNS: boolean;
+```
+
+- *Type:* `boolean`
+
+---
+
 ##### `teamExistingRolePermission`<sup>Optional</sup> <a name="@smallcase/cdk-eks-cluster-module.ClusterConfig.property.teamExistingRolePermission"></a>
 
 ```typescript
