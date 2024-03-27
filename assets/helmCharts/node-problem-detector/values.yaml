@@ -55,8 +55,8 @@ logDir:
   pod: ""
 
 image:
-  repository: k8s.gcr.io/node-problem-detector/node-problem-detector
-  tag: v0.8.12
+  repository: registry.k8s.io/node-problem-detector/node-problem-detector
+  tag: v0.8.15
   # image.digest -- the image digest. If given it takes precedence over a given tag.
   digest: ""
   pullPolicy: IfNotPresent
@@ -76,6 +76,10 @@ rbac:
 hostNetwork: false
 hostPID: false
 
+volume:
+  localtime:
+    type: "FileOrCreate"
+
 priorityClassName: system-node-critical
 
 securityContext:
@@ -94,11 +98,23 @@ tolerations:
 serviceAccount:
   # Specifies whether a ServiceAccount should be created
   create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # Labels to add to the service account
+  labels: {}
   # The name of the ServiceAccount to use.
   # If not set and create is true, a name is generated using the fullname template
   name:
 
-affinity: {}
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: eks.amazonaws.com/compute-type
+            operator: NotIn
+            values:
+              - fargate
 
 nodeSelector: {}
 
@@ -110,6 +126,8 @@ metrics:
   serviceMonitor:
     enabled: false
     additionalLabels: {}
+    additionalRelabelings: []
+    metricRelabelings: []
   prometheusRule:
     enabled: false
     defaultRules:

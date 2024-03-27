@@ -520,7 +520,7 @@ export class EKSCluster extends Construct {
         serviceAccounts: ['aws-ebs-csi-driver'],
         helm: {
           chartName: 'aws-ebs-csi-driver',
-          chartVersion: '2.16.0',
+          chartVersion: '2.29.1',
           helmRepository: 'https://kubernetes-sigs.github.io/aws-ebs-csi-driver/',
           namespace: props?.awsEbsCsiDriver?.namespace ?? 'kube-system',
           helmValues: {
@@ -601,7 +601,7 @@ export class EKSCluster extends Construct {
       'node-problem-detector': {
         helm: {
           chartName: 'node-problem-detector',
-          chartVersion: '2.0.9',
+          chartVersion: '2.3.12',
           localHelmChart: `${__dirname}/../../assets/helmCharts/node-problem-detector`,
           namespace: 'kube-system',
           helmValues: {
@@ -617,7 +617,7 @@ export class EKSCluster extends Construct {
         helm: {
           chartName: 'external-dns',
           chartReleaseName: 'private-external-dns',
-          chartVersion: '1.12.0',
+          chartVersion: '1.14.3',
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
           namespace: props?.externalDns?.namespace ?? 'internal-system',
           helmValues: {
@@ -644,7 +644,7 @@ export class EKSCluster extends Construct {
         helm: {
           chartName: 'external-dns',
           chartReleaseName: 'public-external-dns',
-          chartVersion: '1.12.0',
+          chartVersion: '1.14.3',
           helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
           namespace: props?.externalDns?.namespace ?? 'internal-system',
           helmValues: {
