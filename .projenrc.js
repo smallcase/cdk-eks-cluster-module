@@ -1,7 +1,7 @@
 const { AwsCdkConstructLibrary } = require('projen/lib/awscdk');
 const { NpmAccess } = require('projen/lib/javascript');
 
-const CDK_VERSION = '2.90.0';
+const CDK_VERSION = '2.127.0';
 const project = new AwsCdkConstructLibrary({
   author: '@InfraTeam',
   authorAddress: 'bharat.parmar@smallcase.com',
@@ -44,6 +44,7 @@ const project = new AwsCdkConstructLibrary({
   npmAccess: NpmAccess.PUBLIC,
   releaseToNpm: true,
   releaseEveryCommit: true,
+  depsUpgrade: true,
   licensed: true, /* Indicates if a license should be added. */
   dependabot: false, /* Include dependabot configuration. */
   mergify: false, /* Adds mergify configuration. */
