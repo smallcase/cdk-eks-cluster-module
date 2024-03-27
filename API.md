@@ -1387,6 +1387,14 @@ vpc-cni version 1.12.5.2.
 
 ---
 
+##### `V1_17_1_1` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_17_1_1"></a>
+
+- *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
+
+vpc-cni version 1.17.1.1.
+
+---
+
 ##### `V1_6_3` <a name="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_6_3"></a>
 
 - *Type:* [`@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion`](#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion)
