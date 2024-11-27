@@ -93,3 +93,15 @@ export class KubeProxyAddon extends CoreAddonAbstract {
     });
   }
 }
+
+export class KubeCostAddon extends CoreAddonAbstract {
+  /**
+   *
+   */
+  constructor(scope: Construct, id: string, props: CoreAddonProps) {
+    super(scope, id, {
+      ...props,
+      addonName: 'kubecost_kubecost',
+    });
+  }
+}

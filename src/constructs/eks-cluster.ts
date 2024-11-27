@@ -6,11 +6,10 @@ import * as kms from 'aws-cdk-lib/aws-kms';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 import { CommonHelmCharts, StandardHelmProps } from './common-helm-charts';
-import { CoreDnsAddon, KubeProxyAddon } from './core-addon';
+import { CoreDnsAddon, KubeProxyAddon, KubeCostAddon } from './core-addon';
 import {
   VpcCniAddonVersion,
   VpcEniAddon,
-  KubeCostAddon,
 } from '../constructs/eks-managed-addon';
 
 import {
@@ -106,17 +105,12 @@ export interface EKSClusterProps {
   readonly addonProps?: AddonProps;
   readonly coreDnsAddonProps?: CoreAddonValuesProps;
   readonly kubeProxyAddonProps?: CoreAddonValuesProps;
-  readonly kubeCostAddonProps?: KubeCostAddonProps;
+  readonly kubeCostAddonProps?: CoreAddonValuesProps;
   readonly region: string;
 }
 
 export interface AddonProps {
   readonly vpnCniAddonVersion?: VpcCniAddonVersion;
-  readonly configurationValues?: string;
-}
-
-export interface KubeCostAddonProps {
-  readonly addonVersion?: VpcCniAddonVersion;
   readonly configurationValues?: string;
 }
 
@@ -419,15 +413,17 @@ export class EKSCluster extends Construct {
     }
 
     if (props.kubeCostAddonProps) {
-      const kubeCostAddonConfig = this.props.kubeCostAddonProps?.addonVersion && this.props.kubeCostAddonProps?.configurationValues
+      const kubeDnsAddonConfig = this.props.kubeCostAddonProps?.addonVersion && this.props.kubeCostAddonProps?.configurationValues
         ? { addonVersion: this.props.kubeCostAddonProps?.addonVersion, configurationValues: this.props.kubeCostAddonProps?.configurationValues }
         : { addonVersion: this.props.kubeCostAddonProps?.addonVersion };
+
       new KubeCostAddon(this, 'KubeCostAddon', {
         cluster: this.cluster,
-        ...kubeCostAddonConfig,
+        ...kubeDnsAddonConfig,
         resolveConflicts: true,
       });
     }
+
 
     const storageclassDefault = new eks.KubernetesManifest(this, 'gp2', {
       overwrite: true,

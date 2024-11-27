@@ -2,6 +2,7 @@ import * as cdk from 'aws-cdk-lib';
 import * as eks from 'aws-cdk-lib/aws-eks';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
+
 export interface VpcCniAddonProps extends EksManagedAddonProps {
   readonly addonVersion?: VpcCniAddonVersion;
   readonly configurationValues?: string;
@@ -206,19 +207,6 @@ export class VpcEniAddon extends EksManagedAddonAbstract {
       addonName: 'vpc-cni',
       serviceAccountName: 'aws-node',
       awsManagedPolicyName: 'AmazonEKS_CNI_Policy',
-    });
-  }
-}
-
-export class KubeCostAddon extends EksManagedAddonAbstract {
-  /**
-   *
-   */
-  constructor(scope: Construct, id: string, props: VpcCniAddonProps) {
-    super(scope, id, {
-      ...props,
-      addonName: 'kubecost_kubecost',
-      serviceAccountName: 'aws-node',
     });
   }
 }
