@@ -10,6 +10,7 @@ import { CoreDnsAddon, KubeProxyAddon } from './core-addon';
 import {
   VpcCniAddonVersion,
   VpcEniAddon,
+  KubeCostAddon,
 } from '../constructs/eks-managed-addon';
 
 import {
@@ -105,11 +106,17 @@ export interface EKSClusterProps {
   readonly addonProps?: AddonProps;
   readonly coreDnsAddonProps?: CoreAddonValuesProps;
   readonly kubeProxyAddonProps?: CoreAddonValuesProps;
+  readonly kubeCostAddonProps?: KubeCostAddonProps;
   readonly region: string;
 }
 
 export interface AddonProps {
   readonly vpnCniAddonVersion?: VpcCniAddonVersion;
+  readonly configurationValues?: string;
+}
+
+export interface KubeCostAddonProps {
+  readonly addonVersion?: VpcCniAddonVersion;
   readonly configurationValues?: string;
 }
 
@@ -407,6 +414,17 @@ export class EKSCluster extends Construct {
       new KubeProxyAddon(this, 'KubeProxyAddon', {
         cluster: this.cluster,
         ...kubeDnsAddonConfig,
+        resolveConflicts: true,
+      });
+    }
+
+    if (props.kubeCostAddonProps) {
+      const kubeCostAddonConfig = this.props.kubeCostAddonProps?.addonVersion && this.props.kubeCostAddonProps?.configurationValues
+        ? { addonVersion: this.props.kubeCostAddonProps?.addonVersion, configurationValues: this.props.kubeCostAddonProps?.configurationValues }
+        : { addonVersion: this.props.kubeCostAddonProps?.addonVersion };
+      new KubeCostAddon(this, 'KubeCostAddon', {
+        cluster: this.cluster,
+        ...kubeCostAddonConfig,
         resolveConflicts: true,
       });
     }

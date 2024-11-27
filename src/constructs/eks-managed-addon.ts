@@ -209,3 +209,16 @@ export class VpcEniAddon extends EksManagedAddonAbstract {
     });
   }
 }
+
+export class KubeCostAddon extends EksManagedAddonAbstract {
+  /**
+   *
+   */
+  constructor(scope: Construct, id: string, props: VpcCniAddonProps) {
+    super(scope, id, {
+      ...props,
+      addonName: 'kubecost_kubecost',
+      serviceAccountName: 'aws-node',
+    });
+  }
+}
