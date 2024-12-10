@@ -168,6 +168,7 @@ export class EKSCluster extends Construct {
       securityGroup: props.workerSecurityGroup,
       secretsEncryptionKey: props.kmsKey,
       kubectlLayer: props.clusterConfig.kubectlLayer,
+      tags: props.clusterConfig.tags,
       endpointAccess:
         subnets.get('publicSubnetGroupName') != undefined
           ? eks.EndpointAccess.PUBLIC_AND_PRIVATE.onlyFrom(
@@ -380,6 +381,9 @@ export class EKSCluster extends Construct {
         subnetSelection: fargateProfile.subnetSelection,
         vpc: fargateProfile.subnetSelection ? props.clusterVPC : undefined,
         podExecutionRole: fargateProfile.podExecutionRole,
+      });
+      taggs.forEach((v, k) => {
+        fargate.tags.setTag(k, v);
       });
       fargate.podExecutionRole.addManagedPolicy(
         iam.ManagedPolicy.fromAwsManagedPolicyName(

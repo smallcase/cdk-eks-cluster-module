@@ -1,0 +1,22 @@
+{
+  "packageFiles": [
+    {
+      "filename": "/Users/bharatparmar/smallcaseWorking/constructs/cdk-eks-cluster-module/package.json",
+      "type": "json"
+    }
+  ],
+  "bumpFiles": [
+    {
+      "filename": "/Users/bharatparmar/smallcaseWorking/constructs/cdk-eks-cluster-module/package.json",
+      "type": "json"
+    }
+  ],
+  "commitAll": false,
+  "infile": "/Users/bharatparmar/smallcaseWorking/constructs/cdk-eks-cluster-module/dist/changelog.md",
+  "header": "",
+  "skip": {
+    "commit": true,
+    "tag": true,
+    "bump": true
+  }
+}
