@@ -99,7 +99,7 @@ export interface ArgoCD {
 export interface EKSClusterProps {
   readonly availabilityZones: string[];
   readonly clusterVPC?: ec2.IVpc;
-  readonly kmsKey: kms.Key;
+  readonly kmsKey?: kms.Key; // Made optional
   readonly workerSecurityGroup: ec2.SecurityGroup;
   readonly clusterConfig: ClusterConfig;
   readonly addonProps?: AddonProps;
@@ -130,7 +130,7 @@ export class EKSCluster extends Construct {
       ...props,
     };
     const commonCompoents: Map<string, ICommonComponentsProps> = this.basicCommonComponents(
-      props.kmsKey.keyArn,
+      props.kmsKey?.keyArn,
       props.clusterConfig.clusterName,
       props.clusterConfig.defaultCommonComponents,
     );
@@ -166,7 +166,7 @@ export class EKSCluster extends Construct {
       defaultCapacity: props.clusterConfig.defaultCapacity,
       vpc: props.clusterVPC,
       securityGroup: props.workerSecurityGroup,
-      secretsEncryptionKey: props.kmsKey,
+      secretsEncryptionKey: props.kmsKey ? props.kmsKey : undefined, // Use KMS key if provided
       kubectlLayer: props.clusterConfig.kubectlLayer,
       tags: props.clusterConfig.tags,
       endpointAccess:
@@ -179,17 +179,14 @@ export class EKSCluster extends Construct {
         subnets.get('publicSubnetGroupName') != undefined
           ? [
             {
-              // subnetType: SubnetType.PRIVATE,
               subnetGroupName: subnets.get('privateSubnetGroupName'),
             },
             {
-              // subnetType: SubnetType.PUBLIC,
               subnetGroupName: subnets.get('publicSubnetGroupName'),
             },
           ]
           : [
             {
-              // subnetType: SubnetType.PRIVATE,
               subnetGroupName: subnets.get('privateSubnetGroupName'),
             },
           ],
@@ -517,7 +514,8 @@ export class EKSCluster extends Construct {
 
   }
 
-  private basicCommonComponents(kmsKeyArn: string, clusterName: string, props?: DefaultCommonComponents): Map<string, ICommonComponentsProps> {
+  private basicCommonComponents(kmsKeyArn: string | undefined, clusterName: string,
+    props?: DefaultCommonComponents): Map<string, ICommonComponentsProps> {
     let helmChartMap: Map<string, ICommonComponentsProps> = ObjToStrMap({
       'aws-ebs-csi-driver': {
         iamPolicyPath: [`${__dirname}/../../assets/policy/aws-ebs-csi-driver-policy.json`],
@@ -553,7 +551,7 @@ export class EKSCluster extends Construct {
                 parameters: {
                   type: 'gp3',
                   encrypted: 'true',
-                  kmsKeyId: kmsKeyArn,
+                  ...(kmsKeyArn ? { kmsKeyId: kmsKeyArn } : {}), // Conditionally add kmsKeyId if present
                 },
               },
               {
@@ -571,122 +569,10 @@ export class EKSCluster extends Construct {
                 parameters: {
                   type: 'gp2',
                   encrypted: 'true',
-                  kmsKeyId: kmsKeyArn,
+                  ...(kmsKeyArn ? { kmsKeyId: kmsKeyArn } : {}), // Conditionally add kmsKeyId if present
                 },
               },
             ],
-          },
-        },
-      },
-      'aws-efs-csi-driver': {
-        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-efs-csi-driver-policy.json`],
-        serviceAccounts: ['efs-csi-controller-sa', 'efs-csi-node-sa'],
-        helm: {
-          chartName: 'aws-efs-csi-driver',
-          chartVersion: '2.3.6',
-          helmRepository: 'https://kubernetes-sigs.github.io/aws-efs-csi-driver/',
-          namespace: props?.awsEfsCsiDriver?.namespace ?? 'kube-system',
-          helmValues: {
-            controller: {
-              serviceAccount: {
-                create: false,
-                name: 'efs-csi-controller-sa',
-              },
-            },
-            node: {
-              serviceAccount: {
-                create: false,
-                name: 'efs-csi-node-sa',
-              },
-            },
-          },
-        },
-      },
-      'node-problem-detector': {
-        helm: {
-          chartName: 'node-problem-detector',
-          chartVersion: '2.3.12',
-          localHelmChart: `${__dirname}/../../assets/helmCharts/node-problem-detector`,
-          namespace: 'kube-system',
-          helmValues: {
-            serviceAccount: {
-              create: true,
-            },
-          },
-        },
-      },
-      'private-external-dns': {
-        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-external-dns-policy.json`],
-        serviceAccounts: ['private-external-dns'],
-        helm: {
-          chartName: 'external-dns',
-          chartReleaseName: 'private-external-dns',
-          chartVersion: '1.14.3',
-          helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
-          namespace: props?.externalDns?.namespace ?? 'internal-system',
-          helmValues: {
-            interval: '5m',
-            triggerLoopOnEvent: true,
-            extraArgs: [
-              '--aws-zone-type=private',
-              '--annotation-filter=external-dns.alpha.kubernetes.io/dns-type in (private)',
-              `--txt-owner-id=${clusterName}`,
-              '--aws-zones-cache-duration=1h',
-              '--aws-batch-change-size=4000',
-              '--aws-batch-change-interval=10s',
-            ],
-            serviceAccount: {
-              create: false,
-              name: 'private-external-dns',
-            },
-          },
-        },
-      },
-      'public-external-dns': {
-        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-external-dns-policy.json`],
-        serviceAccounts: ['public-external-dns'],
-        helm: {
-          chartName: 'external-dns',
-          chartReleaseName: 'public-external-dns',
-          chartVersion: '1.14.3',
-          helmRepository: 'https://kubernetes-sigs.github.io/external-dns/',
-          namespace: props?.externalDns?.namespace ?? 'internal-system',
-          helmValues: {
-            interval: '5m',
-            triggerLoopOnEvent: true,
-            extraArgs: [
-              '--annotation-filter=external-dns.alpha.kubernetes.io/dns-type in (public)',
-              `--txt-owner-id=${clusterName}`,
-              '--aws-zones-cache-duration=1h',
-              '--aws-batch-change-size=4000',
-              '--aws-batch-change-interval=10s',
-            ],
-            serviceAccount: {
-              create: false,
-              name: 'public-external-dns',
-            },
-          },
-        },
-      },
-      'cluster-autoscaler': {
-        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-cluster-autoscaler-policy.json`],
-        serviceAccounts: ['cluster-autoscaler'],
-        helm: {
-          chartName: 'cluster-autoscaler',
-          chartVersion: '9.21.1',
-          helmRepository: 'https://kubernetes.github.io/autoscaler',
-          namespace: props?.clusterAutoscaler?.namespace ?? 'internal-system',
-          helmValues: {
-            awsRegion: 'ap-south-1',
-            autoDiscovery: {
-              clusterName: clusterName,
-            },
-            rbac: {
-              serviceAccount: {
-                create: false,
-                name: 'cluster-autoscaler',
-              },
-            },
           },
         },
       },
