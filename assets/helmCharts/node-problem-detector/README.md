@@ -1,6 +1,6 @@
 # node-problem-detector
 
-![Version: 2.3.12](https://img.shields.io/badge/Version-2.3.12-informational?style=flat-square) ![AppVersion: v0.8.15](https://img.shields.io/badge/AppVersion-v0.8.15-informational?style=flat-square)
+![Version: 2.3.18](https://img.shields.io/badge/Version-2.3.18-informational?style=flat-square) ![AppVersion: v0.8.20](https://img.shields.io/badge/AppVersion-v0.8.20-informational?style=flat-square)
 
 This chart installs a [node-problem-detector](https://github.com/kubernetes/node-problem-detector) daemonset. This tool aims to make various node problems visible to the upstream layers in cluster management stack. It is a daemon which runs on each node, detects node problems and reports them to apiserver.
 
@@ -8,34 +8,34 @@ This chart installs a [node-problem-detector](https://github.com/kubernetes/node
 
 ## How to install this chart
 
-Add Delivery Hero public chart repo:
+A simple install with default values, latest chart version and generated name:
 
 ```console
-helm repo add deliveryhero https://charts.deliveryhero.io/
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector
 ```
 
-A simple install with default values:
+To install a specific version of this chart:
 
 ```console
-helm install deliveryhero/node-problem-detector
+helm install --generate-name oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.18
 ```
 
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release deliveryhero/node-problem-detector
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector
 ```
 
 To install with some set values:
 
 ```console
-helm install my-release deliveryhero/node-problem-detector --set values_key1=value1 --set values_key2=value2
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --set values_key1=value1 --set values_key2=value2
 ```
 
 To install with custom values file:
 
 ```console
-helm install my-release deliveryhero/node-problem-detector -f values.yaml
+helm install my-release oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector -f values.yaml
 ```
 
 ## Source Code
@@ -49,6 +49,7 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | annotations | object | `{}` |  |
+| dnsPolicy | string | `"ClusterFirst"` |  |
 | env | string | `nil` |  |
 | extraContainers | list | `[]` |  |
 | extraVolumeMounts | list | `[]` |  |
@@ -59,7 +60,7 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | image.digest | string | `""` | the image digest. If given it takes precedence over a given tag. |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"registry.k8s.io/node-problem-detector/node-problem-detector"` |  |
-| image.tag | string | `"v0.8.15"` |  |
+| image.tag | string | `"v0.8.20"` |  |
 | imagePullSecrets | list | `[]` |  |
 | labels | object | `{}` |  |
 | logDir.host | string | `"/var/log/"` | log directory on k8s host |
@@ -74,6 +75,7 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | metrics.prometheusRule.enabled | bool | `false` |  |
 | metrics.serviceMonitor.additionalLabels | object | `{}` |  |
 | metrics.serviceMonitor.additionalRelabelings | list | `[]` |  |
+| metrics.serviceMonitor.attachMetadata.node | bool | `false` |  |
 | metrics.serviceMonitor.enabled | bool | `false` |  |
 | metrics.serviceMonitor.metricRelabelings | list | `[]` |  |
 | nameOverride | string | `""` |  |
@@ -91,7 +93,7 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 | settings.custom_plugin_monitors | list | `[]` |  |
 | settings.extraArgs | list | `[]` |  |
 | settings.heartBeatPeriod | string | `"5m0s"` | Syncing interval with API server |
-| settings.log_monitors | list | `["/config/kernel-monitor.json","/config/docker-monitor.json"]` | User-specified custom monitor definitions |
+| settings.log_monitors | list | `["/config/kernel-monitor.json","/config/docker-monitor.json","/config/readonly-monitor.json"]` | User-specified custom monitor definitions |
 | settings.prometheus_address | string | `"0.0.0.0"` | Prometheus exporter address |
 | settings.prometheus_port | int | `20257` | Prometheus exporter port |
 | tolerations[0].effect | string | `"NoSchedule"` |  |
@@ -103,4 +105,10 @@ helm install my-release deliveryhero/node-problem-detector -f values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| max-rocket-internet | <no-reply@deliveryhero.com> |  |
+| max-rocket-internet |  | <https://github.com/max-rocket-internet> |
+
+## Chart source and versions
+
+Chart source: [github.com/deliveryhero/helm-charts/node-problem-detector](https://github.com/deliveryhero/helm-charts/tree/master/stable/node-problem-detector)
+
+Older chart versions: [github.com/deliveryhero/helm-charts/pkgs/container/helm-charts/node-problem-detector](https://github.com/deliveryhero/helm-charts/pkgs/container/helm-charts%2Fnode-problem-detector)
