@@ -3844,6 +3844,11 @@ public readonly version: string;
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_12_5">V1_12_5</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.12.5. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_12_5_2">V1_12_5_2</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.12.5.2. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_17_1_1">V1_17_1_1</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.17.1.1. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_18_6_1">V1_18_6_1</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.18.6.1. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_19_0_1">V1_19_0_1</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.19.0.1. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_19_2_1">V1_19_2_1</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.19.2.1. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_19_2_5">V1_19_2_5</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.19.2.5. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_19_3_1">V1_19_3_1</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.19.3.1. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_6_3">V1_6_3</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.6.3. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_7_10">V1_7_10</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.7.10. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_7_5">V1_7_5</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.7.5. |
@@ -4009,6 +4014,66 @@ public readonly V1_17_1_1: VpcCniAddonVersion;
 - *Type:* <a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a>
 
 vpc-cni version 1.17.1.1.
+
+---
+
+##### `V1_18_6_1`<sup>Required</sup> <a name="V1_18_6_1" id="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_18_6_1"></a>
+
+```typescript
+public readonly V1_18_6_1: VpcCniAddonVersion;
+```
+
+- *Type:* <a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a>
+
+vpc-cni version 1.18.6.1.
+
+---
+
+##### `V1_19_0_1`<sup>Required</sup> <a name="V1_19_0_1" id="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_19_0_1"></a>
+
+```typescript
+public readonly V1_19_0_1: VpcCniAddonVersion;
+```
+
+- *Type:* <a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a>
+
+vpc-cni version 1.19.0.1.
+
+---
+
+##### `V1_19_2_1`<sup>Required</sup> <a name="V1_19_2_1" id="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_19_2_1"></a>
+
+```typescript
+public readonly V1_19_2_1: VpcCniAddonVersion;
+```
+
+- *Type:* <a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a>
+
+vpc-cni version 1.19.2.1.
+
+---
+
+##### `V1_19_2_5`<sup>Required</sup> <a name="V1_19_2_5" id="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_19_2_5"></a>
+
+```typescript
+public readonly V1_19_2_5: VpcCniAddonVersion;
+```
+
+- *Type:* <a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a>
+
+vpc-cni version 1.19.2.5.
+
+---
+
+##### `V1_19_3_1`<sup>Required</sup> <a name="V1_19_3_1" id="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_19_3_1"></a>
+
+```typescript
+public readonly V1_19_3_1: VpcCniAddonVersion;
+```
+
+- *Type:* <a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a>
+
+vpc-cni version 1.19.3.1.
 
 ---
 

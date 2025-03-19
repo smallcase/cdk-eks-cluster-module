@@ -50,6 +50,9 @@ export interface NodeGroupConfig {
 }
 
 export interface InternalMap {
+  /**
+  * @jsii ignore
+  */
   readonly [name: string]: string;
 }
 export interface ClusterConfig {
@@ -605,7 +608,7 @@ export class EKSCluster extends Construct {
       'node-problem-detector': {
         helm: {
           chartName: 'node-problem-detector',
-          chartVersion: '2.3.12',
+          chartVersion: '2.3.18',
           localHelmChart: `${__dirname}/../../assets/helmCharts/node-problem-detector`,
           namespace: 'kube-system',
           helmValues: {
