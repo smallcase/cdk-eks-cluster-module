@@ -255,10 +255,10 @@ export class EKSCluster extends Construct {
         JSON.parse(JSON.stringify(nodeGroup.labels)),
       );
       // eslint-disable-next-line max-len
-      const nodeSubnets: ec2.SubnetSelection | undefined = nodeGroup.subnetAz ? { subnetGroupName: nodeGroup.subnetGroupName, availabilityZones: nodeGroup.subnetAz } : {
+      const nodeSubnets: ec2.SubnetSelection | undefined = nodeGroup.subnetAz ? {
         subnetGroupName: nodeGroup.subnetGroupName,
-      };
-
+        availabilityZones: nodeGroup.subnetAz,
+      } : { subnetGroupName: nodeGroup.subnetGroupName };
       if (nodeGroup?.sshKeyName) {
         const node = new eks.Nodegroup(this, nodeGroup.name, {
           cluster: this.cluster,
@@ -608,7 +608,7 @@ export class EKSCluster extends Construct {
       'node-problem-detector': {
         helm: {
           chartName: 'node-problem-detector',
-          chartVersion: '2.3.18',
+          chartVersion: '2.3.21',
           localHelmChart: `${__dirname}/../../assets/helmCharts/node-problem-detector`,
           namespace: 'kube-system',
           helmValues: {
