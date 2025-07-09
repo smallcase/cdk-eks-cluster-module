@@ -45,6 +45,9 @@ spec:
       hostNetwork: {{ .Values.hostNetwork }}
       hostPID: {{ .Values.hostPID }}
       dnsPolicy: {{ .Values.dnsPolicy }}
+      {{- if .Values.dnsConfig }}
+      dnsConfig: {{ toYaml .Values.dnsConfig | nindent 8 }}
+      {{- end }}
       terminationGracePeriodSeconds: 30
       {{- if .Values.priorityClassName }}
       priorityClassName: {{ .Values.priorityClassName | quote }}
@@ -77,9 +80,11 @@ spec:
             - name: log
               mountPath: {{ default (default "/var/log/" .Values.logDir.host) .Values.logDir.pod }}
               readOnly: true
+            {{- if ((.Values.volume).localtime).enabled }}
             - name: localtime
               mountPath: /etc/localtime
               readOnly: true
+            {{- end }}
             - name: custom-config
               mountPath: /custom-config
               readOnly: true
@@ -110,10 +115,12 @@ spec:
         - name: log
           hostPath:
             path: {{ default "/var/log/" .Values.logDir.host }}
+        {{- if ((.Values.volume).localtime).enabled }}
         - name: localtime
           hostPath:
             path: /etc/localtime
             type: {{ default "FileOrCreate" .Values.volume.localtime.type }}
+        {{- end }}
         - name: custom-config
           configMap:
             name: {{ include "node-problem-detector.customConfig" . }}
