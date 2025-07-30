@@ -1,0 +1,27 @@
+name: 'SonarQube Scan'
+
+on:
+  push:
+    branches:
+      - '*'
+    paths:
+      - '**'
+
+  workflow_dispatch:
+    inputs:
+      ENVIRONMENT:
+        description: 'Environment Name'
+        type: environment
+        required: true
+        default: staging
+
+jobs:
+  sonar_scan:
+    uses: smallcase/sc-infra-configs/.github/workflows/sonarqube_scan.yaml@master
+    with:
+      ENVIRONMENT: ${{ inputs.ENVIRONMENT  || 'staging' }}
+      RUNNER_NAME: arc-runner-set-dind
+      APPLICATION_NAME: 'cdk-eks-cluster-module'
+      BRANCH_NAME: '${{ github.ref_name }}'
+      SONAR_SCAN: true
+    secrets: inherit
