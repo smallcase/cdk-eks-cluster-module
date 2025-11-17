@@ -164,6 +164,16 @@ export class VpcCniAddonVersion extends AddonVersion {
   public static readonly V1_19_5_3 = VpcCniAddonVersion.of('v1.19.5-eksbuild.3');
 
   /**
+ * vpc-cni version 1.20.3
+ */
+  public static readonly V1_20_3_1 = VpcCniAddonVersion.of('v1.20.3-eksbuild.1');
+
+  /**
+ * vpc-cni version 1.20.4
+ */
+  public static readonly V1_20_4_1 = VpcCniAddonVersion.of('v1.20.4-eksbuild.1');
+
+  /**
    * Custom add-on version
    * @param version custom add-on version
    */

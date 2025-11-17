@@ -58,7 +58,7 @@ const project = new AwsCdkConstructLibrary({
   // projectType: ProjectType.UNKNOWN,  /* Which type of project this is (library/app). */
   // release: undefined,                /* Add release management to this project. */
 });
-const common_exclude = ['cdk.out', 'src/onboard.json', 'cdk.context.json', 'image', 'yarn-error.log', 'coverage', '.vscode'];
+const common_exclude = ['cdk.out', 'src/onboard.json', 'cdk.context.json', 'image', 'yarn-error.log', 'coverage', '.vscode', '.DS_Store'];
 project.gitignore.exclude(...common_exclude);
 project.npmignore.exclude(...common_exclude);
 project.synth();
