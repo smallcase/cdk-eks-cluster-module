@@ -62,7 +62,7 @@ Returns a string representation of this construct.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@smallcase/cdk-eks-cluster-module.CommonHelmCharts.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@smallcase/cdk-eks-cluster-module.CommonHelmCharts.isConstruct"></a>
 
 ```typescript
 import { CommonHelmCharts } from '@smallcase/cdk-eks-cluster-module'
@@ -71,6 +71,20 @@ CommonHelmCharts.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@smallcase/cdk-eks-cluster-module.CommonHelmCharts.isConstruct.parameter.x"></a>
 
@@ -460,7 +474,7 @@ node metadata ends up in the Cloud Assembly.)
 ##### `obtainDependencies` <a name="obtainDependencies" id="@smallcase/cdk-eks-cluster-module.CoreDnsAddon.obtainDependencies"></a>
 
 ```typescript
-public obtainDependencies(): Stack | CfnResource[]
+public obtainDependencies(): (Stack | CfnResource)[]
 ```
 
 Retrieves an array of resources this resource depends on.
@@ -543,7 +557,7 @@ tree inspector to collect and process attributes.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@smallcase/cdk-eks-cluster-module.CoreDnsAddon.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@smallcase/cdk-eks-cluster-module.CoreDnsAddon.isConstruct"></a>
 
 ```typescript
 import { CoreDnsAddon } from '@smallcase/cdk-eks-cluster-module'
@@ -552,6 +566,20 @@ CoreDnsAddon.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@smallcase/cdk-eks-cluster-module.CoreDnsAddon.isConstruct.parameter.x"></a>
 
@@ -788,7 +816,7 @@ The configuration values that you provided.
 ##### `podIdentityAssociations`<sup>Optional</sup> <a name="podIdentityAssociations" id="@smallcase/cdk-eks-cluster-module.CoreDnsAddon.property.podIdentityAssociations"></a>
 
 ```typescript
-public readonly podIdentityAssociations: IResolvable | IResolvable | PodIdentityAssociationProperty[];
+public readonly podIdentityAssociations: IResolvable | (IResolvable | PodIdentityAssociationProperty)[];
 ```
 
 - *Type:* aws-cdk-lib.IResolvable | aws-cdk-lib.IResolvable | aws-cdk-lib.aws_eks.CfnAddon.PodIdentityAssociationProperty[]
@@ -950,7 +978,7 @@ public addServiceAccountWithIamRole(serviceAccountName: string, serviceAccountNa
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@smallcase/cdk-eks-cluster-module.EKSCluster.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@smallcase/cdk-eks-cluster-module.EKSCluster.isConstruct"></a>
 
 ```typescript
 import { EKSCluster } from '@smallcase/cdk-eks-cluster-module'
@@ -959,6 +987,20 @@ EKSCluster.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@smallcase/cdk-eks-cluster-module.EKSCluster.isConstruct.parameter.x"></a>
 
@@ -1392,7 +1434,7 @@ node metadata ends up in the Cloud Assembly.)
 ##### `obtainDependencies` <a name="obtainDependencies" id="@smallcase/cdk-eks-cluster-module.KubeProxyAddon.obtainDependencies"></a>
 
 ```typescript
-public obtainDependencies(): Stack | CfnResource[]
+public obtainDependencies(): (Stack | CfnResource)[]
 ```
 
 Retrieves an array of resources this resource depends on.
@@ -1475,7 +1517,7 @@ tree inspector to collect and process attributes.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@smallcase/cdk-eks-cluster-module.KubeProxyAddon.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@smallcase/cdk-eks-cluster-module.KubeProxyAddon.isConstruct"></a>
 
 ```typescript
 import { KubeProxyAddon } from '@smallcase/cdk-eks-cluster-module'
@@ -1484,6 +1526,20 @@ KubeProxyAddon.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@smallcase/cdk-eks-cluster-module.KubeProxyAddon.isConstruct.parameter.x"></a>
 
@@ -1720,7 +1776,7 @@ The configuration values that you provided.
 ##### `podIdentityAssociations`<sup>Optional</sup> <a name="podIdentityAssociations" id="@smallcase/cdk-eks-cluster-module.KubeProxyAddon.property.podIdentityAssociations"></a>
 
 ```typescript
-public readonly podIdentityAssociations: IResolvable | IResolvable | PodIdentityAssociationProperty[];
+public readonly podIdentityAssociations: IResolvable | (IResolvable | PodIdentityAssociationProperty)[];
 ```
 
 - *Type:* aws-cdk-lib.IResolvable | aws-cdk-lib.IResolvable | aws-cdk-lib.aws_eks.CfnAddon.PodIdentityAssociationProperty[]
@@ -2156,7 +2212,7 @@ node metadata ends up in the Cloud Assembly.)
 ##### `obtainDependencies` <a name="obtainDependencies" id="@smallcase/cdk-eks-cluster-module.VpcEniAddon.obtainDependencies"></a>
 
 ```typescript
-public obtainDependencies(): Stack | CfnResource[]
+public obtainDependencies(): (Stack | CfnResource)[]
 ```
 
 Retrieves an array of resources this resource depends on.
@@ -2239,7 +2295,7 @@ tree inspector to collect and process attributes.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@smallcase/cdk-eks-cluster-module.VpcEniAddon.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@smallcase/cdk-eks-cluster-module.VpcEniAddon.isConstruct"></a>
 
 ```typescript
 import { VpcEniAddon } from '@smallcase/cdk-eks-cluster-module'
@@ -2248,6 +2304,20 @@ VpcEniAddon.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@smallcase/cdk-eks-cluster-module.VpcEniAddon.isConstruct.parameter.x"></a>
 
@@ -2484,7 +2554,7 @@ The configuration values that you provided.
 ##### `podIdentityAssociations`<sup>Optional</sup> <a name="podIdentityAssociations" id="@smallcase/cdk-eks-cluster-module.VpcEniAddon.property.podIdentityAssociations"></a>
 
 ```typescript
-public readonly podIdentityAssociations: IResolvable | IResolvable | PodIdentityAssociationProperty[];
+public readonly podIdentityAssociations: IResolvable | (IResolvable | PodIdentityAssociationProperty)[];
 ```
 
 - *Type:* aws-cdk-lib.IResolvable | aws-cdk-lib.IResolvable | aws-cdk-lib.aws_eks.CfnAddon.PodIdentityAssociationProperty[]
@@ -3420,6 +3490,7 @@ const nodeGroupConfig: NodeGroupConfig = { ... }
 | <code><a href="#@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.subnetGroupName">subnetGroupName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.taints">taints</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.InternalMap">InternalMap</a></code> | *No description.* |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.amiType">amiType</a></code> | <code>aws-cdk-lib.aws_eks.NodegroupAmiType</code> | *No description.* |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.capacityType">capacityType</a></code> | <code>aws-cdk-lib.aws_eks.CapacityType</code> | *No description.* |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.desiredSize">desiredSize</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.diskSize">diskSize</a></code> | <code>number</code> | *No description.* |
@@ -3498,6 +3569,16 @@ public readonly taints: InternalMap;
 ```
 
 - *Type:* <a href="#@smallcase/cdk-eks-cluster-module.InternalMap">InternalMap</a>
+
+---
+
+##### `amiType`<sup>Optional</sup> <a name="amiType" id="@smallcase/cdk-eks-cluster-module.NodeGroupConfig.property.amiType"></a>
+
+```typescript
+public readonly amiType: NodegroupAmiType;
+```
+
+- *Type:* aws-cdk-lib.aws_eks.NodegroupAmiType
 
 ---
 
@@ -3850,6 +3931,8 @@ public readonly version: string;
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_19_2_5">V1_19_2_5</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.19.2.5. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_19_3_1">V1_19_3_1</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.19.3.1. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_19_5_3">V1_19_5_3</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.19.5. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_20_3_1">V1_20_3_1</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.20.3. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_20_4_1">V1_20_4_1</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.20.4. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_6_3">V1_6_3</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.6.3. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_7_10">V1_7_10</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.7.10. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_7_5">V1_7_5</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.7.5. |
@@ -4087,6 +4170,30 @@ public readonly V1_19_5_3: VpcCniAddonVersion;
 - *Type:* <a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a>
 
 vpc-cni version 1.19.5.
+
+---
+
+##### `V1_20_3_1`<sup>Required</sup> <a name="V1_20_3_1" id="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_20_3_1"></a>
+
+```typescript
+public readonly V1_20_3_1: VpcCniAddonVersion;
+```
+
+- *Type:* <a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a>
+
+vpc-cni version 1.20.3.
+
+---
+
+##### `V1_20_4_1`<sup>Required</sup> <a name="V1_20_4_1" id="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_20_4_1"></a>
+
+```typescript
+public readonly V1_20_4_1: VpcCniAddonVersion;
+```
+
+- *Type:* <a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a>
+
+vpc-cni version 1.20.4.
 
 ---
 

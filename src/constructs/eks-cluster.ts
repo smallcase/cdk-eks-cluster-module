@@ -45,6 +45,7 @@ export interface NodeGroupConfig {
   readonly tags?: InternalMap;
   // replace node
   readonly nodeAMIVersion?: string;
+  readonly amiType?: eks.NodegroupAmiType;
   readonly launchTemplateSpec?: eks.LaunchTemplateSpec;
   readonly capacityType?: eks.CapacityType;
 }
@@ -272,6 +273,7 @@ export class EKSCluster extends Construct {
           desiredSize: nodeGroup.desiredSize,
           subnets: nodeSubnets,
           taints: taints,
+          amiType: nodeGroup.amiType,
           labels: GetKubernetesLabels(nodeLabels),
           tags: nodeGroup.tags,
           remoteAccess: {
@@ -298,6 +300,7 @@ export class EKSCluster extends Construct {
           diskSize: nodeGroup.diskSize,
           subnets: nodeSubnets,
           taints: taints,
+          amiType: nodeGroup.amiType,
           labels: GetKubernetesLabels(nodeLabels),
           tags: nodeGroup.tags,
         });
