@@ -43,6 +43,7 @@ new CommonHelmCharts(scope: Construct, id: string, props: CommonHelmChartsProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.CommonHelmCharts.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.CommonHelmCharts.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -53,6 +54,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@smallcase/cdk-eks-cluster-module.CommonHelmCharts.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@smallcase/cdk-eks-cluster-module.CommonHelmCharts.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -156,6 +178,7 @@ new CoreDnsAddon(scope: Construct, id: string, props: CoreAddonProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.CoreDnsAddon.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.CoreDnsAddon.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.CoreDnsAddon.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.CoreDnsAddon.addDeletionOverride">addDeletionOverride</a></code> | Syntactic sugar for `addOverride(path, undefined)`. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.CoreDnsAddon.addDependency">addDependency</a></code> | Indicates that this resource depends on another resource and cannot be provisioned unless the other resource has been successfully provisioned. |
@@ -182,6 +205,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@smallcase/cdk-eks-cluster-module.CoreDnsAddon.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@smallcase/cdk-eks-cluster-module.CoreDnsAddon.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `overrideLogicalId` <a name="overrideLogicalId" id="@smallcase/cdk-eks-cluster-module.CoreDnsAddon.overrideLogicalId"></a>
 
@@ -934,6 +978,7 @@ new EKSCluster(scope: Construct, id: string, props: EKSClusterProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.EKSCluster.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.EKSCluster.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.EKSCluster.addServiceAccountWithIamRole">addServiceAccountWithIamRole</a></code> | *No description.* |
 
 ---
@@ -945,6 +990,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@smallcase/cdk-eks-cluster-module.EKSCluster.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@smallcase/cdk-eks-cluster-module.EKSCluster.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addServiceAccountWithIamRole` <a name="addServiceAccountWithIamRole" id="@smallcase/cdk-eks-cluster-module.EKSCluster.addServiceAccountWithIamRole"></a>
 
@@ -1116,6 +1182,7 @@ new KubeProxyAddon(scope: Construct, id: string, props: CoreAddonProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.KubeProxyAddon.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.KubeProxyAddon.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.KubeProxyAddon.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.KubeProxyAddon.addDeletionOverride">addDeletionOverride</a></code> | Syntactic sugar for `addOverride(path, undefined)`. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.KubeProxyAddon.addDependency">addDependency</a></code> | Indicates that this resource depends on another resource and cannot be provisioned unless the other resource has been successfully provisioned. |
@@ -1142,6 +1209,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@smallcase/cdk-eks-cluster-module.KubeProxyAddon.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@smallcase/cdk-eks-cluster-module.KubeProxyAddon.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `overrideLogicalId` <a name="overrideLogicalId" id="@smallcase/cdk-eks-cluster-module.KubeProxyAddon.overrideLogicalId"></a>
 
@@ -1894,6 +1982,7 @@ new VpcEniAddon(scope: Construct, id: string, props: VpcCniAddonProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcEniAddon.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.VpcEniAddon.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcEniAddon.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcEniAddon.addDeletionOverride">addDeletionOverride</a></code> | Syntactic sugar for `addOverride(path, undefined)`. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcEniAddon.addDependency">addDependency</a></code> | Indicates that this resource depends on another resource and cannot be provisioned unless the other resource has been successfully provisioned. |
@@ -1920,6 +2009,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@smallcase/cdk-eks-cluster-module.VpcEniAddon.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@smallcase/cdk-eks-cluster-module.VpcEniAddon.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `overrideLogicalId` <a name="overrideLogicalId" id="@smallcase/cdk-eks-cluster-module.VpcEniAddon.overrideLogicalId"></a>
 
