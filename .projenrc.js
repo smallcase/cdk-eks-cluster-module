@@ -6,7 +6,7 @@ const project = new AwsCdkConstructLibrary({
   author: '@InfraTeam',
   authorAddress: 'bharat.parmar@smallcase.com',
   cdkVersion: `${CDK_VERSION}`,
-  cdkVersionPinning: true,
+  cdkVersionPinning: false,
   constructsVersion: '10.0.5',
   constructsVersionPinning: false,
   releaseWorkflow: true,
