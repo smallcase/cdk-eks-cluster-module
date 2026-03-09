@@ -1,7 +1,6 @@
 # cdk-eks-cluster-module
 cdk-eks-cluster-module  is a [CDK](<(github.com/aws-cdk/cdk)>) that helps you configure complete EKS clusters that are fully bootstrapped with the operational software that is needed to deploy and operate workloads. You can describe the configuration for the desired state of your EKS cluster, such as the control plane, worker nodes, and Kubernetes add-ons, as code.
 
-
 ## :sparkles: Features
 
 - :white_check_mark: AWS EKS Cluster Addons
