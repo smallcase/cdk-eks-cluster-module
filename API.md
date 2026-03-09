@@ -4043,6 +4043,7 @@ public readonly version: string;
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_19_5_3">V1_19_5_3</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.19.5. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_20_3_1">V1_20_3_1</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.20.3. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_20_4_1">V1_20_4_1</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.20.4. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_21_1_3">V1_21_1_3</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.21.1. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_6_3">V1_6_3</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.6.3. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_7_10">V1_7_10</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.7.10. |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_7_5">V1_7_5</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a></code> | vpc-cni version 1.7.5. |
@@ -4304,6 +4305,18 @@ public readonly V1_20_4_1: VpcCniAddonVersion;
 - *Type:* <a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a>
 
 vpc-cni version 1.20.4.
+
+---
+
+##### `V1_21_1_3`<sup>Required</sup> <a name="V1_21_1_3" id="@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion.property.V1_21_1_3"></a>
+
+```typescript
+public readonly V1_21_1_3: VpcCniAddonVersion;
+```
+
+- *Type:* <a href="#@smallcase/cdk-eks-cluster-module.VpcCniAddonVersion">VpcCniAddonVersion</a>
+
+vpc-cni version 1.21.1.
 
 ---
 
