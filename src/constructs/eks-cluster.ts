@@ -6,7 +6,7 @@ import * as kms from 'aws-cdk-lib/aws-kms';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 import { CommonHelmCharts, StandardHelmProps } from './common-helm-charts';
-import { CoreDnsAddon, KubeProxyAddon } from './core-addon';
+import { CoreDnsAddon, KubeProxyAddon, MountpointS3CsiAddon } from './core-addon';
 import {
   VpcCniAddonVersion,
   VpcEniAddon,
@@ -109,6 +109,7 @@ export interface EKSClusterProps {
   readonly addonProps?: AddonProps;
   readonly coreDnsAddonProps?: CoreAddonValuesProps;
   readonly kubeProxyAddonProps?: CoreAddonValuesProps;
+  readonly s3CsiAddonProps?: CoreAddonValuesProps;
   readonly region: string;
 }
 
@@ -417,6 +418,18 @@ export class EKSCluster extends Construct {
       new KubeProxyAddon(this, 'KubeProxyAddon', {
         cluster: this.cluster,
         ...kubeDnsAddonConfig,
+        resolveConflicts: true,
+      });
+    }
+
+    if (props.s3CsiAddonProps) {
+      const s3CsiAddonConfig = this.props.s3CsiAddonProps?.addonVersion && this.props.s3CsiAddonProps?.configurationValues
+        ? { addonVersion: this.props.s3CsiAddonProps?.addonVersion, configurationValues: this.props.s3CsiAddonProps?.configurationValues }
+        : { addonVersion: this.props.s3CsiAddonProps?.addonVersion };
+
+      new MountpointS3CsiAddon(this, 'MountpointS3CsiAddon', {
+        cluster: this.cluster,
+        ...s3CsiAddonConfig,
         resolveConflicts: true,
       });
     }

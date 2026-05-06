@@ -93,3 +93,12 @@ export class KubeProxyAddon extends CoreAddonAbstract {
     });
   }
 }
+
+export class MountpointS3CsiAddon extends CoreAddonAbstract {
+  constructor(scope: Construct, id: string, props: CoreAddonProps) {
+    super(scope, id, {
+      ...props,
+      addonName: 'aws-mountpoint-s3-csi-driver',
+    });
+  }
+}
