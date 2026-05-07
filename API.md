@@ -2,6 +2,806 @@
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
 
+### AwsEfsCsiAddon <a name="AwsEfsCsiAddon" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon"></a>
+
+#### Initializers <a name="Initializers" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.Initializer"></a>
+
+```typescript
+import { AwsEfsCsiAddon } from '@smallcase/cdk-eks-cluster-module'
+
+new AwsEfsCsiAddon(scope: Construct, id: string, props: CoreAddonProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.Initializer.parameter.props">props</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.CoreAddonProps">CoreAddonProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@smallcase/cdk-eks-cluster-module.CoreAddonProps">CoreAddonProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.with">with</a></code> | Applies one or more mixins to this construct. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addDeletionOverride">addDeletionOverride</a></code> | Syntactic sugar for `addOverride(path, undefined)`. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addDependency">addDependency</a></code> | Indicates that this resource depends on another resource and cannot be provisioned unless the other resource has been successfully provisioned. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addDependsOn">addDependsOn</a></code> | Indicates that this resource depends on another resource and cannot be provisioned unless the other resource has been successfully provisioned. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addMetadata">addMetadata</a></code> | Add a value to the CloudFormation Resource Metadata. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addOverride">addOverride</a></code> | Adds an override to the synthesized CloudFormation resource. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addPropertyDeletionOverride">addPropertyDeletionOverride</a></code> | Adds an override that deletes the value of a property from the resource definition. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addPropertyOverride">addPropertyOverride</a></code> | Adds an override to a resource property. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.applyRemovalPolicy">applyRemovalPolicy</a></code> | Sets the deletion policy of the resource based on the removal policy specified. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.getAtt">getAtt</a></code> | Returns a token for an runtime attribute of this resource. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.getMetadata">getMetadata</a></code> | Retrieve a value value from the CloudFormation Resource Metadata. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.obtainDependencies">obtainDependencies</a></code> | Retrieves an array of resources this resource depends on. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.obtainResourceDependencies">obtainResourceDependencies</a></code> | Get a shallow copy of dependencies between this resource and other resources in the same stack. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.removeDependency">removeDependency</a></code> | Indicates that this resource no longer depends on another resource. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.replaceDependency">replaceDependency</a></code> | Replaces one dependency with another. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.inspect">inspect</a></code> | Examines the CloudFormation resource and discloses attributes. |
+
+---
+
+##### `toString` <a name="toString" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
+
+##### `overrideLogicalId` <a name="overrideLogicalId" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.overrideLogicalId"></a>
+
+```typescript
+public overrideLogicalId(newLogicalId: string): void
+```
+
+Overrides the auto-generated logical ID with a specific ID.
+
+###### `newLogicalId`<sup>Required</sup> <a name="newLogicalId" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.overrideLogicalId.parameter.newLogicalId"></a>
+
+- *Type:* string
+
+The new logical ID to use for this stack element.
+
+---
+
+##### `addDeletionOverride` <a name="addDeletionOverride" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addDeletionOverride"></a>
+
+```typescript
+public addDeletionOverride(path: string): void
+```
+
+Syntactic sugar for `addOverride(path, undefined)`.
+
+###### `path`<sup>Required</sup> <a name="path" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addDeletionOverride.parameter.path"></a>
+
+- *Type:* string
+
+The path of the value to delete.
+
+---
+
+##### `addDependency` <a name="addDependency" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addDependency"></a>
+
+```typescript
+public addDependency(target: CfnResource): void
+```
+
+Indicates that this resource depends on another resource and cannot be provisioned unless the other resource has been successfully provisioned.
+
+This can be used for resources across stacks (or nested stack) boundaries
+and the dependency will automatically be transferred to the relevant scope.
+
+###### `target`<sup>Required</sup> <a name="target" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addDependency.parameter.target"></a>
+
+- *Type:* aws-cdk-lib.CfnResource
+
+---
+
+##### ~~`addDependsOn`~~ <a name="addDependsOn" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addDependsOn"></a>
+
+```typescript
+public addDependsOn(target: CfnResource): void
+```
+
+Indicates that this resource depends on another resource and cannot be provisioned unless the other resource has been successfully provisioned.
+
+###### `target`<sup>Required</sup> <a name="target" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addDependsOn.parameter.target"></a>
+
+- *Type:* aws-cdk-lib.CfnResource
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add a value to the CloudFormation Resource Metadata.
+
+> [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html
+
+Note that this is a different set of metadata from CDK node metadata; this
+metadata ends up in the stack template under the resource, whereas CDK
+node metadata ends up in the Cloud Assembly.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html
+
+Note that this is a different set of metadata from CDK node metadata; this
+metadata ends up in the stack template under the resource, whereas CDK
+node metadata ends up in the Cloud Assembly.)
+
+###### `key`<sup>Required</sup> <a name="key" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+---
+
+##### `addOverride` <a name="addOverride" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addOverride"></a>
+
+```typescript
+public addOverride(path: string, value: any): void
+```
+
+Adds an override to the synthesized CloudFormation resource.
+
+To add a
+property override, either use `addPropertyOverride` or prefix `path` with
+"Properties." (i.e. `Properties.TopicName`).
+
+If the override is nested, separate each nested level using a dot (.) in the path parameter.
+If there is an array as part of the nesting, specify the index in the path.
+
+To include a literal `.` in the property name, prefix with a `\`. In most
+programming languages you will need to write this as `"\\."` because the
+`\` itself will need to be escaped.
+
+For example,
+```typescript
+cfnResource.addOverride('Properties.GlobalSecondaryIndexes.0.Projection.NonKeyAttributes', ['myattribute']);
+cfnResource.addOverride('Properties.GlobalSecondaryIndexes.1.ProjectionType', 'INCLUDE');
+```
+would add the overrides
+```json
+"Properties": {
+  "GlobalSecondaryIndexes": [
+    {
+      "Projection": {
+        "NonKeyAttributes": [ "myattribute" ]
+        ...
+      }
+      ...
+    },
+    {
+      "ProjectionType": "INCLUDE"
+      ...
+    },
+  ]
+  ...
+}
+```
+
+The `value` argument to `addOverride` will not be processed or translated
+in any way. Pass raw JSON values in here with the correct capitalization
+for CloudFormation. If you pass CDK classes or structs, they will be
+rendered with lowercased key names, and CloudFormation will reject the
+template.
+
+###### `path`<sup>Required</sup> <a name="path" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addOverride.parameter.path"></a>
+
+- *Type:* string
+
+The path of the property, you can use dot notation to override values in complex types.
+
+Any intermediate keys
+will be created as needed.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addOverride.parameter.value"></a>
+
+- *Type:* any
+
+The value.
+
+Could be primitive or complex.
+
+---
+
+##### `addPropertyDeletionOverride` <a name="addPropertyDeletionOverride" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addPropertyDeletionOverride"></a>
+
+```typescript
+public addPropertyDeletionOverride(propertyPath: string): void
+```
+
+Adds an override that deletes the value of a property from the resource definition.
+
+###### `propertyPath`<sup>Required</sup> <a name="propertyPath" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addPropertyDeletionOverride.parameter.propertyPath"></a>
+
+- *Type:* string
+
+The path to the property.
+
+---
+
+##### `addPropertyOverride` <a name="addPropertyOverride" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addPropertyOverride"></a>
+
+```typescript
+public addPropertyOverride(propertyPath: string, value: any): void
+```
+
+Adds an override to a resource property.
+
+Syntactic sugar for `addOverride("Properties.<...>", value)`.
+
+###### `propertyPath`<sup>Required</sup> <a name="propertyPath" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addPropertyOverride.parameter.propertyPath"></a>
+
+- *Type:* string
+
+The path of the property.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.addPropertyOverride.parameter.value"></a>
+
+- *Type:* any
+
+The value.
+
+---
+
+##### `applyRemovalPolicy` <a name="applyRemovalPolicy" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.applyRemovalPolicy"></a>
+
+```typescript
+public applyRemovalPolicy(policy?: RemovalPolicy, options?: RemovalPolicyOptions): void
+```
+
+Sets the deletion policy of the resource based on the removal policy specified.
+
+The Removal Policy controls what happens to this resource when it stops
+being managed by CloudFormation, either because you've removed it from the
+CDK application or because you've made a change that requires the resource
+to be replaced.
+
+The resource can be deleted (`RemovalPolicy.DESTROY`), or left in your AWS
+account for data recovery and cleanup later (`RemovalPolicy.RETAIN`). In some
+cases, a snapshot can be taken of the resource prior to deletion
+(`RemovalPolicy.SNAPSHOT`). A list of resources that support this policy
+can be found in the following link:
+
+> [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html#aws-attribute-deletionpolicy-options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html#aws-attribute-deletionpolicy-options)
+
+###### `policy`<sup>Optional</sup> <a name="policy" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.applyRemovalPolicy.parameter.policy"></a>
+
+- *Type:* aws-cdk-lib.RemovalPolicy
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.applyRemovalPolicy.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.RemovalPolicyOptions
+
+---
+
+##### `getAtt` <a name="getAtt" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.getAtt"></a>
+
+```typescript
+public getAtt(attributeName: string, typeHint?: ResolutionTypeHint): Reference
+```
+
+Returns a token for an runtime attribute of this resource.
+
+Ideally, use generated attribute accessors (e.g. `resource.arn`), but this can be used for future compatibility
+in case there is no generated attribute.
+
+###### `attributeName`<sup>Required</sup> <a name="attributeName" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.getAtt.parameter.attributeName"></a>
+
+- *Type:* string
+
+The name of the attribute.
+
+---
+
+###### `typeHint`<sup>Optional</sup> <a name="typeHint" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.getAtt.parameter.typeHint"></a>
+
+- *Type:* aws-cdk-lib.ResolutionTypeHint
+
+---
+
+##### `getMetadata` <a name="getMetadata" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.getMetadata"></a>
+
+```typescript
+public getMetadata(key: string): any
+```
+
+Retrieve a value value from the CloudFormation Resource Metadata.
+
+> [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html
+
+Note that this is a different set of metadata from CDK node metadata; this
+metadata ends up in the stack template under the resource, whereas CDK
+node metadata ends up in the Cloud Assembly.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html
+
+Note that this is a different set of metadata from CDK node metadata; this
+metadata ends up in the stack template under the resource, whereas CDK
+node metadata ends up in the Cloud Assembly.)
+
+###### `key`<sup>Required</sup> <a name="key" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.getMetadata.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+##### `obtainDependencies` <a name="obtainDependencies" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.obtainDependencies"></a>
+
+```typescript
+public obtainDependencies(): (Stack | CfnResource)[]
+```
+
+Retrieves an array of resources this resource depends on.
+
+This assembles dependencies on resources across stacks (including nested stacks)
+automatically.
+
+##### `obtainResourceDependencies` <a name="obtainResourceDependencies" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.obtainResourceDependencies"></a>
+
+```typescript
+public obtainResourceDependencies(): CfnResource[]
+```
+
+Get a shallow copy of dependencies between this resource and other resources in the same stack.
+
+##### `removeDependency` <a name="removeDependency" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.removeDependency"></a>
+
+```typescript
+public removeDependency(target: CfnResource): void
+```
+
+Indicates that this resource no longer depends on another resource.
+
+This can be used for resources across stacks (including nested stacks)
+and the dependency will automatically be removed from the relevant scope.
+
+###### `target`<sup>Required</sup> <a name="target" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.removeDependency.parameter.target"></a>
+
+- *Type:* aws-cdk-lib.CfnResource
+
+---
+
+##### `replaceDependency` <a name="replaceDependency" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.replaceDependency"></a>
+
+```typescript
+public replaceDependency(target: CfnResource, newTarget: CfnResource): void
+```
+
+Replaces one dependency with another.
+
+###### `target`<sup>Required</sup> <a name="target" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.replaceDependency.parameter.target"></a>
+
+- *Type:* aws-cdk-lib.CfnResource
+
+The dependency to replace.
+
+---
+
+###### `newTarget`<sup>Required</sup> <a name="newTarget" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.replaceDependency.parameter.newTarget"></a>
+
+- *Type:* aws-cdk-lib.CfnResource
+
+The new dependency to add.
+
+---
+
+##### `inspect` <a name="inspect" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.inspect"></a>
+
+```typescript
+public inspect(inspector: TreeInspector): void
+```
+
+Examines the CloudFormation resource and discloses attributes.
+
+###### `inspector`<sup>Required</sup> <a name="inspector" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.inspect.parameter.inspector"></a>
+
+- *Type:* aws-cdk-lib.TreeInspector
+
+tree inspector to collect and process attributes.
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.isCfnElement">isCfnElement</a></code> | Returns `true` if a construct is a stack element (i.e. part of the synthesized cloudformation template). |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.isCfnResource">isCfnResource</a></code> | Check whether the given object is a CfnResource. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.isConstruct"></a>
+
+```typescript
+import { AwsEfsCsiAddon } from '@smallcase/cdk-eks-cluster-module'
+
+AwsEfsCsiAddon.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isCfnElement` <a name="isCfnElement" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.isCfnElement"></a>
+
+```typescript
+import { AwsEfsCsiAddon } from '@smallcase/cdk-eks-cluster-module'
+
+AwsEfsCsiAddon.isCfnElement(x: any)
+```
+
+Returns `true` if a construct is a stack element (i.e. part of the synthesized cloudformation template).
+
+Uses duck-typing instead of `instanceof` to allow stack elements from different
+versions of this library to be included in the same stack.
+
+###### `x`<sup>Required</sup> <a name="x" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.isCfnElement.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+##### `isCfnResource` <a name="isCfnResource" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.isCfnResource"></a>
+
+```typescript
+import { AwsEfsCsiAddon } from '@smallcase/cdk-eks-cluster-module'
+
+AwsEfsCsiAddon.isCfnResource(x: any)
+```
+
+Check whether the given object is a CfnResource.
+
+###### `x`<sup>Required</sup> <a name="x" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.isCfnResource.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.creationStack">creationStack</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.logicalId">logicalId</a></code> | <code>string</code> | The logical ID for this CloudFormation stack element. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.stack">stack</a></code> | <code>aws-cdk-lib.Stack</code> | The stack in which this element is defined. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.ref">ref</a></code> | <code>string</code> | Return a string that will be resolved to a CloudFormation `{ Ref }` for this element. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.cfnOptions">cfnOptions</a></code> | <code>aws-cdk-lib.ICfnResourceOptions</code> | Options for this resource, such as condition, update policy etc. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.cfnResourceType">cfnResourceType</a></code> | <code>string</code> | AWS resource type. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.attrArn">attrArn</a></code> | <code>string</code> | The ARN of the add-on, such as `arn:aws:eks:us-west-2:111122223333:addon/1-19/vpc-cni/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.tags">tags</a></code> | <code>aws-cdk-lib.TagManager</code> | Tag Manager which manages the tags for this resource. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.addonName">addonName</a></code> | <code>string</code> | The name of the add-on. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.clusterName">clusterName</a></code> | <code>string</code> | The name of your cluster. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.addonVersion">addonVersion</a></code> | <code>string</code> | The version of the add-on. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.configurationValues">configurationValues</a></code> | <code>string</code> | The configuration values that you provided. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.podIdentityAssociations">podIdentityAssociations</a></code> | <code>aws-cdk-lib.IResolvable \| aws-cdk-lib.IResolvable \| aws-cdk-lib.aws_eks.CfnAddon.PodIdentityAssociationProperty[]</code> | An array of Pod Identity Assocations owned by the Addon. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.preserveOnDelete">preserveOnDelete</a></code> | <code>boolean \| aws-cdk-lib.IResolvable</code> | Specifying this option preserves the add-on software on your cluster but Amazon EKS stops managing any settings for the add-on. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.resolveConflicts">resolveConflicts</a></code> | <code>string</code> | How to resolve field value conflicts for an Amazon EKS add-on. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.serviceAccountRoleArn">serviceAccountRoleArn</a></code> | <code>string</code> | The Amazon Resource Name (ARN) of an existing IAM role to bind to the add-on's service account. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.tagsRaw">tagsRaw</a></code> | <code>aws-cdk-lib.CfnTag[]</code> | The metadata that you apply to the add-on to assist with categorization and organization. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `creationStack`<sup>Required</sup> <a name="creationStack" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.creationStack"></a>
+
+```typescript
+public readonly creationStack: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `logicalId`<sup>Required</sup> <a name="logicalId" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.logicalId"></a>
+
+```typescript
+public readonly logicalId: string;
+```
+
+- *Type:* string
+
+The logical ID for this CloudFormation stack element.
+
+The logical ID of the element
+is calculated from the path of the resource node in the construct tree.
+
+To override this value, use `overrideLogicalId(newLogicalId)`.
+
+---
+
+##### `stack`<sup>Required</sup> <a name="stack" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.stack"></a>
+
+```typescript
+public readonly stack: Stack;
+```
+
+- *Type:* aws-cdk-lib.Stack
+
+The stack in which this element is defined.
+
+CfnElements must be defined within a stack scope (directly or indirectly).
+
+---
+
+##### `ref`<sup>Required</sup> <a name="ref" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.ref"></a>
+
+```typescript
+public readonly ref: string;
+```
+
+- *Type:* string
+
+Return a string that will be resolved to a CloudFormation `{ Ref }` for this element.
+
+If, by any chance, the intrinsic reference of a resource is not a string, you could
+coerce it to an IResolvable through `Lazy.any({ produce: resource.ref })`.
+
+---
+
+##### `cfnOptions`<sup>Required</sup> <a name="cfnOptions" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.cfnOptions"></a>
+
+```typescript
+public readonly cfnOptions: ICfnResourceOptions;
+```
+
+- *Type:* aws-cdk-lib.ICfnResourceOptions
+
+Options for this resource, such as condition, update policy etc.
+
+---
+
+##### `cfnResourceType`<sup>Required</sup> <a name="cfnResourceType" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.cfnResourceType"></a>
+
+```typescript
+public readonly cfnResourceType: string;
+```
+
+- *Type:* string
+
+AWS resource type.
+
+---
+
+##### `attrArn`<sup>Required</sup> <a name="attrArn" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.attrArn"></a>
+
+```typescript
+public readonly attrArn: string;
+```
+
+- *Type:* string
+
+The ARN of the add-on, such as `arn:aws:eks:us-west-2:111122223333:addon/1-19/vpc-cni/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` .
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.tags"></a>
+
+```typescript
+public readonly tags: TagManager;
+```
+
+- *Type:* aws-cdk-lib.TagManager
+
+Tag Manager which manages the tags for this resource.
+
+---
+
+##### `addonName`<sup>Required</sup> <a name="addonName" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.addonName"></a>
+
+```typescript
+public readonly addonName: string;
+```
+
+- *Type:* string
+
+The name of the add-on.
+
+---
+
+##### `clusterName`<sup>Required</sup> <a name="clusterName" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.clusterName"></a>
+
+```typescript
+public readonly clusterName: string;
+```
+
+- *Type:* string
+
+The name of your cluster.
+
+---
+
+##### `addonVersion`<sup>Optional</sup> <a name="addonVersion" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.addonVersion"></a>
+
+```typescript
+public readonly addonVersion: string;
+```
+
+- *Type:* string
+
+The version of the add-on.
+
+---
+
+##### `configurationValues`<sup>Optional</sup> <a name="configurationValues" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.configurationValues"></a>
+
+```typescript
+public readonly configurationValues: string;
+```
+
+- *Type:* string
+
+The configuration values that you provided.
+
+---
+
+##### `podIdentityAssociations`<sup>Optional</sup> <a name="podIdentityAssociations" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.podIdentityAssociations"></a>
+
+```typescript
+public readonly podIdentityAssociations: IResolvable | (IResolvable | PodIdentityAssociationProperty)[];
+```
+
+- *Type:* aws-cdk-lib.IResolvable | aws-cdk-lib.IResolvable | aws-cdk-lib.aws_eks.CfnAddon.PodIdentityAssociationProperty[]
+
+An array of Pod Identity Assocations owned by the Addon.
+
+---
+
+##### `preserveOnDelete`<sup>Optional</sup> <a name="preserveOnDelete" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.preserveOnDelete"></a>
+
+```typescript
+public readonly preserveOnDelete: boolean | IResolvable;
+```
+
+- *Type:* boolean | aws-cdk-lib.IResolvable
+
+Specifying this option preserves the add-on software on your cluster but Amazon EKS stops managing any settings for the add-on.
+
+---
+
+##### `resolveConflicts`<sup>Optional</sup> <a name="resolveConflicts" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.resolveConflicts"></a>
+
+```typescript
+public readonly resolveConflicts: string;
+```
+
+- *Type:* string
+
+How to resolve field value conflicts for an Amazon EKS add-on.
+
+---
+
+##### `serviceAccountRoleArn`<sup>Optional</sup> <a name="serviceAccountRoleArn" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.serviceAccountRoleArn"></a>
+
+```typescript
+public readonly serviceAccountRoleArn: string;
+```
+
+- *Type:* string
+
+The Amazon Resource Name (ARN) of an existing IAM role to bind to the add-on's service account.
+
+---
+
+##### `tagsRaw`<sup>Optional</sup> <a name="tagsRaw" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.tagsRaw"></a>
+
+```typescript
+public readonly tagsRaw: CfnTag[];
+```
+
+- *Type:* aws-cdk-lib.CfnTag[]
+
+The metadata that you apply to the add-on to assist with categorization and organization.
+
+---
+
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.CFN_RESOURCE_TYPE_NAME">CFN_RESOURCE_TYPE_NAME</a></code> | <code>string</code> | The CloudFormation resource type name for this resource class. |
+
+---
+
+##### `CFN_RESOURCE_TYPE_NAME`<sup>Required</sup> <a name="CFN_RESOURCE_TYPE_NAME" id="@smallcase/cdk-eks-cluster-module.AwsEfsCsiAddon.property.CFN_RESOURCE_TYPE_NAME"></a>
+
+```typescript
+public readonly CFN_RESOURCE_TYPE_NAME: string;
+```
+
+- *Type:* string
+
+The CloudFormation resource type name for this resource class.
+
+---
+
 ### CommonHelmCharts <a name="CommonHelmCharts" id="@smallcase/cdk-eks-cluster-module.CommonHelmCharts"></a>
 
 #### Initializers <a name="Initializers" id="@smallcase/cdk-eks-cluster-module.CommonHelmCharts.Initializer"></a>
@@ -1941,6 +2741,806 @@ The CloudFormation resource type name for this resource class.
 
 ---
 
+### MountpointS3CsiAddon <a name="MountpointS3CsiAddon" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon"></a>
+
+#### Initializers <a name="Initializers" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.Initializer"></a>
+
+```typescript
+import { MountpointS3CsiAddon } from '@smallcase/cdk-eks-cluster-module'
+
+new MountpointS3CsiAddon(scope: Construct, id: string, props: CoreAddonProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.Initializer.parameter.props">props</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.CoreAddonProps">CoreAddonProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@smallcase/cdk-eks-cluster-module.CoreAddonProps">CoreAddonProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.with">with</a></code> | Applies one or more mixins to this construct. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addDeletionOverride">addDeletionOverride</a></code> | Syntactic sugar for `addOverride(path, undefined)`. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addDependency">addDependency</a></code> | Indicates that this resource depends on another resource and cannot be provisioned unless the other resource has been successfully provisioned. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addDependsOn">addDependsOn</a></code> | Indicates that this resource depends on another resource and cannot be provisioned unless the other resource has been successfully provisioned. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addMetadata">addMetadata</a></code> | Add a value to the CloudFormation Resource Metadata. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addOverride">addOverride</a></code> | Adds an override to the synthesized CloudFormation resource. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addPropertyDeletionOverride">addPropertyDeletionOverride</a></code> | Adds an override that deletes the value of a property from the resource definition. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addPropertyOverride">addPropertyOverride</a></code> | Adds an override to a resource property. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.applyRemovalPolicy">applyRemovalPolicy</a></code> | Sets the deletion policy of the resource based on the removal policy specified. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.getAtt">getAtt</a></code> | Returns a token for an runtime attribute of this resource. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.getMetadata">getMetadata</a></code> | Retrieve a value value from the CloudFormation Resource Metadata. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.obtainDependencies">obtainDependencies</a></code> | Retrieves an array of resources this resource depends on. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.obtainResourceDependencies">obtainResourceDependencies</a></code> | Get a shallow copy of dependencies between this resource and other resources in the same stack. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.removeDependency">removeDependency</a></code> | Indicates that this resource no longer depends on another resource. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.replaceDependency">replaceDependency</a></code> | Replaces one dependency with another. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.inspect">inspect</a></code> | Examines the CloudFormation resource and discloses attributes. |
+
+---
+
+##### `toString` <a name="toString" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
+
+##### `overrideLogicalId` <a name="overrideLogicalId" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.overrideLogicalId"></a>
+
+```typescript
+public overrideLogicalId(newLogicalId: string): void
+```
+
+Overrides the auto-generated logical ID with a specific ID.
+
+###### `newLogicalId`<sup>Required</sup> <a name="newLogicalId" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.overrideLogicalId.parameter.newLogicalId"></a>
+
+- *Type:* string
+
+The new logical ID to use for this stack element.
+
+---
+
+##### `addDeletionOverride` <a name="addDeletionOverride" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addDeletionOverride"></a>
+
+```typescript
+public addDeletionOverride(path: string): void
+```
+
+Syntactic sugar for `addOverride(path, undefined)`.
+
+###### `path`<sup>Required</sup> <a name="path" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addDeletionOverride.parameter.path"></a>
+
+- *Type:* string
+
+The path of the value to delete.
+
+---
+
+##### `addDependency` <a name="addDependency" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addDependency"></a>
+
+```typescript
+public addDependency(target: CfnResource): void
+```
+
+Indicates that this resource depends on another resource and cannot be provisioned unless the other resource has been successfully provisioned.
+
+This can be used for resources across stacks (or nested stack) boundaries
+and the dependency will automatically be transferred to the relevant scope.
+
+###### `target`<sup>Required</sup> <a name="target" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addDependency.parameter.target"></a>
+
+- *Type:* aws-cdk-lib.CfnResource
+
+---
+
+##### ~~`addDependsOn`~~ <a name="addDependsOn" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addDependsOn"></a>
+
+```typescript
+public addDependsOn(target: CfnResource): void
+```
+
+Indicates that this resource depends on another resource and cannot be provisioned unless the other resource has been successfully provisioned.
+
+###### `target`<sup>Required</sup> <a name="target" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addDependsOn.parameter.target"></a>
+
+- *Type:* aws-cdk-lib.CfnResource
+
+---
+
+##### `addMetadata` <a name="addMetadata" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addMetadata"></a>
+
+```typescript
+public addMetadata(key: string, value: any): void
+```
+
+Add a value to the CloudFormation Resource Metadata.
+
+> [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html
+
+Note that this is a different set of metadata from CDK node metadata; this
+metadata ends up in the stack template under the resource, whereas CDK
+node metadata ends up in the Cloud Assembly.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html
+
+Note that this is a different set of metadata from CDK node metadata; this
+metadata ends up in the stack template under the resource, whereas CDK
+node metadata ends up in the Cloud Assembly.)
+
+###### `key`<sup>Required</sup> <a name="key" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addMetadata.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addMetadata.parameter.value"></a>
+
+- *Type:* any
+
+---
+
+##### `addOverride` <a name="addOverride" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addOverride"></a>
+
+```typescript
+public addOverride(path: string, value: any): void
+```
+
+Adds an override to the synthesized CloudFormation resource.
+
+To add a
+property override, either use `addPropertyOverride` or prefix `path` with
+"Properties." (i.e. `Properties.TopicName`).
+
+If the override is nested, separate each nested level using a dot (.) in the path parameter.
+If there is an array as part of the nesting, specify the index in the path.
+
+To include a literal `.` in the property name, prefix with a `\`. In most
+programming languages you will need to write this as `"\\."` because the
+`\` itself will need to be escaped.
+
+For example,
+```typescript
+cfnResource.addOverride('Properties.GlobalSecondaryIndexes.0.Projection.NonKeyAttributes', ['myattribute']);
+cfnResource.addOverride('Properties.GlobalSecondaryIndexes.1.ProjectionType', 'INCLUDE');
+```
+would add the overrides
+```json
+"Properties": {
+  "GlobalSecondaryIndexes": [
+    {
+      "Projection": {
+        "NonKeyAttributes": [ "myattribute" ]
+        ...
+      }
+      ...
+    },
+    {
+      "ProjectionType": "INCLUDE"
+      ...
+    },
+  ]
+  ...
+}
+```
+
+The `value` argument to `addOverride` will not be processed or translated
+in any way. Pass raw JSON values in here with the correct capitalization
+for CloudFormation. If you pass CDK classes or structs, they will be
+rendered with lowercased key names, and CloudFormation will reject the
+template.
+
+###### `path`<sup>Required</sup> <a name="path" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addOverride.parameter.path"></a>
+
+- *Type:* string
+
+The path of the property, you can use dot notation to override values in complex types.
+
+Any intermediate keys
+will be created as needed.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addOverride.parameter.value"></a>
+
+- *Type:* any
+
+The value.
+
+Could be primitive or complex.
+
+---
+
+##### `addPropertyDeletionOverride` <a name="addPropertyDeletionOverride" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addPropertyDeletionOverride"></a>
+
+```typescript
+public addPropertyDeletionOverride(propertyPath: string): void
+```
+
+Adds an override that deletes the value of a property from the resource definition.
+
+###### `propertyPath`<sup>Required</sup> <a name="propertyPath" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addPropertyDeletionOverride.parameter.propertyPath"></a>
+
+- *Type:* string
+
+The path to the property.
+
+---
+
+##### `addPropertyOverride` <a name="addPropertyOverride" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addPropertyOverride"></a>
+
+```typescript
+public addPropertyOverride(propertyPath: string, value: any): void
+```
+
+Adds an override to a resource property.
+
+Syntactic sugar for `addOverride("Properties.<...>", value)`.
+
+###### `propertyPath`<sup>Required</sup> <a name="propertyPath" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addPropertyOverride.parameter.propertyPath"></a>
+
+- *Type:* string
+
+The path of the property.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.addPropertyOverride.parameter.value"></a>
+
+- *Type:* any
+
+The value.
+
+---
+
+##### `applyRemovalPolicy` <a name="applyRemovalPolicy" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.applyRemovalPolicy"></a>
+
+```typescript
+public applyRemovalPolicy(policy?: RemovalPolicy, options?: RemovalPolicyOptions): void
+```
+
+Sets the deletion policy of the resource based on the removal policy specified.
+
+The Removal Policy controls what happens to this resource when it stops
+being managed by CloudFormation, either because you've removed it from the
+CDK application or because you've made a change that requires the resource
+to be replaced.
+
+The resource can be deleted (`RemovalPolicy.DESTROY`), or left in your AWS
+account for data recovery and cleanup later (`RemovalPolicy.RETAIN`). In some
+cases, a snapshot can be taken of the resource prior to deletion
+(`RemovalPolicy.SNAPSHOT`). A list of resources that support this policy
+can be found in the following link:
+
+> [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html#aws-attribute-deletionpolicy-options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html#aws-attribute-deletionpolicy-options)
+
+###### `policy`<sup>Optional</sup> <a name="policy" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.applyRemovalPolicy.parameter.policy"></a>
+
+- *Type:* aws-cdk-lib.RemovalPolicy
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.applyRemovalPolicy.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.RemovalPolicyOptions
+
+---
+
+##### `getAtt` <a name="getAtt" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.getAtt"></a>
+
+```typescript
+public getAtt(attributeName: string, typeHint?: ResolutionTypeHint): Reference
+```
+
+Returns a token for an runtime attribute of this resource.
+
+Ideally, use generated attribute accessors (e.g. `resource.arn`), but this can be used for future compatibility
+in case there is no generated attribute.
+
+###### `attributeName`<sup>Required</sup> <a name="attributeName" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.getAtt.parameter.attributeName"></a>
+
+- *Type:* string
+
+The name of the attribute.
+
+---
+
+###### `typeHint`<sup>Optional</sup> <a name="typeHint" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.getAtt.parameter.typeHint"></a>
+
+- *Type:* aws-cdk-lib.ResolutionTypeHint
+
+---
+
+##### `getMetadata` <a name="getMetadata" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.getMetadata"></a>
+
+```typescript
+public getMetadata(key: string): any
+```
+
+Retrieve a value value from the CloudFormation Resource Metadata.
+
+> [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html
+
+Note that this is a different set of metadata from CDK node metadata; this
+metadata ends up in the stack template under the resource, whereas CDK
+node metadata ends up in the Cloud Assembly.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html
+
+Note that this is a different set of metadata from CDK node metadata; this
+metadata ends up in the stack template under the resource, whereas CDK
+node metadata ends up in the Cloud Assembly.)
+
+###### `key`<sup>Required</sup> <a name="key" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.getMetadata.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+##### `obtainDependencies` <a name="obtainDependencies" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.obtainDependencies"></a>
+
+```typescript
+public obtainDependencies(): (Stack | CfnResource)[]
+```
+
+Retrieves an array of resources this resource depends on.
+
+This assembles dependencies on resources across stacks (including nested stacks)
+automatically.
+
+##### `obtainResourceDependencies` <a name="obtainResourceDependencies" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.obtainResourceDependencies"></a>
+
+```typescript
+public obtainResourceDependencies(): CfnResource[]
+```
+
+Get a shallow copy of dependencies between this resource and other resources in the same stack.
+
+##### `removeDependency` <a name="removeDependency" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.removeDependency"></a>
+
+```typescript
+public removeDependency(target: CfnResource): void
+```
+
+Indicates that this resource no longer depends on another resource.
+
+This can be used for resources across stacks (including nested stacks)
+and the dependency will automatically be removed from the relevant scope.
+
+###### `target`<sup>Required</sup> <a name="target" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.removeDependency.parameter.target"></a>
+
+- *Type:* aws-cdk-lib.CfnResource
+
+---
+
+##### `replaceDependency` <a name="replaceDependency" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.replaceDependency"></a>
+
+```typescript
+public replaceDependency(target: CfnResource, newTarget: CfnResource): void
+```
+
+Replaces one dependency with another.
+
+###### `target`<sup>Required</sup> <a name="target" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.replaceDependency.parameter.target"></a>
+
+- *Type:* aws-cdk-lib.CfnResource
+
+The dependency to replace.
+
+---
+
+###### `newTarget`<sup>Required</sup> <a name="newTarget" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.replaceDependency.parameter.newTarget"></a>
+
+- *Type:* aws-cdk-lib.CfnResource
+
+The new dependency to add.
+
+---
+
+##### `inspect` <a name="inspect" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.inspect"></a>
+
+```typescript
+public inspect(inspector: TreeInspector): void
+```
+
+Examines the CloudFormation resource and discloses attributes.
+
+###### `inspector`<sup>Required</sup> <a name="inspector" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.inspect.parameter.inspector"></a>
+
+- *Type:* aws-cdk-lib.TreeInspector
+
+tree inspector to collect and process attributes.
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.isCfnElement">isCfnElement</a></code> | Returns `true` if a construct is a stack element (i.e. part of the synthesized cloudformation template). |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.isCfnResource">isCfnResource</a></code> | Check whether the given object is a CfnResource. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.isConstruct"></a>
+
+```typescript
+import { MountpointS3CsiAddon } from '@smallcase/cdk-eks-cluster-module'
+
+MountpointS3CsiAddon.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isCfnElement` <a name="isCfnElement" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.isCfnElement"></a>
+
+```typescript
+import { MountpointS3CsiAddon } from '@smallcase/cdk-eks-cluster-module'
+
+MountpointS3CsiAddon.isCfnElement(x: any)
+```
+
+Returns `true` if a construct is a stack element (i.e. part of the synthesized cloudformation template).
+
+Uses duck-typing instead of `instanceof` to allow stack elements from different
+versions of this library to be included in the same stack.
+
+###### `x`<sup>Required</sup> <a name="x" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.isCfnElement.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+##### `isCfnResource` <a name="isCfnResource" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.isCfnResource"></a>
+
+```typescript
+import { MountpointS3CsiAddon } from '@smallcase/cdk-eks-cluster-module'
+
+MountpointS3CsiAddon.isCfnResource(x: any)
+```
+
+Check whether the given object is a CfnResource.
+
+###### `x`<sup>Required</sup> <a name="x" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.isCfnResource.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.creationStack">creationStack</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.logicalId">logicalId</a></code> | <code>string</code> | The logical ID for this CloudFormation stack element. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.stack">stack</a></code> | <code>aws-cdk-lib.Stack</code> | The stack in which this element is defined. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.ref">ref</a></code> | <code>string</code> | Return a string that will be resolved to a CloudFormation `{ Ref }` for this element. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.cfnOptions">cfnOptions</a></code> | <code>aws-cdk-lib.ICfnResourceOptions</code> | Options for this resource, such as condition, update policy etc. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.cfnResourceType">cfnResourceType</a></code> | <code>string</code> | AWS resource type. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.attrArn">attrArn</a></code> | <code>string</code> | The ARN of the add-on, such as `arn:aws:eks:us-west-2:111122223333:addon/1-19/vpc-cni/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.tags">tags</a></code> | <code>aws-cdk-lib.TagManager</code> | Tag Manager which manages the tags for this resource. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.addonName">addonName</a></code> | <code>string</code> | The name of the add-on. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.clusterName">clusterName</a></code> | <code>string</code> | The name of your cluster. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.addonVersion">addonVersion</a></code> | <code>string</code> | The version of the add-on. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.configurationValues">configurationValues</a></code> | <code>string</code> | The configuration values that you provided. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.podIdentityAssociations">podIdentityAssociations</a></code> | <code>aws-cdk-lib.IResolvable \| aws-cdk-lib.IResolvable \| aws-cdk-lib.aws_eks.CfnAddon.PodIdentityAssociationProperty[]</code> | An array of Pod Identity Assocations owned by the Addon. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.preserveOnDelete">preserveOnDelete</a></code> | <code>boolean \| aws-cdk-lib.IResolvable</code> | Specifying this option preserves the add-on software on your cluster but Amazon EKS stops managing any settings for the add-on. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.resolveConflicts">resolveConflicts</a></code> | <code>string</code> | How to resolve field value conflicts for an Amazon EKS add-on. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.serviceAccountRoleArn">serviceAccountRoleArn</a></code> | <code>string</code> | The Amazon Resource Name (ARN) of an existing IAM role to bind to the add-on's service account. |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.tagsRaw">tagsRaw</a></code> | <code>aws-cdk-lib.CfnTag[]</code> | The metadata that you apply to the add-on to assist with categorization and organization. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `creationStack`<sup>Required</sup> <a name="creationStack" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.creationStack"></a>
+
+```typescript
+public readonly creationStack: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `logicalId`<sup>Required</sup> <a name="logicalId" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.logicalId"></a>
+
+```typescript
+public readonly logicalId: string;
+```
+
+- *Type:* string
+
+The logical ID for this CloudFormation stack element.
+
+The logical ID of the element
+is calculated from the path of the resource node in the construct tree.
+
+To override this value, use `overrideLogicalId(newLogicalId)`.
+
+---
+
+##### `stack`<sup>Required</sup> <a name="stack" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.stack"></a>
+
+```typescript
+public readonly stack: Stack;
+```
+
+- *Type:* aws-cdk-lib.Stack
+
+The stack in which this element is defined.
+
+CfnElements must be defined within a stack scope (directly or indirectly).
+
+---
+
+##### `ref`<sup>Required</sup> <a name="ref" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.ref"></a>
+
+```typescript
+public readonly ref: string;
+```
+
+- *Type:* string
+
+Return a string that will be resolved to a CloudFormation `{ Ref }` for this element.
+
+If, by any chance, the intrinsic reference of a resource is not a string, you could
+coerce it to an IResolvable through `Lazy.any({ produce: resource.ref })`.
+
+---
+
+##### `cfnOptions`<sup>Required</sup> <a name="cfnOptions" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.cfnOptions"></a>
+
+```typescript
+public readonly cfnOptions: ICfnResourceOptions;
+```
+
+- *Type:* aws-cdk-lib.ICfnResourceOptions
+
+Options for this resource, such as condition, update policy etc.
+
+---
+
+##### `cfnResourceType`<sup>Required</sup> <a name="cfnResourceType" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.cfnResourceType"></a>
+
+```typescript
+public readonly cfnResourceType: string;
+```
+
+- *Type:* string
+
+AWS resource type.
+
+---
+
+##### `attrArn`<sup>Required</sup> <a name="attrArn" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.attrArn"></a>
+
+```typescript
+public readonly attrArn: string;
+```
+
+- *Type:* string
+
+The ARN of the add-on, such as `arn:aws:eks:us-west-2:111122223333:addon/1-19/vpc-cni/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` .
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.tags"></a>
+
+```typescript
+public readonly tags: TagManager;
+```
+
+- *Type:* aws-cdk-lib.TagManager
+
+Tag Manager which manages the tags for this resource.
+
+---
+
+##### `addonName`<sup>Required</sup> <a name="addonName" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.addonName"></a>
+
+```typescript
+public readonly addonName: string;
+```
+
+- *Type:* string
+
+The name of the add-on.
+
+---
+
+##### `clusterName`<sup>Required</sup> <a name="clusterName" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.clusterName"></a>
+
+```typescript
+public readonly clusterName: string;
+```
+
+- *Type:* string
+
+The name of your cluster.
+
+---
+
+##### `addonVersion`<sup>Optional</sup> <a name="addonVersion" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.addonVersion"></a>
+
+```typescript
+public readonly addonVersion: string;
+```
+
+- *Type:* string
+
+The version of the add-on.
+
+---
+
+##### `configurationValues`<sup>Optional</sup> <a name="configurationValues" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.configurationValues"></a>
+
+```typescript
+public readonly configurationValues: string;
+```
+
+- *Type:* string
+
+The configuration values that you provided.
+
+---
+
+##### `podIdentityAssociations`<sup>Optional</sup> <a name="podIdentityAssociations" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.podIdentityAssociations"></a>
+
+```typescript
+public readonly podIdentityAssociations: IResolvable | (IResolvable | PodIdentityAssociationProperty)[];
+```
+
+- *Type:* aws-cdk-lib.IResolvable | aws-cdk-lib.IResolvable | aws-cdk-lib.aws_eks.CfnAddon.PodIdentityAssociationProperty[]
+
+An array of Pod Identity Assocations owned by the Addon.
+
+---
+
+##### `preserveOnDelete`<sup>Optional</sup> <a name="preserveOnDelete" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.preserveOnDelete"></a>
+
+```typescript
+public readonly preserveOnDelete: boolean | IResolvable;
+```
+
+- *Type:* boolean | aws-cdk-lib.IResolvable
+
+Specifying this option preserves the add-on software on your cluster but Amazon EKS stops managing any settings for the add-on.
+
+---
+
+##### `resolveConflicts`<sup>Optional</sup> <a name="resolveConflicts" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.resolveConflicts"></a>
+
+```typescript
+public readonly resolveConflicts: string;
+```
+
+- *Type:* string
+
+How to resolve field value conflicts for an Amazon EKS add-on.
+
+---
+
+##### `serviceAccountRoleArn`<sup>Optional</sup> <a name="serviceAccountRoleArn" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.serviceAccountRoleArn"></a>
+
+```typescript
+public readonly serviceAccountRoleArn: string;
+```
+
+- *Type:* string
+
+The Amazon Resource Name (ARN) of an existing IAM role to bind to the add-on's service account.
+
+---
+
+##### `tagsRaw`<sup>Optional</sup> <a name="tagsRaw" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.tagsRaw"></a>
+
+```typescript
+public readonly tagsRaw: CfnTag[];
+```
+
+- *Type:* aws-cdk-lib.CfnTag[]
+
+The metadata that you apply to the add-on to assist with categorization and organization.
+
+---
+
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.CFN_RESOURCE_TYPE_NAME">CFN_RESOURCE_TYPE_NAME</a></code> | <code>string</code> | The CloudFormation resource type name for this resource class. |
+
+---
+
+##### `CFN_RESOURCE_TYPE_NAME`<sup>Required</sup> <a name="CFN_RESOURCE_TYPE_NAME" id="@smallcase/cdk-eks-cluster-module.MountpointS3CsiAddon.property.CFN_RESOURCE_TYPE_NAME"></a>
+
+```typescript
+public readonly CFN_RESOURCE_TYPE_NAME: string;
+```
+
+- *Type:* string
+
+The CloudFormation resource type name for this resource class.
+
+---
+
 ### VpcEniAddon <a name="VpcEniAddon" id="@smallcase/cdk-eks-cluster-module.VpcEniAddon"></a>
 
 #### Initializers <a name="Initializers" id="@smallcase/cdk-eks-cluster-module.VpcEniAddon.Initializer"></a>
@@ -3267,7 +4867,6 @@ const defaultCommonComponents: DefaultCommonComponents = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.DefaultCommonComponents.property.awsEbsCsiDriver">awsEbsCsiDriver</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps">DefaultCommonComponentsProps</a></code> | *No description.* |
-| <code><a href="#@smallcase/cdk-eks-cluster-module.DefaultCommonComponents.property.awsEfsCsiDriver">awsEfsCsiDriver</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps">DefaultCommonComponentsProps</a></code> | *No description.* |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.DefaultCommonComponents.property.clusterAutoscaler">clusterAutoscaler</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps">DefaultCommonComponentsProps</a></code> | *No description.* |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.DefaultCommonComponents.property.externalDns">externalDns</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps">DefaultCommonComponentsProps</a></code> | *No description.* |
 
@@ -3277,16 +4876,6 @@ const defaultCommonComponents: DefaultCommonComponents = { ... }
 
 ```typescript
 public readonly awsEbsCsiDriver: DefaultCommonComponentsProps;
-```
-
-- *Type:* <a href="#@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps">DefaultCommonComponentsProps</a>
-
----
-
-##### `awsEfsCsiDriver`<sup>Optional</sup> <a name="awsEfsCsiDriver" id="@smallcase/cdk-eks-cluster-module.DefaultCommonComponents.property.awsEfsCsiDriver"></a>
-
-```typescript
-public readonly awsEfsCsiDriver: DefaultCommonComponentsProps;
 ```
 
 - *Type:* <a href="#@smallcase/cdk-eks-cluster-module.DefaultCommonComponentsProps">DefaultCommonComponentsProps</a>
@@ -3363,7 +4952,9 @@ const eKSClusterProps: EKSClusterProps = { ... }
 | <code><a href="#@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.addonProps">addonProps</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.AddonProps">AddonProps</a></code> | *No description.* |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.clusterVPC">clusterVPC</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | *No description.* |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.coreDnsAddonProps">coreDnsAddonProps</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps">CoreAddonValuesProps</a></code> | *No description.* |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.efsCsiAddonProps">efsCsiAddonProps</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps">CoreAddonValuesProps</a></code> | *No description.* |
 | <code><a href="#@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.kubeProxyAddonProps">kubeProxyAddonProps</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps">CoreAddonValuesProps</a></code> | *No description.* |
+| <code><a href="#@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.s3CsiAddonProps">s3CsiAddonProps</a></code> | <code><a href="#@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps">CoreAddonValuesProps</a></code> | *No description.* |
 
 ---
 
@@ -3447,10 +5038,30 @@ public readonly coreDnsAddonProps: CoreAddonValuesProps;
 
 ---
 
+##### `efsCsiAddonProps`<sup>Optional</sup> <a name="efsCsiAddonProps" id="@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.efsCsiAddonProps"></a>
+
+```typescript
+public readonly efsCsiAddonProps: CoreAddonValuesProps;
+```
+
+- *Type:* <a href="#@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps">CoreAddonValuesProps</a>
+
+---
+
 ##### `kubeProxyAddonProps`<sup>Optional</sup> <a name="kubeProxyAddonProps" id="@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.kubeProxyAddonProps"></a>
 
 ```typescript
 public readonly kubeProxyAddonProps: CoreAddonValuesProps;
+```
+
+- *Type:* <a href="#@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps">CoreAddonValuesProps</a>
+
+---
+
+##### `s3CsiAddonProps`<sup>Optional</sup> <a name="s3CsiAddonProps" id="@smallcase/cdk-eks-cluster-module.EKSClusterProps.property.s3CsiAddonProps"></a>
+
+```typescript
+public readonly s3CsiAddonProps: CoreAddonValuesProps;
 ```
 
 - *Type:* <a href="#@smallcase/cdk-eks-cluster-module.CoreAddonValuesProps">CoreAddonValuesProps</a>
