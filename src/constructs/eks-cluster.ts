@@ -6,7 +6,7 @@ import * as kms from 'aws-cdk-lib/aws-kms';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 import { CommonHelmCharts, StandardHelmProps } from './common-helm-charts';
-import { CoreDnsAddon, KubeProxyAddon, MountpointS3CsiAddon } from './core-addon';
+import { AwsEfsCsiAddon, CoreDnsAddon, KubeProxyAddon, MountpointS3CsiAddon } from './core-addon';
 import {
   VpcCniAddonVersion,
   VpcEniAddon,
@@ -82,7 +82,6 @@ export interface ClusterConfig {
 export interface DefaultCommonComponents {
   readonly externalDns?: DefaultCommonComponentsProps;
   readonly clusterAutoscaler?: DefaultCommonComponentsProps;
-  readonly awsEfsCsiDriver?: DefaultCommonComponentsProps;
   readonly awsEbsCsiDriver?: DefaultCommonComponentsProps;
 }
 
@@ -110,6 +109,7 @@ export interface EKSClusterProps {
   readonly coreDnsAddonProps?: CoreAddonValuesProps;
   readonly kubeProxyAddonProps?: CoreAddonValuesProps;
   readonly s3CsiAddonProps?: CoreAddonValuesProps;
+  readonly efsCsiAddonProps?: CoreAddonValuesProps;
   readonly region: string;
 }
 
@@ -434,6 +434,18 @@ export class EKSCluster extends Construct {
       });
     }
 
+    if (props.efsCsiAddonProps) {
+      const efsCsiAddonConfig = this.props.efsCsiAddonProps?.addonVersion && this.props.efsCsiAddonProps?.configurationValues
+        ? { addonVersion: this.props.efsCsiAddonProps?.addonVersion, configurationValues: this.props.efsCsiAddonProps?.configurationValues }
+        : { addonVersion: this.props.efsCsiAddonProps?.addonVersion };
+
+      new AwsEfsCsiAddon(this, 'AwsEfsCsiAddon', {
+        cluster: this.cluster,
+        ...efsCsiAddonConfig,
+        resolveConflicts: true,
+      });
+    }
+
     const storageclassDefault = new eks.KubernetesManifest(this, 'gp2', {
       overwrite: true,
       cluster: this.cluster,
@@ -594,30 +606,6 @@ export class EKSCluster extends Construct {
                 },
               },
             ],
-          },
-        },
-      },
-      'aws-efs-csi-driver': {
-        iamPolicyPath: [`${__dirname}/../../assets/policy/aws-efs-csi-driver-policy.json`],
-        serviceAccounts: ['efs-csi-controller-sa', 'efs-csi-node-sa'],
-        helm: {
-          chartName: 'aws-efs-csi-driver',
-          chartVersion: '2.3.6',
-          helmRepository: 'https://kubernetes-sigs.github.io/aws-efs-csi-driver/',
-          namespace: props?.awsEfsCsiDriver?.namespace ?? 'kube-system',
-          helmValues: {
-            controller: {
-              serviceAccount: {
-                create: false,
-                name: 'efs-csi-controller-sa',
-              },
-            },
-            node: {
-              serviceAccount: {
-                create: false,
-                name: 'efs-csi-node-sa',
-              },
-            },
           },
         },
       },

@@ -23,6 +23,7 @@ interface CoreAddonAbstractProps {
   readonly resolveConflicts?: boolean;
   readonly serviceAccountName?: string;
   readonly awsManagedPolicyName?: string;
+  readonly awsManagedPolicyNames?: string[];
   readonly namespace?: string;
 }
 
@@ -64,6 +65,11 @@ abstract class CoreAddonAbstract extends eks.CfnAddon {
           iam.ManagedPolicy.fromAwsManagedPolicyName(props.awsManagedPolicyName),
         );
       }
+      for (const policyName of props.awsManagedPolicyNames ?? []) {
+        serviceAccountRole.addManagedPolicy(
+          iam.ManagedPolicy.fromAwsManagedPolicyName(policyName),
+        );
+      }
       this.serviceAccountRoleArn = serviceAccountRole.roleArn;
     }
   }
@@ -99,6 +105,17 @@ export class MountpointS3CsiAddon extends CoreAddonAbstract {
     super(scope, id, {
       ...props,
       addonName: 'aws-mountpoint-s3-csi-driver',
+    });
+  }
+}
+
+export class AwsEfsCsiAddon extends CoreAddonAbstract {
+  constructor(scope: Construct, id: string, props: CoreAddonProps) {
+    super(scope, id, {
+      ...props,
+      addonName: 'aws-efs-csi-driver',
+      serviceAccountName: 'efs-csi-controller-sa',
+      awsManagedPolicyNames: ['service-role/AmazonEFSCSIDriverPolicy', 'service-role/AmazonS3FilesCSIDriverPolicy'],
     });
   }
 }
