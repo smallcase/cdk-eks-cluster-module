@@ -4,6 +4,7 @@ import * as eks from 'aws-cdk-lib/aws-eks';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as kms from 'aws-cdk-lib/aws-kms';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as logs from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
 import { CommonHelmCharts, StandardHelmProps } from './common-helm-charts';
 import { AwsEfsCsiAddon, CoreDnsAddon, KubeProxyAddon, MountpointS3CsiAddon } from './core-addon';
@@ -77,6 +78,18 @@ export interface ClusterConfig {
   readonly debugLogs?: boolean;
   readonly deprecateClusterAutoScaler?: boolean;
   readonly skipExternalDNS?: boolean;
+  /**
+   * Enable deletion protection on the cluster's control plane CloudWatch log group
+   * (/aws/eks/<clusterName>/cluster), guarding it against accidental deletion.
+   * @default false
+   */
+  readonly logGroupDeletionProtection?: boolean;
+  /**
+   * Retention period for the cluster's control plane CloudWatch log group.
+   * Only applied when `logGroupDeletionProtection` is enabled.
+   * @default logs.RetentionDays.INFINITE
+   */
+  readonly logGroupRetentionDays?: logs.RetentionDays;
 }
 
 export interface DefaultCommonComponents {
@@ -200,6 +213,19 @@ export class EKSCluster extends Construct {
           ],
     });
 
+    if (props.clusterConfig.logGroupDeletionProtection) {
+      // RetentionDays.INFINITE (9999) is an L2 sentinel meaning "never expire" and
+      // is not itself a valid CloudFormation retention value, so it must be omitted.
+      const retentionInDays = props.clusterConfig.logGroupRetentionDays === logs.RetentionDays.INFINITE
+        ? undefined
+        : props.clusterConfig.logGroupRetentionDays;
+      const clusterLogGroup = new logs.CfnLogGroup(this, 'ClusterLogGroup', {
+        logGroupName: `/aws/eks/${props.clusterConfig.clusterName}/cluster`,
+        retentionInDays,
+      });
+      clusterLogGroup.addPropertyOverride('DeletionProtection', true);
+      clusterLogGroup.node.addDependency(this.cluster);
+    }
 
     var createdNamespaces: eks.KubernetesManifest[] = [];
 
